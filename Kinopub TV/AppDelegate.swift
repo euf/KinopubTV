@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-
+	
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		
+		let console = ConsoleDestination()  // log to Xcode Console
+		//let file = FileDestination()  // log to default swiftybeaver.log file
+		log.addDestination(console)
+//		log.addDestination(file)
+		
+		//let platform = SBPlatformDestination(appID: "lRPP6J", appSecret: "9ghrvwwTp8xnaxkiq6Ob9qryqjkWeaug", encryptionKey: "spelpOLejqpph4wema3f0idvy1NuoDzj")
+		//log.addDestination(platform)
+		
 		return true
 	}
 
