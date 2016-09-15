@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2C62793C49CCAD9A13FA1481 /* Pods_Kinopub_TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */; };
+		D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A5D1D899AE900241ED2 /* Extensions.swift */; };
+		D0289A601D899C5000241ED2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A5F1D899C5000241ED2 /* Config.swift */; };
+		D0289A621D899CA700241ED2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A611D899CA700241ED2 /* Common.swift */; };
+		D0289A651D89A14000241ED2 /* Kinopub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A641D89A14000241ED2 /* Kinopub.swift */; };
+		D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A661D89A18F00241ED2 /* KinopubLogin.swift */; };
+		D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A681D89E0F200241ED2 /* Connectable.swift */; };
+		D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A6B1D89EE8F00241ED2 /* Enums.swift */; };
+		D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A6D1D89EECD00241ED2 /* Auth.swift */; };
+		D0289A701D89EEE800241ED2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A6F1D89EEE800241ED2 /* Item.swift */; };
+		D0289A721D89EF0500241ED2 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A711D89EF0500241ED2 /* Categories.swift */; };
 		D0FD64871D89302000660496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64861D89302000660496 /* AppDelegate.swift */; };
 		D0FD64891D89302000660496 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64881D89302000660496 /* ViewController.swift */; };
 		D0FD648C1D89302000660496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FD648A1D89302000660496 /* Main.storyboard */; };
@@ -18,6 +28,16 @@
 		1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kinopub_TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2171526F323D8978AB7400 /* Pods-Kinopub TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C1D63E132E55D8DF212CCD /* Pods-Kinopub TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.release.xcconfig"; sourceTree = "<group>"; };
+		D0289A5D1D899AE900241ED2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D0289A5F1D899C5000241ED2 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D0289A611D899CA700241ED2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		D0289A641D89A14000241ED2 /* Kinopub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kinopub.swift; sourceTree = "<group>"; };
+		D0289A661D89A18F00241ED2 /* KinopubLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinopubLogin.swift; sourceTree = "<group>"; };
+		D0289A681D89E0F200241ED2 /* Connectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
+		D0289A6B1D89EE8F00241ED2 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		D0289A6D1D89EECD00241ED2 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		D0289A6F1D89EEE800241ED2 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D0289A711D89EF0500241ED2 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D0FD64831D89302000660496 /* Kinopub TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kinopub TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FD64861D89302000660496 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FD64881D89302000660496 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +75,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D0289A5C1D899AD600241ED2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D0289A5D1D899AE900241ED2 /* Extensions.swift */,
+				D0289A5F1D899C5000241ED2 /* Config.swift */,
+				D0289A611D899CA700241ED2 /* Common.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		D0289A631D89A12700241ED2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D0289A641D89A14000241ED2 /* Kinopub.swift */,
+				D0289A661D89A18F00241ED2 /* KinopubLogin.swift */,
+				D0289A681D89E0F200241ED2 /* Connectable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		D0289A6A1D89EE8300241ED2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0289A6B1D89EE8F00241ED2 /* Enums.swift */,
+				D0289A6D1D89EECD00241ED2 /* Auth.swift */,
+				D0289A6F1D89EEE800241ED2 /* Item.swift */,
+				D0289A711D89EF0500241ED2 /* Categories.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		D0FD647A1D89301F00660496 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +127,9 @@
 		D0FD64851D89302000660496 /* Kinopub TV */ = {
 			isa = PBXGroup;
 			children = (
+				D0289A6A1D89EE8300241ED2 /* Models */,
+				D0289A631D89A12700241ED2 /* Protocols */,
+				D0289A5C1D899AD600241ED2 /* Shared */,
 				D0FD64861D89302000660496 /* AppDelegate.swift */,
 				D0FD64881D89302000660496 /* ViewController.swift */,
 				D0FD648A1D89302000660496 /* Main.storyboard */,
@@ -208,8 +262,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0289A651D89A14000241ED2 /* Kinopub.swift in Sources */,
+				D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */,
+				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
 				D0FD64891D89302000660496 /* ViewController.swift in Sources */,
+				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
+				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
+				D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */,
+				D0289A701D89EEE800241ED2 /* Item.swift in Sources */,
 				D0FD64871D89302000660496 /* AppDelegate.swift in Sources */,
+				D0289A621D899CA700241ED2 /* Common.swift in Sources */,
+				D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */,
+				D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
