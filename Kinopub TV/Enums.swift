@@ -72,6 +72,7 @@ enum GenreType: String {
 	case movie = "movie"
 	case music = "music"
 	case documentary = "docu"
+	case tvshow = "tvshow"
 }
 
 enum ItemType: String {
@@ -81,6 +82,7 @@ enum ItemType: String {
 	case concerts = "concert"
 	case documentaries = "documovie"
 	case series = "docuserial"
+	case tvshows = "tvshow"
 	init() {
 		self = .movies
 	}
@@ -89,6 +91,8 @@ enum ItemType: String {
 	}
 	func genre() -> GenreType {
 		switch self {
+		case .tvshows:
+			return .tvshow
 		case .movies, .shows, .movies3D:
 			return .movie
 		case .concerts:
@@ -100,4 +104,4 @@ enum ItemType: String {
 }
 
 let moviesSet: Set<ItemType> = [.movies, .movies3D, .concerts, .documentaries]
-let seriesSet: Set<ItemType> = [.shows, .series]
+let seriesSet: Set<ItemType> = [.shows, .series, .tvshows]
