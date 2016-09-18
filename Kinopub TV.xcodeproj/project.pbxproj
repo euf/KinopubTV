@@ -18,6 +18,15 @@
 		D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A6D1D89EECD00241ED2 /* Auth.swift */; };
 		D0289A701D89EEE800241ED2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A6F1D89EEE800241ED2 /* Item.swift */; };
 		D0289A721D89EF0500241ED2 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A711D89EF0500241ED2 /* Categories.swift */; };
+		D0289A7E1D8AEE5C00241ED2 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A7D1D8AEE5C00241ED2 /* TabbarController.swift */; };
+		D0289A801D8AEF8C00241ED2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A7F1D8AEF8C00241ED2 /* ListViewController.swift */; };
+		D0289A841D8D748E00241ED2 /* PITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A811D8D748E00241ED2 /* PITabBar.swift */; };
+		D0289A851D8D748E00241ED2 /* PITabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A821D8D748E00241ED2 /* PITabBarButton.swift */; };
+		D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A831D8D748E00241ED2 /* PITabBarController.swift */; };
+		D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */; };
+		D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A891D8D7A8000241ED2 /* HomeViewController.swift */; };
+		D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */; };
+		D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0769E661D8E860E00197D01 /* LoginViewController.swift */; };
 		D0FD64871D89302000660496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64861D89302000660496 /* AppDelegate.swift */; };
 		D0FD64891D89302000660496 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64881D89302000660496 /* ViewController.swift */; };
 		D0FD648C1D89302000660496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FD648A1D89302000660496 /* Main.storyboard */; };
@@ -38,6 +47,15 @@
 		D0289A6D1D89EECD00241ED2 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		D0289A6F1D89EEE800241ED2 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D0289A711D89EF0500241ED2 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		D0289A7D1D8AEE5C00241ED2 /* TabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		D0289A7F1D8AEF8C00241ED2 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		D0289A811D8D748E00241ED2 /* PITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PITabBar.swift; sourceTree = "<group>"; };
+		D0289A821D8D748E00241ED2 /* PITabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PITabBarButton.swift; sourceTree = "<group>"; };
+		D0289A831D8D748E00241ED2 /* PITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PITabBarController.swift; sourceTree = "<group>"; };
+		D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarReplacementStyleKit.swift; sourceTree = "<group>"; };
+		D0289A891D8D7A8000241ED2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicksViewController.swift; sourceTree = "<group>"; };
+		D0769E661D8E860E00197D01 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0FD64831D89302000660496 /* Kinopub TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kinopub TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FD64861D89302000660496 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FD64881D89302000660496 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +96,7 @@
 		D0289A5C1D899AD600241ED2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				D0289A7B1D8A9C8400241ED2 /* PITabBar */,
 				D0289A5D1D899AE900241ED2 /* Extensions.swift */,
 				D0289A5F1D899C5000241ED2 /* Config.swift */,
 				D0289A611D899CA700241ED2 /* Common.swift */,
@@ -106,6 +125,29 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		D0289A7B1D8A9C8400241ED2 /* PITabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */,
+				D0289A811D8D748E00241ED2 /* PITabBar.swift */,
+				D0289A821D8D748E00241ED2 /* PITabBarButton.swift */,
+				D0289A831D8D748E00241ED2 /* PITabBarController.swift */,
+			);
+			name = PITabBar;
+			sourceTree = "<group>";
+		};
+		D0289A7C1D8AEE3F00241ED2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0289A7D1D8AEE5C00241ED2 /* TabbarController.swift */,
+				D0289A7F1D8AEF8C00241ED2 /* ListViewController.swift */,
+				D0289A891D8D7A8000241ED2 /* HomeViewController.swift */,
+				D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */,
+				D0769E661D8E860E00197D01 /* LoginViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		D0FD647A1D89301F00660496 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +172,7 @@
 				D0289A6A1D89EE8300241ED2 /* Models */,
 				D0289A631D89A12700241ED2 /* Protocols */,
 				D0289A5C1D899AD600241ED2 /* Shared */,
+				D0289A7C1D8AEE3F00241ED2 /* View Controllers */,
 				D0FD64861D89302000660496 /* AppDelegate.swift */,
 				D0FD64881D89302000660496 /* ViewController.swift */,
 				D0FD648A1D89302000660496 /* Main.storyboard */,
@@ -262,17 +305,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */,
+				D0289A851D8D748E00241ED2 /* PITabBarButton.swift in Sources */,
+				D0289A801D8AEF8C00241ED2 /* ListViewController.swift in Sources */,
 				D0289A651D89A14000241ED2 /* Kinopub.swift in Sources */,
+				D0289A7E1D8AEE5C00241ED2 /* TabbarController.swift in Sources */,
 				D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */,
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
 				D0FD64891D89302000660496 /* ViewController.swift in Sources */,
 				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
+				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
 				D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */,
+				D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */,
 				D0289A701D89EEE800241ED2 /* Item.swift in Sources */,
+				D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */,
 				D0FD64871D89302000660496 /* AppDelegate.swift in Sources */,
 				D0289A621D899CA700241ED2 /* Common.swift in Sources */,
+				D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */,
 				D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */,
+				D0289A841D8D748E00241ED2 /* PITabBar.swift in Sources */,
 				D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
