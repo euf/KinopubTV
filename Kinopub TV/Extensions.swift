@@ -101,3 +101,19 @@ extension Array {
 		return ret
 	}
 }
+
+extension UIViewController {
+	
+	func getMainStoryboard() -> UIStoryboard {
+		return UIStoryboard(name: "Main", bundle: nil)
+	}
+//
+//	func getViewControllerWithStoryboardName(storyboardName: String, identifier: String) -> UIViewController? {
+//		let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+//		return storyboard.instantiateViewControllerWithIdentifier(identifier)
+//	}
+	
+	func getViewController(identifier: String) -> UIViewController? {
+		return getMainStoryboard().instantiateViewController(withIdentifier: identifier)
+	}
+}

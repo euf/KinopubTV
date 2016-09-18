@@ -42,7 +42,7 @@ enum UserCodeResponse {
 
 protocol Authorizable: Connectable {
 	var authState: AuthState { get set }
-	func checkAuth(callback: (_ authState: AuthState) -> ()) -> Void
+	func checkAuth(callback: @escaping (_ authState: AuthState) -> ()) -> Void
 }
 
 extension Authorizable {
@@ -81,16 +81,16 @@ extension Authorizable {
 }
 
 protocol DeviceTokenable: Connectable {
-	func refreshToken(callback: (_ status: ResponseStatus) -> ()) -> Void
+	func refreshToken(callback: @escaping (_ status: ResponseStatus) -> ()) -> Void
 	func saveToken(response: ActivationResponse)
-	func requestDeviceAuthorization(callback: (_ status: AuthResponseStatus) -> ()) -> Void
-	func validateUserCode(code: String, callback: (_ status: UserCodeResponse) -> ()) -> Void
+	func requestDeviceAuthorization(callback: @escaping (_ status: AuthResponseStatus) -> ()) -> Void
+	func validateUserCode(code: String, callback: @escaping (_ status: UserCodeResponse) -> ()) -> Void
 	func registerDevice()
 }
 
 extension DeviceTokenable {
 	
-	func refreshToken(callback: @escaping (_ status: ResponseStatus) -> ()) {
+	func refreshToken(callback: @escaping (ResponseStatus) -> ()) {
 		log.debug("Attempting to refresh the token")
 		if Defaults.hasKey(.refreshToken), let refresh = Defaults[.refreshToken] {
 			let parameters = [

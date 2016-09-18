@@ -31,15 +31,15 @@ struct Config {
 	//static let clientSecret = "3z5124kj5liqy9gahnjr07qpj65ferl2"
 	
 	struct URL {
-		static let base = "http://api.service-kp.com/"
-		//static let base = "http://api.kino.pub/"
+		static let base = "https://api.service-kp.com/"
+		//static let base = "https://api.kino.pub/"
 		static let APIBase = Config.URL.base+"v1"
 		static let OAuthBase = Config.URL.base+"oauth2"
 		static let madia = "https://media.kino.pub/poster/item"
 	}
 	
 	struct kinopoisk {
-		static let base = "http://api.kinopoisk.cf"
+		static let base = "https://api.kinopoisk.cf"
 	}
 	
 	struct themoviedb {

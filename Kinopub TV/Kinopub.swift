@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import QorumLogs
 import SwiftyUserDefaults
 import SwiftyJSON
 import ObjectMapper
