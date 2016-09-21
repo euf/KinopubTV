@@ -182,7 +182,7 @@ extension KinoViewable where Self: UIViewController {
 		performRequest(resource: request) { result, error in
 			switch (result, error) {
 			case(let result?, _):
-				log.info(result)
+				log.debug(result)
 				break
 			case(_, let error?):
 				log.error("Error accessing the service \(error)")
