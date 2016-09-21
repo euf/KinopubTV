@@ -11,15 +11,16 @@ import SwiftyUserDefaults
 
 class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	
+	let center = NotificationCenter.default
 	var authState = AuthState.unauthorized // When starting we're unauthorized by default
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		center.addObserver(self, selector: #selector(TabbarController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
 		prepareNavigation()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	func appDidBecomeActive() {
 		checkActivationStatus()
 	}
 	
@@ -28,47 +29,12 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 			getViewController(identifier: "newController")!,
 			getViewController(identifier: "picksController")!,
 			getViewController(identifier: "listController")!,
-			getViewController(identifier: "listController")!,
-			getViewController(identifier: "listController")!,
-			getViewController(identifier: "listController")!,
-			getViewController(identifier: "listController")!,
-			getViewController(identifier: "listController")!,
+			getViewController(identifier: "tvController")!,
+//			getViewController(identifier: "searchController")!,
+			getViewController(identifier: "profileController")!,
 			//			getViewController("SearchViewController")!,
 			//			getViewController("SettingsViewController")!,
 		]
-		
-		for (index, c) in self.viewControllers.enumerated() {
-			if let controller = c as? ListViewController {
-				
-				switch(index) {
-				case 2:
-					//					controller.currentView = .Movies
-					controller.tabBarItem.title = "Фильмы"
-					break
-				case 3:
-					//					controller.currentView = .Shows
-					controller.tabBarItem.title = "Сериалы"
-					break
-				case 4:
-					//					controller.currentView = .Movies3D
-					controller.tabBarItem.title = "3D"
-					break
-				case 5:
-					//					controller.currentView = .Concerts
-					controller.tabBarItem.title = "Концерты"
-					break
-				case 6:
-					//					controller.currentView = .Documentaries
-					controller.tabBarItem.title = "Докуфильмы"
-					break
-				case 7:
-					//					controller.currentView = .Series
-					controller.tabBarItem.title = "Докусериалы"
-					break
-				default: return
-				}
-			}
-		}
 		
 		self.tabBar.updateDisplay()
 		self.tabBar.itemSpacing = 40
@@ -79,6 +45,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	Called on startup to check current device activation state
 	*/
 	private func checkActivationStatus() {
+		log.info("Checking activation status")
 		checkAuth() {state in
 			switch state {
 			case .authorized:
