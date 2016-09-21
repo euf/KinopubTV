@@ -61,7 +61,7 @@ extension Authorizable {
 			performRequest(resource: typesRequest) { result, error in
 				switch (result, error) {
 				case(let result?, _):
-					log.info(result)
+					log.info("Got token response..")
 					if result["status"] == 200 {
 						callback(.authorized)
 					} else {
@@ -163,7 +163,7 @@ extension DeviceTokenable {
 	}
 	
 	func validateUserCode(code: String, callback: @escaping (_ status: UserCodeResponse) -> ()) {
-		log.debug("Validating device authorization")
+		log.info("Validating device authorization")
 		let parameters = [
 			"grant_type": "device_token",
 			"client_id": Config.clientId,
@@ -175,15 +175,18 @@ extension DeviceTokenable {
 			switch (result, error) {
 			case(let result?, _):
 				if result["status"] != 400 && result["access_token"] != "", let response = Mapper<ActivationResponse>().map(JSONObject: result.dictionaryObject) {
+					log.debug("Validation went fine")
 					self.saveToken(response: response)
 					self.registerDevice()
 					callback(.success)
 				} else if result["error"] == "bad_verification_code" {
+					log.debug("Bad verificatin code")
 					callback(.invalid)
 				} else if result["error"] == "authorization_pending" {
+					log.debug("Validation still pending")
 					callback(.pending)
 				} else {
-					log.debug("Unknown response. Reauthorizing.. ")
+					log.warning("Unknown response. Reauthorizing.. ")
 					callback(.invalid)
 				}
 				break
@@ -200,7 +203,7 @@ extension DeviceTokenable {
 		let parameters = [
 			"title": UIDevice().name,
 			"hardware": UIDevice().deviceType,
-			"software": UIDevice().systemName+"/"+UIDevice().systemVersion+" "+"Kinopub for iOS/1.0"
+			"software": UIDevice().systemName+"/"+UIDevice().systemVersion+" "+"KinopubTV/2.0"
 		]
 		let deviceRequest = Request(type: .resource, resourceURL: "/device/notify", method: .post, parameters: parameters as [String : AnyObject]?)
 		performRequest(resource: deviceRequest) { result, error in
