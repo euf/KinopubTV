@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="tvOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="51" y="71"/>
         </scene>
-        <!--Фильмы-->
+        <!--Смотреть-->
         <scene sceneID="RA7-4v-DdS">
             <objects>
                 <viewController storyboardIdentifier="listController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zGY-Ng-mZ4" customClass="ListViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,14 +35,48 @@
                     <view key="view" contentMode="scaleToFill" id="vYB-Io-O0c">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1nk-LA-auQ">
+                                <frame key="frameInset" minX="73" minY="154" width="1792" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80340608465608465" green="0.80340608465608465" blue="0.80340608465608465" alpha="0.41071942099999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="Фильмы"/>
+                                    <segment title="Сериалы"/>
+                                    <segment title="3D"/>
+                                    <segment title="Доку фильмы"/>
+                                    <segment title="Доку сериалы"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" red="0.1039831283244681" green="0.1039831283244681" blue="0.1039831283244681" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Фильмы" id="PJu-lc-16A"/>
+                    <tabBarItem key="tabBarItem" title="Смотреть" id="PJu-lc-16A"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzA-nf-xhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="1433"/>
+            <point key="canvasLocation" x="89" y="1433"/>
+        </scene>
+        <!--ТВ-->
+        <scene sceneID="Csr-AO-ZgT">
+            <objects>
+                <viewController storyboardIdentifier="tvController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2n-o3-ltz" customClass="TVViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3F5-af-8mu"/>
+                        <viewControllerLayoutGuide type="bottom" id="AVc-lY-ZFj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h7g-jj-oIP">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="ТВ" id="urZ-V2-oYV"/>
+                    <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLj-dX-BR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="2923"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="NTY-ZX-SG8">
@@ -85,7 +119,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Произошла ошибка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtc-oR-aeQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Произошла ошибка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtc-oR-aeQ">
                                         <frame key="frameInset" minX="8" minY="367" width="1357" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -169,6 +203,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvQ-tR-yCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4238" y="1433"/>
+        </scene>
+        <!--Профиль-->
+        <scene sceneID="p5d-0v-zgy">
+            <objects>
+                <viewController storyboardIdentifier="profileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D9V-Qj-S6P" customClass="ProfileViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mtc-co-eRN"/>
+                        <viewControllerLayoutGuide type="bottom" id="oaX-O9-QLC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="juH-TU-zHh">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Профиль" id="3XE-yX-aE0"/>
+                    <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5I-vj-DHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2229" y="2923"/>
         </scene>
     </scenes>
     <resources>
