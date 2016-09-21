@@ -27,6 +27,8 @@
 		D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A891D8D7A8000241ED2 /* HomeViewController.swift */; };
 		D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */; };
 		D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0769E661D8E860E00197D01 /* LoginViewController.swift */; };
+		D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890C1D92A2D600DBF46F /* TVViewController.swift */; };
+		D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */; };
 		D0FD64871D89302000660496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64861D89302000660496 /* AppDelegate.swift */; };
 		D0FD64891D89302000660496 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64881D89302000660496 /* ViewController.swift */; };
 		D0FD648C1D89302000660496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FD648A1D89302000660496 /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 		D0289A891D8D7A8000241ED2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicksViewController.swift; sourceTree = "<group>"; };
 		D0769E661D8E860E00197D01 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D08B890C1D92A2D600DBF46F /* TVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
+		D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D0FD64831D89302000660496 /* Kinopub TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kinopub TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FD64861D89302000660496 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FD64881D89302000660496 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				D0289A891D8D7A8000241ED2 /* HomeViewController.swift */,
 				D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */,
 				D0769E661D8E860E00197D01 /* LoginViewController.swift */,
+				D08B890C1D92A2D600DBF46F /* TVViewController.swift */,
+				D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -313,12 +319,14 @@
 				D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */,
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
 				D0FD64891D89302000660496 /* ViewController.swift in Sources */,
+				D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */,
 				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
 				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
 				D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */,
 				D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */,
 				D0289A701D89EEE800241ED2 /* Item.swift in Sources */,
+				D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */,
 				D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */,
 				D0FD64871D89302000660496 /* AppDelegate.swift in Sources */,
 				D0289A621D899CA700241ED2 /* Common.swift in Sources */,

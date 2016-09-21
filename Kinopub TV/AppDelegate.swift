@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		let console = ConsoleDestination()  // log to Xcode Console
+		console.levelString.Verbose = "😺 VERBOSE"
+		console.levelString.Debug = "😹 DEBUG"
+		console.levelString.Info = "😼 INFO"
+		console.levelString.Warning = "😾 WARNING"
+		console.levelString.Error = "🙀 ERROR"
 		//let file = FileDestination()  // log to default swiftybeaver.log file
 		log.addDestination(console)
 //		log.addDestination(file)
