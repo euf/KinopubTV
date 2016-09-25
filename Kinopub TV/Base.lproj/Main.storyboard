@@ -46,10 +46,13 @@
                                     <segment title="Доку фильмы"/>
                                     <segment title="Доку сериалы"/>
                                 </segments>
+                                <connections>
+                                    <action selector="subMenuChanged:" destination="zGY-Ng-mZ4" eventType="valueChanged" id="KPt-gG-PuR"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5D-ON-mpf">
                                 <connections>
-                                    <segue destination="RFD-6v-0tW" kind="embed" id="TVB-pc-ru8"/>
+                                    <segue destination="RFD-6v-0tW" kind="embed" identifier="listView" id="TVB-pc-ru8"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -67,6 +70,7 @@
                     <tabBarItem key="tabBarItem" title="Смотреть" id="PJu-lc-16A"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="subMenuSegments" destination="1nk-LA-auQ" id="aHx-fF-3CY"/>
                         <outlet property="subMenuTopConstraint" destination="fvg-Xe-9gF" id="Nn6-So-1gF"/>
                     </connections>
                 </viewController>
@@ -249,12 +253,37 @@
                     <view key="view" contentMode="scaleToFill" id="les-fz-aZB">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="809"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G4O-SJ-FGo">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="30" id="CyS-Wu-OGz">
+                                    <size key="itemSize" width="305" height="475"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="40" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RFD-6v-0tW" id="ese-bx-jSK"/>
+                                    <outlet property="delegate" destination="RFD-6v-0tW" id="3kN-E0-fbh"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G4O-SJ-FGo" firstAttribute="leading" secondItem="les-fz-aZB" secondAttribute="leading" constant="20" id="9tP-XD-vWl"/>
+                            <constraint firstAttribute="trailing" secondItem="G4O-SJ-FGo" secondAttribute="trailing" constant="20" id="Fc5-98-XKo"/>
+                            <constraint firstAttribute="bottom" secondItem="G4O-SJ-FGo" secondAttribute="bottom" constant="20" id="Fqy-tk-2lb"/>
+                            <constraint firstItem="G4O-SJ-FGo" firstAttribute="top" secondItem="les-fz-aZB" secondAttribute="top" constant="20" id="KvE-Fl-cyU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="G4O-SJ-FGo" id="wlT-qF-lSy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87h-AR-QjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109" y="2786"/>
+            <point key="canvasLocation" x="89" y="2788"/>
         </scene>
     </scenes>
     <resources>

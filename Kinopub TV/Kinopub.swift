@@ -22,7 +22,7 @@ enum ItemsResponse {
 }
 
 protocol KinoListable: Connectable {
-	func fetchItems(type: ItemType, page: Int?, callback: (_ response: ItemsResponse) -> ()) -> Void
+	func fetchItems(type: ItemType, page: Int?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 }
 
 extension KinoListable {
@@ -70,8 +70,8 @@ protocol KinoViewable: class, Connectable {
 	var playerController: AVPlayerViewController! {get set}
 	var item: Item? {get set}
 	var kinoItem: KinoItem? {get set} // Priliminary item (before we got a response from the sever)
-	func fetchItem(id: Int, type: ItemType, callback: (_ response: ItemResponse) -> ()) -> Void
-	func playVideo(videoURL: URL, episode: Video, season: Season?, fromPosition: Int?, callback: (_ position: TimeInterval) -> ()) -> Void
+	func fetchItem(id: Int, type: ItemType, callback: @escaping (_ response: ItemResponse) -> ()) -> Void
+	func playVideo(videoURL: URL, episode: Video, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
 }
 
 extension KinoViewable where Self: UIViewController {

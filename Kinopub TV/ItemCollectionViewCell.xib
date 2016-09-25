@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="Rz2-K0-ksD" customClass="ItemCollectionViewCell" customModule="Kinopub_TV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="475"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="305" height="475"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6sW-kl-MKW">
+                        <rect key="frame" x="28" y="20" width="250" height="375"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="375" id="cAA-ty-y5v"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo5-UR-WPy">
+                        <rect key="frame" x="0.0" y="447" width="305" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeK-hm-jsQ">
+                        <rect key="frame" x="0.0" y="396" width="305" height="49"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                        <color key="textColor" red="0.97636479139328003" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Lo5-UR-WPy" secondAttribute="bottom" id="3KJ-NT-Luq"/>
+                <constraint firstItem="6sW-kl-MKW" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="20" id="4pX-kx-zVj"/>
+                <constraint firstItem="6sW-kl-MKW" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="28" id="Rxp-HQ-GbV"/>
+                <constraint firstAttribute="trailing" secondItem="Lo5-UR-WPy" secondAttribute="trailing" id="TtR-3a-Ft9"/>
+                <constraint firstItem="LeK-hm-jsQ" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="VKe-jQ-TaU"/>
+                <constraint firstAttribute="trailing" secondItem="LeK-hm-jsQ" secondAttribute="trailing" id="Ynz-PT-pcf"/>
+                <constraint firstItem="Lo5-UR-WPy" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="aj5-wv-Tsp"/>
+                <constraint firstAttribute="trailing" secondItem="6sW-kl-MKW" secondAttribute="trailing" constant="27" id="auO-38-A9y"/>
+                <constraint firstItem="LeK-hm-jsQ" firstAttribute="top" secondItem="6sW-kl-MKW" secondAttribute="bottom" constant="1" id="eMk-cX-zNR"/>
+                <constraint firstItem="Lo5-UR-WPy" firstAttribute="top" secondItem="LeK-hm-jsQ" secondAttribute="bottom" constant="2" id="uUr-MB-R4F"/>
+            </constraints>
+            <size key="customSize" width="305" height="475"/>
+            <connections>
+                <outlet property="poster" destination="6sW-kl-MKW" id="6VZ-hp-y4h"/>
+                <outlet property="posterSeparatorConstraint" destination="eMk-cX-zNR" id="VPK-nA-gh8"/>
+                <outlet property="title" destination="LeK-hm-jsQ" id="eLa-UM-euT"/>
+                <outlet property="year" destination="Lo5-UR-WPy" id="oQf-tf-wOi"/>
+            </connections>
+            <point key="canvasLocation" x="443.5" y="426.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
