@@ -27,7 +27,7 @@
         <!--Смотреть-->
         <scene sceneID="RA7-4v-DdS">
             <objects>
-                <viewController storyboardIdentifier="listController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zGY-Ng-mZ4" customClass="ListViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="watchController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zGY-Ng-mZ4" customClass="WatchViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t9z-QH-ZDY"/>
                         <viewControllerLayoutGuide type="bottom" id="sTX-Jm-lZe"/>
@@ -36,23 +36,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1nk-LA-auQ">
-                                <frame key="frameInset" minX="73" minY="154" width="1792" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1nk-LA-auQ">
                                 <color key="backgroundColor" red="0.80340608465608465" green="0.80340608465608465" blue="0.80340608465608465" alpha="0.41071942099999997" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Фильмы"/>
                                     <segment title="Сериалы"/>
+                                    <segment title="ТВ Шоу"/>
                                     <segment title="3D"/>
                                     <segment title="Доку фильмы"/>
                                     <segment title="Доку сериалы"/>
                                 </segments>
                             </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5D-ON-mpf">
+                                <connections>
+                                    <segue destination="RFD-6v-0tW" kind="embed" id="TVB-pc-ru8"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.1039831283244681" green="0.1039831283244681" blue="0.1039831283244681" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="I5D-ON-mpf" firstAttribute="leading" secondItem="vYB-Io-O0c" secondAttribute="leading" id="Ln7-Fz-jmV"/>
+                            <constraint firstAttribute="trailing" secondItem="I5D-ON-mpf" secondAttribute="trailing" id="P6i-c8-EES"/>
+                            <constraint firstAttribute="trailing" secondItem="1nk-LA-auQ" secondAttribute="trailing" constant="20" id="QFb-E7-hk5"/>
+                            <constraint firstItem="1nk-LA-auQ" firstAttribute="leading" secondItem="vYB-Io-O0c" secondAttribute="leading" constant="20" id="WHa-C7-7wP"/>
+                            <constraint firstItem="1nk-LA-auQ" firstAttribute="top" secondItem="t9z-QH-ZDY" secondAttribute="bottom" constant="150" id="fvg-Xe-9gF"/>
+                            <constraint firstItem="I5D-ON-mpf" firstAttribute="top" secondItem="1nk-LA-auQ" secondAttribute="bottom" constant="32" id="g1H-z4-WEa"/>
+                            <constraint firstItem="sTX-Jm-lZe" firstAttribute="top" secondItem="I5D-ON-mpf" secondAttribute="bottom" constant="20" id="gnu-HC-ThJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Смотреть" id="PJu-lc-16A"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="subMenuTopConstraint" destination="fvg-Xe-9gF" id="Nn6-So-1gF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzA-nf-xhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLj-dX-BR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89" y="2923"/>
+            <point key="canvasLocation" x="4238" y="2923"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="NTY-ZX-SG8">
@@ -177,6 +193,7 @@
                     <view key="view" contentMode="scaleToFill" id="fvx-4q-TJu">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Главная" id="6q0-H7-gvp"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
@@ -196,6 +213,7 @@
                     <view key="view" contentMode="scaleToFill" id="4uH-nV-r6L">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Подборки" id="TgL-Oe-VXf"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
@@ -204,7 +222,7 @@
             </objects>
             <point key="canvasLocation" x="4238" y="1433"/>
         </scene>
-        <!--Профиль-->
+        <!--Профайл-->
         <scene sceneID="p5d-0v-zgy">
             <objects>
                 <viewController storyboardIdentifier="profileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D9V-Qj-S6P" customClass="ProfileViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
@@ -217,12 +235,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Профиль" id="3XE-yX-aE0"/>
+                    <tabBarItem key="tabBarItem" title="Профайл" id="3XE-yX-aE0"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5I-vj-DHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2229" y="2923"/>
+        </scene>
+        <!--List View Controller-->
+        <scene sceneID="gBH-mj-FJe">
+            <objects>
+                <viewController storyboardIdentifier="listController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RFD-6v-0tW" customClass="ListViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="les-fz-aZB">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="809"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="87h-AR-QjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109" y="2786"/>
         </scene>
     </scenes>
     <resources>

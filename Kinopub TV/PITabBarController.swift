@@ -11,7 +11,11 @@ import UIKit
 class PITabBarController: UIViewController {
     weak var delegate: UITabBarControllerDelegate?
     
-    var tabBar: PITabBar { get { return _tabBar } }
+    var tabBar: PITabBar {
+		get {
+			return _tabBar
+		}
+	}
     
     fileprivate var _tabBar: PITabBar
     fileprivate var _selectedIndex: Int?
@@ -21,7 +25,7 @@ class PITabBarController: UIViewController {
     
     fileprivate struct Constants {
         static let tabBarWidth = CGFloat(1920)
-        static let tabBarHeight = CGFloat(140)
+        static let tabBarHeight = CGFloat(240)
         static let initialTabBarFrame = CGRect(x: 0, y: 0, width: tabBarWidth, height: tabBarHeight)
         static let viewTransitionAnimationDuration = 0.5
         static let tabBarAnimationDuration = 0.3
@@ -78,19 +82,6 @@ class PITabBarController: UIViewController {
 		}
 		return super.preferredFocusEnvironments
 	}
-    
-//    override weak var preferredFocusedView: UIView? {
-//        
-//        if tabBarHidden {
-//            return selectedViewController?.view
-//        }
-//        
-//        if let target = _tabBar.preferredFocusedView {
-//            return target
-//        }
-//        
-//        return super.preferredFocusedView
-//    }
 	
     @IBOutlet var viewControllers: [UIViewController]! {
         

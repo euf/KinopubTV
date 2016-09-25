@@ -28,7 +28,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 		self.viewControllers = [
 			getViewController(identifier: "newController")!,
 			getViewController(identifier: "picksController")!,
-			getViewController(identifier: "listController")!,
+			getViewController(identifier: "watchController")!,
 			getViewController(identifier: "tvController")!,
 //			getViewController(identifier: "searchController")!,
 			getViewController(identifier: "profileController")!,

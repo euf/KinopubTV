@@ -78,11 +78,11 @@ enum GenreType: String {
 enum ItemType: String {
 	case movies = "movie"
 	case shows = "serial"
+	case tvshows = "tvshow"
 	case movies3D = "3D" // Prior: 3d
 	case concerts = "concert"
 	case documentaries = "documovie"
 	case series = "docuserial"
-	case tvshows = "tvshow"
 	init() {
 		self = .movies
 	}

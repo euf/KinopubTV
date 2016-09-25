@@ -199,13 +199,5 @@ class PITabBar: UIView {
 		}
 		return super.preferredFocusEnvironments
 	}
-    
-//    override weak var preferredFocusedView: UIView? {
-//        if let selectedItem = selectedItem {
-//            return _buttonDictionary[selectedItem]
-//        }
-//        
-//        return super.preferredFocusedView
-//    }
 
 }
