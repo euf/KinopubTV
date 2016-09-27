@@ -84,7 +84,7 @@ class PITabBarController: UIViewController {
 	}
 	
     @IBOutlet var viewControllers: [UIViewController]! {
-        
+		
         didSet {
             var items: [UITabBarItem] = []
             

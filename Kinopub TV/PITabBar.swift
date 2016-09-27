@@ -47,11 +47,24 @@ class PITabBar: UIView {
     }
     
     func setPreferredFocusedView(_ view: UIView) {
-		_focusGuide.preferredFocusEnvironments = [_buttonDictionary[selectedItem!]!, view]
+		if view == self {
+			_focusGuide.preferredFocusEnvironments = [_buttonDictionary[selectedItem!]!]
+		} else {
+			_focusGuide.preferredFocusEnvironments = [view]
+		}
+		
     }
-    
+
+/*	func setPreferredFocusedView(view: UIView) {
+		if view == self {
+			_focusGuide.preferredFocusedView = _buttonDictionary[selectedItem!]
+		} else {
+			_focusGuide.preferredFocusedView = view
+		}
+	}*/
+	
     var items: [UITabBarItem]? {
-        
+		
         didSet {
             self.setNeedsDisplay()
         }
