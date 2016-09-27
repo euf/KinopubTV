@@ -39,31 +39,22 @@ class WatchViewController: UIViewController {
 	private func changeViewToSelectedSegment(segment: Int) {
 		var type = ItemType()
 		switch segment {
-		case 0:
-			type = .movies
+		case 0: type = .movies
 			break
-		case 1:
-			type = .shows
+		case 1: type = .shows
 			break
-		case 2:
-			type = .tvshows
+		case 2: type = .tvshows
 			break
-		case 3:
-			type = .movies3D
+		case 3: type = .movies3D
 			break
-		case 4:
-			type = .concerts
+		case 4: type = .concerts
 			break
-		case 5:
-			type = .documentaries
+		case 5: type = .documentaries
 			break
-		case 6:
-			type = .series
+		case 6: type = .series
 			break
-		default:
-			type = .movies
+		default: type = .movies
 		}
-		
 		listController?.viewType = type
 	}
 
