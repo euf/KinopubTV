@@ -18,15 +18,17 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	var currentPage = 1
 	var viewType: ItemType? {
 		didSet {
-			getItems(page: 1) {}
+			getItems(page: 1) {
+//				if let cv = self.collectionView {
+//					print("Remembering last index ")
+//					cv.remembersLastFocusedIndexPath = true
+//				}
+			}
 		}
 	}
 	var dataStore = [Item]() {
 		didSet {
-			let range = NSMakeRange(0, self.collectionView.numberOfSections)
-			let sections = NSIndexSet(indexesIn: range)
-			self.collectionView.reloadSections(sections as IndexSet)
-			//self.collectionView.reloadData()
+			performDataChanges()
 		}
 	}
 	var shouldFocusSubmenu = false
@@ -40,8 +42,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		menuGesture.allowedPressTypes = [NSNumber(value: UIPressType.menu.rawValue as Int)]
 		menuGesture.delegate = self
 		collectionView.addGestureRecognizer(menuGesture)
-		self.collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-		
+		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     }
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -58,6 +59,16 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		setNeedsFocusUpdate()
 		updateFocusIfNeeded()
 		shouldFocusSubmenu = false
+	}
+
+	func performDataChanges() {
+		let range = NSMakeRange(0, self.collectionView.numberOfSections)
+		let sections = NSIndexSet(indexesIn: range)
+		collectionView.reloadSections(sections as IndexSet)
+		let index = IndexPath(item: 0, section: 0)
+		collectionView.scrollToItem(at: index, at: .top, animated: false)
+		print("Resetting last index in collectionview")
+		collectionView.remembersLastFocusedIndexPath = false
 	}
 
     override func didReceiveMemoryWarning() {
