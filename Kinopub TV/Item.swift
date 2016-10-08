@@ -303,12 +303,21 @@ struct Pagination: Mappable {
 	var current: Int?
 	var total: Int?
 	var perpage: Int?
+	var totalItems: Int?
+	
+	let convertToInt = TransformOf<Int, String>(fromJSON: { (value: String?) -> Int? in
+		guard let totalItems = value else { return nil }
+		return Int(totalItems)
+		}, toJSON: { (value: Int?) -> String? in
+			return nil
+	})
 	
 	init?(map: Map) {}
 	mutating func mapping(map: Map) {
 		current <- map["current"]
 		total <- map["total"]
 		perpage <- map["perpage"]
+		totalItems <- (map["total_items"], convertToInt)
 	}
 }
 

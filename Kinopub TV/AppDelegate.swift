@@ -16,23 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-	
-	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		let console = ConsoleDestination()  // log to Xcode Console
-		console.levelString.Verbose = "😺 VERBOSE"
-		console.levelString.Debug = "😹 DEBUG"
-		console.levelString.Info = "😼 INFO"
-		console.levelString.Warning = "😾 WARNING"
-		console.levelString.Error = "🙀 ERROR"
-		//let file = FileDestination()  // log to default swiftybeaver.log file
+		console.levelString.verbose = "😺 VERBOSE"
+		console.levelString.debug = "😹 DEBUG"
+		console.levelString.info = "😼 INFO"
+		console.levelString.warning = "😾 WARNING"
+		console.levelString.error = "🙀 ERROR"
+		let file = FileDestination()  // log to default swiftybeaver.log file
 		log.addDestination(console)
-//		log.addDestination(file)
+		log.addDestination(file)
 		
 		//let platform = SBPlatformDestination(appID: "lRPP6J", appSecret: "9ghrvwwTp8xnaxkiq6Ob9qryqjkWeaug", encryptionKey: "spelpOLejqpph4wema3f0idvy1NuoDzj")
 		//log.addDestination(platform)
-		
 		return true
 	}
 

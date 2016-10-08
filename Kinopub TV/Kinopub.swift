@@ -17,7 +17,7 @@ import PMKVObserver
 // List protocol
 
 enum ItemsResponse {
-	case success(items: [Item]?)
+	case success(items: [Item]?, pagination: Pagination?)
 	case error(error: NSError)
 }
 
@@ -40,12 +40,14 @@ extension KinoListable {
 				log.verbose("Received response from the server for type: \(type)")
 				if result["status"] == 200 {
 					
-					if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject) {
+					if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject),
+					let pagination = Mapper<Pagination>().map(JSONObject: result["pagination"].object)
+					{
 						log.debug("Successfully mapped all the entries")
-						callback(.success(items: items))
+						callback(.success(items: items, pagination: pagination))
 					} else {
 						log.warning("Problem mapping items. Returning nil")
-						callback(.success(items: nil))
+						callback(.success(items: nil, pagination: nil))
 					}
 				}
 			case(_, let error?):

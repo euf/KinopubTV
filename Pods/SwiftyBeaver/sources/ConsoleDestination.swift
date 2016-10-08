@@ -17,6 +17,14 @@ public class ConsoleDestination: BaseDestination {
 
     public override init() {
         super.init()
+
+        // use colored Emojis for better visual distinction
+        // of log level for Xcode 8
+        levelColor.verbose = "💜 "     // silver
+        levelColor.debug = "💚 "        // green
+        levelColor.info = "💙 "         // blue
+        levelColor.warning = "💛 "     // yellow
+        levelColor.error = "❤️ "       // red
     }
 
     // print to Xcode Console. uses full base class functionality

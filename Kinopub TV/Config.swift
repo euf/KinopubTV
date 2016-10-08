@@ -23,12 +23,14 @@ struct Config {
 	}
 	
 	static let device = utsname().machine
-	static let clientId = "plex"
-	static let clientSecret = "h2zx6iom02t9cxydcmbo9oi0llld7jsv"
+	//static let clientId = "plex"
+	//static let clientSecret = "h2zx6iom02t9cxydcmbo9oi0llld7jsv"
 	//static let clientId = "appletv"
 	//static let clientSecret = "ha19qtm5utnjmj8csv8st3zxefrwpuyk"
-	//static let clientId = "appletv2"
-	//static let clientSecret = "3z5124kj5liqy9gahnjr07qpj65ferl2"
+	
+	//	For AppleTV v4
+	static let clientId = "appletv2"
+	static let clientSecret = "3z5124kj5liqy9gahnjr07qpj65ferl2"
 	
 	struct URL {
 		static let base = "https://api.service-kp.com/"
