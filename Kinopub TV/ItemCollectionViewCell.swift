@@ -38,19 +38,30 @@ class ItemCollectionViewCell: UICollectionViewCell {
 		}
 	}
 
+	
+	
+	/// Вытворяет всякие фокусы с "фокусом" )) Для наших плакатов в списке фильмов увеличивает их и прячет название.
+	/// На самом деле анимация сильно подтормаживает интерфейс лучше ее отключить.
+	///
+	/// - parameter context:     UIFocusUpdateContext
+	/// - parameter coordinator: UIFocusAnimationCoordinator
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		if (self == context.nextFocusedView) {
-			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
-				self.poster.transform = CGAffineTransform(scaleX: 1.06,y: 1.06)
-				self.title.isHidden = true
-				}, completion:nil)
+			self.title.isHidden = true
+			
+//			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
+//				self.poster.transform = CGAffineTransform(scaleX: 1.06,y: 1.06)
+//				self.title.isHidden = true
+//				}, completion:nil)
 		}
 		else if (self == context.previouslyFocusedView) {
-			UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
-				self.poster.transform = CGAffineTransform.identity
-				}, completion: { done in
-					self.title.isHidden = false
-			})
+			self.title.isHidden = false
+			
+//			UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
+//				self.poster.transform = CGAffineTransform.identity
+//				}, completion: { done in
+//					self.title.isHidden = false
+//			})
 		}
 	}
 	

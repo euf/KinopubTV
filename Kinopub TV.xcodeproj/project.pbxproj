@@ -26,14 +26,20 @@
 		D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */; };
 		D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A891D8D7A8000241ED2 /* HomeViewController.swift */; };
 		D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */; };
-		D03B3B7D1DA2DB190032EC0F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B3B7C1DA2DB190032EC0F /* File.swift */; };
-		D03B3B7F1DA2DB520032EC0F /* da.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B3B7E1DA2DB520032EC0F /* da.swift */; };
 		D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0769E661D8E860E00197D01 /* LoginViewController.swift */; };
 		D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890C1D92A2D600DBF46F /* TVViewController.swift */; };
 		D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */; };
 		D08E04661D97B27300A4074C /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E04651D97B27300A4074C /* WatchViewController.swift */; };
 		D08E046A1D97C0D400A4074C /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08E04681D97C0D400A4074C /* ItemCollectionViewCell.xib */; };
 		D08E046B1D97C0D400A4074C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E04691D97C0D400A4074C /* ItemCollectionViewCell.swift */; };
+		D0DB944A1DAA517E0031CD13 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DB94481DAA517E0031CD13 /* ItemViewController.xib */; };
+		D0DB944B1DAA517E0031CD13 /* _ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94491DAA517E0031CD13 /* _ItemViewController.swift */; };
+		D0DB944E1DAA56E80031CD13 /* EpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DB944C1DAA56E80031CD13 /* EpisodeCollectionViewCell.xib */; };
+		D0DB944F1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB944D1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift */; };
+		D0DB94511DAA590F0031CD13 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94501DAA590F0031CD13 /* ItemViewController.swift */; };
+		D0DB94531DAA59B10031CD13 /* FocusableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94521DAA59B10031CD13 /* FocusableText.swift */; };
+		D0DB94551DAA5A4B0031CD13 /* MovieDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94541DAA5A4B0031CD13 /* MovieDescriptionViewController.swift */; };
+		D0DB94571DAA5D1C0031CD13 /* ItemViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */; };
 		D0F61C3B1DA16F9000D58027 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F61C3A1DA16F9000D58027 /* Pageable.swift */; };
 		D0FD64871D89302000660496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64861D89302000660496 /* AppDelegate.swift */; };
 		D0FD648C1D89302000660496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FD648A1D89302000660496 /* Main.storyboard */; };
@@ -62,14 +68,20 @@
 		D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarReplacementStyleKit.swift; sourceTree = "<group>"; };
 		D0289A891D8D7A8000241ED2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicksViewController.swift; sourceTree = "<group>"; };
-		D03B3B7C1DA2DB190032EC0F /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		D03B3B7E1DA2DB520032EC0F /* da.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = da.swift; sourceTree = "<group>"; };
 		D0769E661D8E860E00197D01 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D08B890C1D92A2D600DBF46F /* TVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D08E04651D97B27300A4074C /* WatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 		D08E04681D97C0D400A4074C /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		D08E04691D97C0D400A4074C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0DB94481DAA517E0031CD13 /* ItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
+		D0DB94491DAA517E0031CD13 /* _ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ItemViewController.swift; sourceTree = "<group>"; };
+		D0DB944C1DAA56E80031CD13 /* EpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
+		D0DB944D1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0DB94501DAA590F0031CD13 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		D0DB94521DAA59B10031CD13 /* FocusableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusableText.swift; sourceTree = "<group>"; };
+		D0DB94541DAA5A4B0031CD13 /* MovieDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDescriptionViewController.swift; sourceTree = "<group>"; };
+		D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController_Extension.swift; sourceTree = "<group>"; };
 		D0DEE47F1D9B044100FD05A7 /* Kinopub TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kinopub TV-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0F61C3A1DA16F9000D58027 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pageable.swift; sourceTree = "<group>"; };
 		D0FD64831D89302000660496 /* Kinopub TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kinopub TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,14 +169,16 @@
 			children = (
 				D0289A7D1D8AEE5C00241ED2 /* TabbarController.swift */,
 				D0289A7F1D8AEF8C00241ED2 /* ListViewController.swift */,
-				D03B3B7E1DA2DB520032EC0F /* da.swift */,
-				D03B3B7C1DA2DB190032EC0F /* File.swift */,
 				D0289A891D8D7A8000241ED2 /* HomeViewController.swift */,
 				D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */,
 				D0769E661D8E860E00197D01 /* LoginViewController.swift */,
 				D08B890C1D92A2D600DBF46F /* TVViewController.swift */,
 				D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */,
 				D08E04651D97B27300A4074C /* WatchViewController.swift */,
+				D0DB94481DAA517E0031CD13 /* ItemViewController.xib */,
+				D0DB94491DAA517E0031CD13 /* _ItemViewController.swift */,
+				D0DB94501DAA590F0031CD13 /* ItemViewController.swift */,
+				D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -172,6 +186,10 @@
 		D08E04671D97C03200A4074C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D0DB94541DAA5A4B0031CD13 /* MovieDescriptionViewController.swift */,
+				D0DB94521DAA59B10031CD13 /* FocusableText.swift */,
+				D0DB944C1DAA56E80031CD13 /* EpisodeCollectionViewCell.xib */,
+				D0DB944D1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift */,
 				D08E04681D97C0D400A4074C /* ItemCollectionViewCell.xib */,
 				D08E04691D97C0D400A4074C /* ItemCollectionViewCell.swift */,
 			);
@@ -278,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08E046A1D97C0D400A4074C /* ItemCollectionViewCell.xib in Resources */,
+				D0DB944E1DAA56E80031CD13 /* EpisodeCollectionViewCell.xib in Resources */,
+				D0DB944A1DAA517E0031CD13 /* ItemViewController.xib in Resources */,
 				D0FD648E1D89302000660496 /* Assets.xcassets in Resources */,
 				D0FD648C1D89302000660496 /* Main.storyboard in Resources */,
 			);
@@ -341,6 +361,8 @@
 				D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */,
 				D0289A851D8D748E00241ED2 /* PITabBarButton.swift in Sources */,
 				D0289A801D8AEF8C00241ED2 /* ListViewController.swift in Sources */,
+				D0DB944F1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift in Sources */,
+				D0DB944B1DAA517E0031CD13 /* _ItemViewController.swift in Sources */,
 				D0289A651D89A14000241ED2 /* Kinopub.swift in Sources */,
 				D0F61C3B1DA16F9000D58027 /* Pageable.swift in Sources */,
 				D0289A7E1D8AEE5C00241ED2 /* TabbarController.swift in Sources */,
@@ -348,7 +370,9 @@
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
 				D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */,
 				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
+				D0DB94531DAA59B10031CD13 /* FocusableText.swift in Sources */,
 				D08E04661D97B27300A4074C /* WatchViewController.swift in Sources */,
+				D0DB94551DAA5A4B0031CD13 /* MovieDescriptionViewController.swift in Sources */,
 				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
 				D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */,
@@ -357,12 +381,12 @@
 				D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */,
 				D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */,
 				D0FD64871D89302000660496 /* AppDelegate.swift in Sources */,
+				D0DB94511DAA590F0031CD13 /* ItemViewController.swift in Sources */,
+				D0DB94571DAA5D1C0031CD13 /* ItemViewController_Extension.swift in Sources */,
 				D0289A621D899CA700241ED2 /* Common.swift in Sources */,
 				D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */,
 				D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */,
-				D03B3B7F1DA2DB520032EC0F /* da.swift in Sources */,
 				D08E046B1D97C0D400A4074C /* ItemCollectionViewCell.swift in Sources */,
-				D03B3B7D1DA2DB190032EC0F /* File.swift in Sources */,
 				D0289A841D8D748E00241ED2 /* PITabBar.swift in Sources */,
 				D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */,
 			);
@@ -479,14 +503,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A2171526F323D8978AB7400 /* Pods-Kinopub TV.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5ES6HGC5J6;
 				INFOPLIST_FILE = "Kinopub TV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.staticdreams.Kinopub-TV";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.staticdreams.Kinopub-TV2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kinopub TV/Kinopub TV-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -498,14 +522,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4C1D63E132E55D8DF212CCD /* Pods-Kinopub TV.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5ES6HGC5J6;
 				INFOPLIST_FILE = "Kinopub TV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.staticdreams.Kinopub-TV";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.staticdreams.Kinopub-TV2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kinopub TV/Kinopub TV-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
