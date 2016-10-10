@@ -86,7 +86,7 @@
                     <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стивен Спилберг" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A29-ht-2pz">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стивен Спилберг" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A29-ht-2pz">
                     <constraints>
                         <constraint firstAttribute="width" constant="268" id="GBx-7z-D9e"/>
                     </constraints>
@@ -202,7 +202,7 @@
                         <action selector="bookMarkMovie:" destination="-1" eventType="primaryActionTriggered" id="Gmn-Dt-LIX"/>
                     </connections>
                 </button>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jND-O2-hbq">
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jND-O2-hbq">
                     <frame key="frameInset" minX="29" minY="586" width="280" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -214,13 +214,6 @@
                         <action selector="qualitySegmentChanged:" destination="-1" eventType="valueChanged" id="LBb-JR-IR5"/>
                     </connections>
                 </segmentedControl>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Джек Николсон" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3W-Xj-2in">
-                    <frame key="frameInset" minX="20" minY="263" width="288" height="108"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Смотреть фильм" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdE-7c-Ioj">
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -253,7 +246,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="В  РОЛЯХ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Un3-P1-HnO">
-                    <frame key="frameInset" minX="215" minY="231" width="93" height="24"/>
+                    <frame key="frameInset" minX="215" minY="174" width="93" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -264,7 +257,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </scrollView>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="СЕЗОНЫ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyY-I8-L4b">
-                    <frame key="frameInset" minX="221" minY="643" width="87" height="24"/>
+                    <frame key="frameInset" minX="40" minY="643" width="268" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -286,6 +279,13 @@
                     <frame key="frameInset" minX="1467" minY="680" width="400" height="10"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Джек Николсон" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3W-Xj-2in">
+                    <frame key="frameInset" minX="20" minY="206" width="288" height="138"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.070872455835342407" green="0.073196157813072205" blue="0.081154040992259979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -320,7 +320,7 @@
                 <constraint firstItem="XIl-E7-LNr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SDs-lb-y9j"/>
                 <constraint firstItem="5pd-o0-d4f" firstAttribute="top" secondItem="8Zu-QI-iNi" secondAttribute="bottom" constant="4" id="Shy-zO-6Gv"/>
                 <constraint firstItem="c6s-Rq-YFc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="T6v-en-y5V"/>
-                <constraint firstItem="c6s-Rq-YFc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="110" id="ZBJ-EF-mD1"/>
+                <constraint firstItem="c6s-Rq-YFc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="ZBJ-EF-mD1"/>
                 <constraint firstItem="lkU-ql-J2v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="ZoY-SS-shk"/>
                 <constraint firstItem="4lp-HZ-Xex" firstAttribute="centerY" secondItem="UKS-kp-PV2" secondAttribute="centerY" id="evV-w8-cI3"/>
                 <constraint firstItem="bwq-bT-H7K" firstAttribute="top" secondItem="gH5-kO-cat" secondAttribute="bottom" constant="8" id="fks-Ut-Wdc"/>
