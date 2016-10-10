@@ -39,7 +39,7 @@ extension String {
 		let htmlStringData = self.data(using: String.Encoding.utf8)!
 		let attributedHTMLString = try! NSAttributedString(
 			data: htmlStringData,
-			options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8],
+			options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSNumber(value: String.Encoding.utf8.rawValue)],
 			documentAttributes: nil
 		)
 		return attributedHTMLString.string
