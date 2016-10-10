@@ -53,62 +53,71 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 						self.titleEn.text = titleString.count > 1 ? titleString[1] : "" // Английское
 					}
 
-//					// Описание
-//					if let plot = item.plot {
-//						self.intro.text = plot.stripHTML()
-//					}
-//
-//					// Режиссер
-//					if let director = item.director, director != "" {
-//						self.director.text = director
-//					}
-//
-//					// В ролях
-//					if let cast = item.cast, cast != "" {
-//						self.cast.text = cast
-//					}
+					// Перевод
+					if let voice = item.voice, voice != "" {
+						self.traslationText.text = "Аудио / Перевод: \(voice)"
+					}
+					
+					// Описание
+					if let plot = item.plot {
+						self.intro.text = plot.stripHTML()
+						self.intro.label = plot.stripHTML()
+						self.intro.parentView = self
+					}
 
+					// Режиссер
+					if let director = item.director, director != "" {
+						self.director.text = director
+					}
+
+					// В ролях
+					if let itemCast = item.cast {
+						self.cast.text = ""
+						let castArray = itemCast.components(separatedBy: ", ") // Делим список по запятой чтоб получить массив актеров
+						let casts = castArray.takeElements(element: 3).reduce("", {$0 + $1 + "\n"}) // Превращаем массив в текст, с возвратом на следующую строчку
+						self.cast.text = casts
+					} else {
+						self.cast.text = ""
+						self.castLabel.isHidden = true
+					}
+				
+					var genreDurationString = ""
+					var genreString = ""
 					
+					// Жанры
+					// TODO: Implement genres
+					if let genres = item.genres {
+						genreString = genres.reduce("", {$0 + $1.title! + " / "})
+//						let index = genreString.endIndex.advanced(-2)
+//						genreString = genreString.substringToIndex(index)
+						genreString = ""
+					}
 					
-					
-					
-//					var genreDurationString = ""
-//					var genreString = ""
-//					
-//					// Жанры
-//					// TODO: Implement genres
-//					if let genres = item.genres {
-//						genreString = genres.reduce("", {$0 + $1.title! + " / "})
-////						let index = genreString.endIndex.advanced(-2)
-////						genreString = genreString.substringToIndex(index)
-//						genreString = ""
-//					}
-//					
-//					// Рейтинг
-//					// TODO: Implement rating
-//					var ratingString = ""
-//					if let imdb = item.imdb_rating, imdb != 0.0 {
-//						ratingString = ratingString.appending("IMDB: \(imdb)")
-////						stars.rating = Double(imdb)/2
-//					} else {
-//						if let rating = item.rating {
-////							stars.rating = Double(rating)/2
-//						}
-//					}
-//					if let kinopoisk = item.kinopoisk_rating, kinopoisk != 0.0 {
-//						if ratingString != "" && item.imdb_rating != 0.0 {
-//							ratingString = ratingString.appending(" ● ")
-//						}
-//						ratingString = ratingString.appending("КиноПоиск: \(kinopoisk)")
-//					}
-//					self.rating.text = ratingString
-//					// Производство и год
-//					if let countries = item.countries {
-//						self.country.text = countries.takeElements(element: 3).reduce("", {$0! + $1.title! + "\n"})
-//					}
-//					if let date = item.year {
-//						self.year.text = "\(date) г"
-//					}
+					// Рейтинг
+					// TODO: Implement rating
+					var ratingString = ""
+					if let imdb = item.imdb_rating, imdb != 0.0 {
+						ratingString = ratingString.appending("IMDB: \(imdb)")
+//						stars.rating = Double(imdb)/2
+					} else {
+						if let rating = item.rating {
+//							stars.rating = Double(rating)/2
+						}
+					}
+					if let kinopoisk = item.kinopoisk_rating, kinopoisk != 0.0 {
+						if ratingString != "" && item.imdb_rating != 0.0 {
+							ratingString = ratingString.appending(" ● ")
+						}
+						ratingString = ratingString.appending("КиноПоиск: \(kinopoisk)")
+					}
+					self.rating.text = ratingString
+					// Производство и год
+					if let countries = item.countries {
+						self.country.text = countries.takeElements(element: 3).reduce("", {$0! + $1.title! + "\n"})
+					}
+					if let date = item.year {
+						self.year.text = "\(date) г"
+					}
 					
 					
 					self.setupMedia(item: item)
@@ -125,7 +134,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	private func setupMedia(item: Item) {
 		
 		if isMovie {
-			
+			self.watchMovieButtonBottomConstraint.constant = 65 // Pushing all the button further down, because there are no episodes to select
 			if kinoItem?.subtype == .multi { // Многосерийный фильм
 				
 			} else { // Односерийный фильм
@@ -135,7 +144,12 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 					return
 				}
 				
+				// Качество // Его приходится чуть уменьшать. По дефалту очень большие кнопки
+				let switchAttributes = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 28)]
+				self.qualitySegment.setTitleTextAttributes(switchAttributes, for: .normal)
+				
 				if let files = video.files {
+					self.qualitySegment.replaceSegments(segments: files.map{($0.quality?.rawValue)!})
 					self.availableMedia = files
 					self.movieVideo = video
 					self.setQuality()
@@ -193,7 +207,8 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	private func updateWatchingProgressForVideo(video: Video, position: TimeInterval) {
 		movieVideo?.watching?.time = Int(position) // Updating time marker without leaving the view
 	}
-	
+
+
 	internal func playTrailer() {
 	
 	}
@@ -214,7 +229,7 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
-	
+
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return episodes.count
 	}
