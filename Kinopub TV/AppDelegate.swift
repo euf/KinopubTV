@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyBeaver
+import Fabric
+import Crashlytics
 
 let log = SwiftyBeaver.self
 
@@ -17,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		
+		Fabric.with([Crashlytics.self, Answers.self])
 		let console = ConsoleDestination()  // log to Xcode Console
 		console.levelString.verbose = "😺 VERBOSE"
 		console.levelString.debug = "😹 DEBUG"
@@ -27,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let file = FileDestination()  // log to default swiftybeaver.log file
 		log.addDestination(console)
 		log.addDestination(file)
-		
 		//let platform = SBPlatformDestination(appID: "lRPP6J", appSecret: "9ghrvwwTp8xnaxkiq6Ob9qryqjkWeaug", encryptionKey: "spelpOLejqpph4wema3f0idvy1NuoDzj")
 		//log.addDestination(platform)
 		return true
