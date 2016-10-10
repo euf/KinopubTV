@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
+import Crashlytics
 
 class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	
@@ -52,15 +53,18 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 				log.debug("All good. We're authorized")
 				// Interested in authorized stuff here
 				self.setQuality()
+				Answers.logLogin(withMethod: "token access", success: 1, customAttributes: nil)
 				break
 			case .expired: // Attempting to auto refresh the expired token
 				self.refreshToken() { status in
 					switch status {
 					case .success:
+						Answers.logLogin(withMethod: "token refresh", success: 1, customAttributes: nil)
 						// Managed to refresh token
 						self.setQuality()
 						break
 					default:
+						Answers.logLogin(withMethod: "token refresh", success: 0, customAttributes: nil)
 						self.showLoginController(state: state)
 						break
 					}
@@ -68,6 +72,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 				break
 			default:
 				log.debug("We do not have a valid access or refresh token")
+				Answers.logLogin(withMethod: "token access", success: 0, customAttributes: ["Needs re-activation":true])
 				self.showLoginController(state: state)
 				break
 			}
