@@ -34,6 +34,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	var viewType: ItemType? {
 		didSet {
+			self.dataStore.removeAllPages()
 			getItems(page: 1) { items, pagination in
 				guard let items = items else {return}
 				// self.dataStore = items
@@ -179,7 +180,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	//	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 	//		return CGSize(width: 305, height: 475)
 	//	}
-	
+
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		if let item = dataStore[indexPath.row] {
 			let controller = ItemViewController(nibName: "ItemViewController", bundle: nil)
