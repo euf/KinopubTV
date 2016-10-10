@@ -2,6 +2,8 @@ platform :tvos, '9.0'
 
 target 'Kinopub TV' do
   use_frameworks!
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SwiftyBeaver'

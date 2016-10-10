@@ -6,6 +6,9 @@ PODS:
     - Alamofire (~> 4.0)
     - ObjectMapper (~> 2.0)
   - Cosmos (6.0.0)
+  - Crashlytics (3.8.2):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.9)
   - KeychainAccess (3.0.0)
   - ObjectMapper (2.1.0)
   - PagedArray (0.5)
@@ -26,6 +29,8 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireObjectMapper (from `https://github.com/tristanhimmelman/AlamofireObjectMapper.git`)
   - Cosmos (from `https://github.com/marketplacer/Cosmos.git`, tag `6.0.0`)
+  - Crashlytics
+  - Fabric
   - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
   - ObjectMapper
   - PagedArray (~> 0.5)
@@ -77,6 +82,8 @@ SPEC CHECKSUMS:
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
   Cosmos: 65034961774a9292a7ce3da30fce8e2ec02efcaf
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
   KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   PagedArray: bf24601ebcc5f2afccb4d5d3637247dc26850df5
@@ -87,6 +94,6 @@ SPEC CHECKSUMS:
   UIScrollView-InfiniteScroll: 428d0e9485a97de0ecccfbf161e7e2fec0bdae90
   XCDYouTubeKit: 90690f9e3523735dc93b8024269d991b0cfffe78
 
-PODFILE CHECKSUM: 6ca10fcec91659cb9319ed3055b64bb2ab452e5c
+PODFILE CHECKSUM: 9f3688a9fad46833f3383373a6fdd53e6175dc6f
 
 COCOAPODS: 1.1.0.rc.2

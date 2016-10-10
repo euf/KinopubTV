@@ -244,6 +244,7 @@
 				D0FD64811D89302000660496 /* Resources */,
 				9D91D6E89A0787CD75B60567 /* [CP] Embed Pods Frameworks */,
 				1B16562AD431A21BC78143BD /* [CP] Copy Pods Resources */,
+				D060429E1DAB886800C3BE74 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -335,6 +336,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D060429E1DAB886800C3BE74 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4ace1918b4932477254ff99f32d68fa4f1761cdb c779854e121a6ffc95de7fe14ccc07f00342ab4f9f2e7981d547f3bd44cb7ce9";
 		};
 		EE9D192AB9B33CD3C14D75DF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -503,11 +518,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A2171526F323D8978AB7400 /* Pods-Kinopub TV.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5ES6HGC5J6;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Kinopub TV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.staticdreams.Kinopub-TV2";
@@ -522,11 +538,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4C1D63E132E55D8DF212CCD /* Pods-Kinopub TV.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5ES6HGC5J6;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Kinopub TV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.staticdreams.Kinopub-TV2";
