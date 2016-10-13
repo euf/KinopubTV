@@ -73,7 +73,7 @@ protocol KinoViewable: class, Connectable {
 	var item: Item? {get set}
 	var kinoItem: KinoItem? {get set} // Priliminary item (before we got a response from the sever)
 	func fetchItem(id: Int, type: ItemType, callback: @escaping (_ response: ItemResponse) -> ()) -> Void
-	func playVideo(videoURL: URL, episode: Video, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
+	func playVideo(videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
 }
 
 extension KinoViewable where Self: UIViewController {
@@ -113,7 +113,7 @@ extension KinoViewable where Self: UIViewController {
 	- parameter fromPosition:	starting position
 	- parameter callback:			callback to update watched progress in the view controller
 	*/
-	func playVideo(videoURL: URL, episode: Video, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) {
+	func playVideo(videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) {
 		log.verbose("Starting video")
 		
 		let playerItem = AVPlayerItem(url: videoURL)
