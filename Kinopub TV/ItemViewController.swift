@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import Cosmos
 
 class ItemViewController: UIViewController {
 	
@@ -58,7 +59,7 @@ class ItemViewController: UIViewController {
 	@IBOutlet var traslationText: UILabel!
 
 	@IBOutlet weak var rating: UILabel!
-//		@IBOutlet weak var stars: CosmosView!
+	@IBOutlet weak var stars: CosmosView!
 	@IBOutlet weak var directorLabel: UILabel!
 	@IBOutlet weak var castLabel: UILabel!
 	@IBOutlet var seasonLabel: UILabel!
@@ -92,6 +93,6 @@ class ItemViewController: UIViewController {
 	
 	@IBAction func bookMarkMovie(_ sender: AnyObject) { addToFavorites() }
 	
-	@IBAction func qualitySegmentChanged(_ sender: UISegmentedControl) { updateQuality() }
+	@IBAction func qualitySegmentChanged(_ sender: UISegmentedControl) { updateQuality(control: sender) }
 
 }

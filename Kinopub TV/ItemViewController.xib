@@ -28,6 +28,7 @@
                 <outlet property="seasonLabel" destination="nyY-I8-L4b" id="zuC-5u-tYh"/>
                 <outlet property="seasonsScroll" destination="o7O-n2-B64" id="iqM-SG-eoY"/>
                 <outlet property="seasonsScrollView" destination="ex0-An-4qb" id="wkI-M8-Gmu"/>
+                <outlet property="stars" destination="Vhd-wV-mhJ" id="vz2-WR-EuV"/>
                 <outlet property="titleEn" destination="2F3-DP-2GG" id="Kp7-5M-Wrd"/>
                 <outlet property="titleRu" destination="LAW-cc-gg9" id="vfd-ma-89m"/>
                 <outlet property="trailerButton" destination="UKS-kp-PV2" id="PO9-0i-cGo"/>
@@ -63,12 +64,23 @@
                     <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhd-wV-mhJ">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhd-wV-mhJ" customClass="CosmosView" customModule="Cosmos">
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="nRt-Ga-Bbx"/>
                         <constraint firstAttribute="width" constant="200" id="oQZ-w5-BQa"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РЕЖИССЕР" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6s-Rq-YFc">
                     <constraints>

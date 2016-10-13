@@ -9,16 +9,16 @@
 import UIKit
 import SwiftyUserDefaults
 import AlamofireImage
+import Cosmos
+import XCDYouTubeKit
 
 extension ItemViewController: KinoViewable, QualityDefinable {
 	
 	internal func setQuality() {
-		log.info("Setting quality for the movie")
 		let qualityIndex = setQualityForAvailableMedia(media: availableMedia)
-		//print("Quality index based on Defaults \(qualityIndex)")
-		//qualitySegment.selectedSegmentIndex = qualityIndex!
-		//qualityChanged(qualitySegment)
-		selectedMedia = availableMedia[qualityIndex] // Temporary measure
+		log.info("Setting quality for movie: \(availableMedia[qualityIndex].quality)")
+		qualitySegment.selectedSegmentIndex = qualityIndex
+		updateQuality(control: qualitySegment)
 	}
 	
 	internal func prepareForDisplay() {
@@ -85,12 +85,15 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 					var genreString = ""
 					
 					// Жанры
-					// TODO: Implement genres
 					if let genres = item.genres {
-						genreString = genres.reduce("", {$0 + $1.title! + " / "})
-//						let index = genreString.endIndex.advanced(-2)
-//						genreString = genreString.substringToIndex(index)
-						genreString = ""
+						genreString = genres.flatMap {$0.title!}.joined(separator: " / ")
+					}
+		
+					if let duration = item.duration, let totalduration = duration.total , totalduration != 0 {
+						let videoDuration = totalduration / 60
+						genreDurationString = genreDurationString.appending("\(videoDuration) мин")
+						genreDurationString = genreDurationString.appending(" ● \(genreString)")
+						self.durationGenre.text = genreDurationString
 					}
 					
 					// Рейтинг
@@ -98,10 +101,10 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 					var ratingString = ""
 					if let imdb = item.imdb_rating, imdb != 0.0 {
 						ratingString = ratingString.appending("IMDB: \(imdb)")
-//						stars.rating = Double(imdb)/2
+						self.stars.rating = Double(imdb)/2
 					} else {
 						if let rating = item.rating {
-//							stars.rating = Double(rating)/2
+							self.stars.rating = Double(rating)/2
 						}
 					}
 					if let kinopoisk = item.kinopoisk_rating, kinopoisk != 0.0 {
@@ -119,7 +122,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 						self.year.text = "\(date) г"
 					}
 					
-					
+					self.item = item
 					self.setupMedia(item: item)
 				}
 				break
@@ -148,6 +151,11 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				let switchAttributes = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 28)]
 				self.qualitySegment.setTitleTextAttributes(switchAttributes, for: .normal)
 				
+				let font = UIFont.systemFont(ofSize: 28.0)
+				let attributes = [ NSFontAttributeName : font ]
+				self.qualitySegment.setTitleTextAttributes(attributes, for: .selected)
+				self.qualitySegment.setTitleTextAttributes(attributes, for: .focused)
+				
 				if let files = video.files {
 					self.qualitySegment.replaceSegments(segments: files.map{($0.quality?.rawValue)!})
 					self.availableMedia = files
@@ -165,8 +173,8 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 	}
 	
-	internal func updateQuality() {
-	
+	internal func updateQuality(control: UISegmentedControl) {
+		selectedMedia = self.availableMedia[control.selectedSegmentIndex]
 	}
 	
 	internal func playMovie() {
@@ -210,7 +218,45 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 
 
 	internal func playTrailer() {
-	
+		guard let youtubeID = item?.trailer?.id else {
+			log.error("No trailer ID found")
+			return
+		}
+		log.debug("trailer youtube id: \(youtubeID)")
+		XCDYouTubeClient.default().getVideoWithIdentifier(youtubeID) { video, error in
+			if let video = video {
+//				var videoURL: URL?
+//				for vi in video.streamURLs {
+//					if vi.key == XCDYouTubeVideoQuality.HD720.rawValue as AnyHashable {
+//						videoURL = vi.value
+//						break
+//					}
+//				}
+//				for vi in video.streamURLs {
+//					if vi.key == XCDYouTubeVideoQuality.medium360.rawValue as AnyHashable {
+//						videoURL = vi.value
+//						break
+//					}
+//				}
+//				for vi in video.streamURLs {
+//					if vi.key == XCDYouTubeVideoQuality.small240.rawValue as AnyHashable {
+//						videoURL = vi.value
+//						break
+//					}
+//				}
+//				print(videoURL)
+//				guard let url = videoURL else {return}
+//				self.playVideo(videoURL: url, episode: nil, season: nil, fromPosition: nil) { _ in }
+//				
+				
+				/*if let streamURL = (video.streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] ??
+					video.streamURLs[XCDYouTubeVideoQuality.medium360.rawValue] ??
+					video.streamURLs[XCDYouTubeVideoQuality.small240.rawValue]) {
+					print("Should start playing trailer")
+					self.playVideo(videoURL: streamURL, episode: nil, season: nil, fromPosition: nil) { _ in }
+				}*/
+			}
+		}
 	}
 	
 	internal func markWatched() {
