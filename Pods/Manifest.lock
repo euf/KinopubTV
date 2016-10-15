@@ -6,9 +6,9 @@ PODS:
     - Alamofire (~> 4.0)
     - ObjectMapper (~> 2.0)
   - Cosmos (6.0.0)
-  - Crashlytics (3.8.2):
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.9)
+  - Fabric (1.6.10)
   - KeychainAccess (3.0.0)
   - ObjectMapper (2.1.0)
   - PagedArray (0.5)
@@ -65,13 +65,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/marketplacer/Cosmos.git
     :tag: 6.0.0
   KeychainAccess:
-    :commit: 55d6876c89cfbc2308af57b629834c6939486ba3
+    :commit: b49c3210284123cc10e9de7527f48303ac155f13
     :git: https://github.com/kishikawakatsumi/KeychainAccess.git
   PMKVObserver:
     :commit: d523d53a03b268443d0041f842888a5841144bca
     :git: https://github.com/postmates/PMKVObserver.git
   SwiftyJSON:
-    :commit: 73b523a107b798021ca9af74b5f7c20e435c8809
+    :commit: d8de7c8f71df7c939f3d47e7d1fb53f344b471fa
     :git: https://github.com/IBM-Swift/SwiftyJSON
   UIScrollView-InfiniteScroll:
     :commit: 005d71fd5d190da0eebd3d73cc47710433ce67f1
@@ -82,8 +82,8 @@ SPEC CHECKSUMS:
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
   Cosmos: 65034961774a9292a7ce3da30fce8e2ec02efcaf
-  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
-  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   PagedArray: bf24601ebcc5f2afccb4d5d3637247dc26850df5
