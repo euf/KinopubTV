@@ -15,6 +15,7 @@ class ItemViewController: UIViewController {
 	let identifier = "EpisodeCell"
 	
 	var playerController: AVPlayerViewController!
+	
 	var item: Item?
 	var kinoItem: KinoItem?
 	var selectedMedia: File?
@@ -31,7 +32,7 @@ class ItemViewController: UIViewController {
 			//collectionView.reloadData()
 		}
 	}
-	var episodesStore: [Season]? {
+	var seasons: [Season]? {
 		didSet {
 //			self.tableView.reloadData()
 //			self.tableView.layoutIfNeeded()
@@ -40,6 +41,10 @@ class ItemViewController: UIViewController {
 			//self.tableView.reloadSections(sections, withRowAnimation: UITableViewRowAnimation.Automatic)
 		}
 	}
+	var seasonsSegment: UISegmentedControl!
+	var currentSeason: Season? = nil
+	var lastSelectedIndex: IndexPath?
+	
 	
 	@IBOutlet var progressBar: UIProgressView!
 	@IBOutlet var watchMovieButtonConstraint: NSLayoutConstraint!

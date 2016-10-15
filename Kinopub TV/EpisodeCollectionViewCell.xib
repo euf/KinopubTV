@@ -1,64 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="episodeCell" id="Rz2-K0-ksD" customClass="EpisodeCollectionViewCell" customModule="Kinopub_TV" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EpisodeCell" id="Rz2-K0-ksD" customClass="EpisodeCollectionViewCell" customModule="Kinopub_TV" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="360" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qOH-KI-5XN">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="10"/>
-                    </progressView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="episode" translatesAutoresizingMaskIntoConstraints="NO" id="V7i-U8-TWt">
-                        <rect key="frame" x="0.0" y="28" width="360" height="203"/>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qOH-KI-5XN"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="episode" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7i-U8-TWt">
                         <constraints>
                             <constraint firstAttribute="height" constant="203" id="7tj-T4-JsE"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0U-sv-DGh">
-                        <rect key="frame" x="0.0" y="234" width="360" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cx1-HU-PsF" userLabel="overlay">
-                        <rect key="frame" x="0.0" y="28" width="360" height="203"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49657783742331291" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="203" id="jF1-VJ-FSr"/>
-                        </constraints>
-                    </view>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-watched" translatesAutoresizingMaskIntoConstraints="NO" id="WZx-Ec-7xp">
-                        <rect key="frame" x="0.0" y="28" width="360" height="203"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-watched" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WZx-Ec-7xp">
+                        <frame key="frameInset" minY="28" width="360" height="203"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="qOH-KI-5XN" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="2Pi-ZW-w7O"/>
-                <constraint firstItem="cx1-HU-PsF" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="BPr-zQ-Mpd"/>
                 <constraint firstItem="V7i-U8-TWt" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="CdU-Vr-N79"/>
                 <constraint firstItem="U0U-sv-DGh" firstAttribute="top" secondItem="V7i-U8-TWt" secondAttribute="bottom" constant="3" id="DQL-uD-XkB"/>
                 <constraint firstItem="U0U-sv-DGh" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="IBe-Ee-1Yo"/>
                 <constraint firstAttribute="trailing" secondItem="U0U-sv-DGh" secondAttribute="trailing" id="M1V-nL-gi5"/>
                 <constraint firstItem="V7i-U8-TWt" firstAttribute="top" secondItem="qOH-KI-5XN" secondAttribute="bottom" constant="18" id="Uch-x4-L8o"/>
                 <constraint firstAttribute="trailing" secondItem="V7i-U8-TWt" secondAttribute="trailing" id="cH6-UI-K1c"/>
-                <constraint firstItem="V7i-U8-TWt" firstAttribute="top" secondItem="cx1-HU-PsF" secondAttribute="top" id="eMG-4b-aTw"/>
-                <constraint firstAttribute="trailing" secondItem="cx1-HU-PsF" secondAttribute="trailing" id="im9-Gj-pyO"/>
                 <constraint firstItem="qOH-KI-5XN" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="ubj-NQ-paI"/>
                 <constraint firstAttribute="trailing" secondItem="qOH-KI-5XN" secondAttribute="trailing" id="zhN-Bj-ih3"/>
             </constraints>
             <size key="customSize" width="240" height="195"/>
             <connections>
                 <outlet property="episodeTitleConstraint" destination="DQL-uD-XkB" id="dS7-Mr-idN"/>
-                <outlet property="overlay" destination="cx1-HU-PsF" id="dJc-cQ-hS6"/>
                 <outlet property="progressBar" destination="qOH-KI-5XN" id="MRc-f2-wFj"/>
                 <outlet property="thumbnail" destination="V7i-U8-TWt" id="6qL-Kh-Ttn"/>
                 <outlet property="title" destination="U0U-sv-DGh" id="n2M-kG-toD"/>
@@ -71,4 +58,9 @@
         <image name="episode" width="240" height="135"/>
         <image name="icon-watched" width="360" height="203"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <nil key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>

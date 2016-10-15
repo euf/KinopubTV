@@ -100,7 +100,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стивен Спилберг" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A29-ht-2pz">
                     <constraints>
-                        <constraint firstAttribute="width" constant="268" id="GBx-7z-D9e"/>
+                        <constraint firstAttribute="width" constant="288" id="GBx-7z-D9e"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -315,7 +315,7 @@
                 <constraint firstItem="8Zu-QI-iNi" firstAttribute="centerY" secondItem="4lp-HZ-Xex" secondAttribute="centerY" id="AW9-UM-rrx"/>
                 <constraint firstItem="2F3-DP-2GG" firstAttribute="top" secondItem="LAW-cc-gg9" secondAttribute="bottom" constant="-1" id="BY2-N9-dB4"/>
                 <constraint firstItem="UKS-kp-PV2" firstAttribute="centerY" secondItem="mKN-f8-BwX" secondAttribute="centerY" id="BsY-iW-6ux"/>
-                <constraint firstItem="A29-ht-2pz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="CDv-he-AP3"/>
+                <constraint firstItem="A29-ht-2pz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CDv-he-AP3"/>
                 <constraint firstItem="mAL-Ek-Mvq" firstAttribute="top" secondItem="oM9-xi-x1u" secondAttribute="bottom" constant="8" id="CrM-mC-4nF"/>
                 <constraint firstItem="UKS-kp-PV2" firstAttribute="leading" secondItem="mKN-f8-BwX" secondAttribute="leading" constant="176" id="FB7-Cb-5tX"/>
                 <constraint firstAttribute="bottom" secondItem="XIl-E7-LNr" secondAttribute="bottom" id="Fbd-5g-xox"/>

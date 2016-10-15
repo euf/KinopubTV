@@ -134,6 +134,11 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 	}
 	
+	
+	/// Проверяет является ли контент фильмом (односерийным или многосерийным) или сериалом. 
+	/// Подготавливает интерфейс, сезоны, серии, качество.
+	///
+	/// - parameter item: Item контент
 	private func setupMedia(item: Item) {
 		
 		if isMovie {
@@ -165,11 +170,30 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			}
 
 		} else { // Series
-			guard let seasons = item.seasons else {
+			
+			self.playButton.isHidden = true
+			self.watchMovieLabel.isHidden = true
+			self.watchMovieButtonConstraint.constant = 0
+			self.qualitySegment.isHidden = true
+			self.seasonLabel.isHidden = false
+			
+			guard var seasons = item.seasons else {
 				log.error("No seasons found for this TV show")
 				return
 			}
-			episodesStore = seasons
+		
+			for seasonIndex in seasons.indices {
+				for episodeIndex in seasons[seasonIndex].episodes!.indices {
+					if (episodeIndex < (seasons[seasonIndex].episodes!.count - 1)) {
+						seasons[seasonIndex].episodes![episodeIndex].nextVideo = seasons[seasonIndex].episodes![episodeIndex + 1]
+					}
+				}
+			}
+			
+			self.seasons = seasons
+			self.setupSeasons(seasons: seasons)
+			self.collectionView.reloadData()
+		
 		}
 	}
 	
@@ -177,9 +201,159 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		selectedMedia = self.availableMedia[control.selectedSegmentIndex]
 	}
 	
+	private func setupSeasons(seasons: [Season]) {
+		let segments = seasons.map {String($0.number!)}
+		seasonsSegment = UISegmentedControl(items: segments)
+		seasonsSegment.apportionsSegmentWidthsByContent = true
+		
+		let switchAttributes = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 30)]
+		seasonsSegment.setTitleTextAttributes(switchAttributes, for: .normal)
+		seasonsSegment.addTarget(self, action: #selector(ItemViewController.seasonSegmentChanged(sender:)), for: UIControlEvents.valueChanged)
+		seasonsScroll.addSubview(self.seasonsSegment)
+		seasonsScroll.contentSize = CGSize(width: self.seasonsSegment.frame.width+40, height: self.seasonsSegment.frame.height+10)
+		seasonsSegment.frame.origin.y = 10
+		seasonsSegment.frame.origin.x = 30
+		
+		// Select last available season
+		let lastSeason = seasonsSegment.numberOfSegments-1
+		let season = seasons[lastSeason]
+		seasonsSegment.selectedSegmentIndex = lastSeason
+		selectSeason(season: season)
+		
+		// Add gesture recognizer
+		let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(ItemViewController.toggleSeasonWatched))
+		lpgr.minimumPressDuration = 0.5
+		lpgr.delaysTouchesBegan = true
+		seasonsSegment.addGestureRecognizer(lpgr)
+	}
+	
+	func seasonSegmentChanged(sender : UISegmentedControl) {
+		let season = seasons?[sender.selectedSegmentIndex]
+		selectSeason(season: season!)
+	}
+	
+	
+	/// Выбор сезона и обновление коллекции
+	///
+	/// - parameter season: сезон
+	private func selectSeason(season: Season) {
+		currentSeason = season
+		if let episodes = season.episodes {
+			self.episodes = episodes.reversed()
+			collectionView.reloadData()
+		}
+	}
+	
+	/// Принимаем на себя ивент длительного нажатия на номере сезона и отсыламем номер дальше
+	///
+	/// - parameter sender: разпозноватль жестов
+	func toggleSeasonWatched(sender: UILongPressGestureRecognizer) {
+		if let sc = sender.view as? UISegmentedControl, sender.state == .began {
+			toggleAllEpisodesWatched(season: sc.selectedSegmentIndex+1)
+		}
+	}
+	
+	/// Одним махом отмечает все эпизоде в сезоне просмотренными или нет
+	///
+	/// - parameter season: номер сезона
+	func toggleAllEpisodesWatched(season: Int) {
+		let unwatched = self.episodes.filter {$0.watched == Status.unwatched.rawValue}
+		let title = unwatched.count == 0 ? "Отметить весь сезон непросмотренным?" : "Отметить весь сезон просмотренным?"
+		let alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+		
+		let button = UIAlertAction(title: "Да", style: UIAlertActionStyle.default) { action in
+			self.toggleWatched(video: nil, season: season) { status in
+				self.episodes = self.episodes.map { (e: Video) -> Video in
+					var s = e
+					s.watched = status == 1 ? 1 : -1
+					s.watching?.status = status == 1 ? .watched : .unwatched
+					return s
+				}
+				self.seasons?[self.seasonsSegment.selectedSegmentIndex].episodes = self.episodes.reversed()
+				self.collectionView.reloadData()
+			}
+		}
+		
+		alert.addAction(button)
+		let cancelButton = UIAlertAction(title: "Нет", style: UIAlertActionStyle.default) { (btn) -> Void in }
+		alert.addAction(cancelButton)
+		present(alert, animated: true, completion: nil)
+	}
+	
+	/// Обновляет статус о просмотренном / непросмотренном эпизоде на сервере
+	///
+	/// - parameter episode: Эпизод для которого нужно поменять статус
+	func updateWatchStatusForEpisode(episode: Video) {
+		toggleWatched(video: episode, season: self.currentSeason?.number) { status in
+			self.toggleEpisodeWatchedStatus(status: status)
+		}
+	}
+	
+	/// Визуальное обновлние статуса просмотра эпизода.
+	///
+	/// - parameter status: статус 1 или 0
+	func toggleEpisodeWatchedStatus(status: Int) {
+		log.debug("New episode status \(status)")
+		guard let index = lastSelectedIndex else {
+			log.error("Cannot really handle cell without last selected index")
+			return
+		}
+		if let cell = collectionView.cellForItem(at: index as IndexPath) as? EpisodeCollectionViewCell {
+			self.episodes[index.row].watched = status == 1 ? Status.watched.rawValue : Status.unwatched.rawValue
+			self.episodes[index.row].watching?.status = status == 1 ? .watched : .unwatched
+			cell.toggleWatchStatus(status: status)
+		}
+	}
+	
+	/// Обновляет маркер о просмотренном времени для всех типов контента
+	///
+	/// - parameter type:     ItemType контента
+	/// - parameter video:    Видео для которого нужно обновить временной маркер
+	/// - parameter position: Позиция маркера
+	internal func updateWatchingProgressForVideo(type: ItemType, video: Video, position: TimeInterval) {
+		
+		log.debug("Stopped playing at position: \(position)")
+		let progress:Float = Float(position) / Float(video.duration!)
+		
+		if moviesSet.contains(type) && kinoItem?.subtype != .multi { // Односерийные
+			
+			self.movieVideo?.watching?.time = Int(position)
+			self.movieVideo?.watching?.status = .watching
+
+			delay(delay: 0.5) {
+				self.progressBar.isHidden = false
+				self.progressBar.setProgress(progress, animated: true)
+			}
+		
+		} else { // Многосерийные
+			
+			if let index = self.lastSelectedIndex, let cell = collectionView.cellForItem(at: index) as? EpisodeCollectionViewCell {
+				episodes[index.row].watching?.time = Int(position)
+				episodes[index.row].watching?.status = .watching
+				delay(delay: 0.5) {
+					cell.progressBar.isHidden = false
+					cell.progressBar.setProgress(progress, animated: true)
+				}
+			}
+			
+			// Отметить эпизод полностью просмотренным если почти досмотрели до конца
+			if progress > 0.9 && video.watched != Status.unwatched.rawValue {
+				updateWatchStatusForEpisode(episode: video)
+			}
+		
+		}
+		
+	}
+	
+	/// Включает просмотр фильма (с самого начала или продолжить)
 	internal func playMovie() {
 		
-		if let media = selectedMedia, let videoURL = media.url?.http, let video = movieVideo, let url = NSURL(string: videoURL) {
+		guard let kinoItem = self.kinoItem else {
+			log.error("KinoItem is not available")
+			return
+		}
+		
+		if let media = selectedMedia, let videoURL = media.url?.http, let video = movieVideo, let url = URL(string: videoURL) {
 			
 			print("Current watch time: \( video.watching?.time)")
 			print("Movie status: \(video.watching?.status)")
@@ -189,14 +363,14 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
 				
 				let buttonContinue = UIAlertAction(title: "Продолжить просмотр", style: UIAlertActionStyle.default) { action in
-					self.playVideo(videoURL: url as URL, episode: video, season: nil, fromPosition: continueWatchingPosition) { position in
-						self.updateWatchingProgressForVideo(video: video, position: position)
+					self.playVideo(videoURL: url, episode: video, season: nil, fromPosition: continueWatchingPosition) { position in
+						self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 					}
 				}
 				alert.addAction(buttonContinue)
 				let buttonStart = UIAlertAction(title: "Смотреть фильм с начала", style: UIAlertActionStyle.default) { action in
-					self.playVideo(videoURL: url as URL, episode: video, season: nil, fromPosition: nil) { position in
-						self.updateWatchingProgressForVideo(video: video, position: position)
+					self.playVideo(videoURL: url, episode: video, season: nil, fromPosition: nil) { position in
+						self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 					}
 				}
 				alert.addAction(buttonStart)
@@ -204,19 +378,59 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				alert.addAction(cancelButton)
 				self.present(alert, animated: true, completion: nil)
 				
-			} else {
+			} else { // Мы еще не начинали смотреть этот фильм. Запускаем, минуя менюшку
+				
 				self.playVideo(videoURL: url as URL, episode: video, season: nil, fromPosition: nil) { position in
-					self.updateWatchingProgressForVideo(video: video, position: position)
+					self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 				}
 			}
 		}
 	}
 	
-	private func updateWatchingProgressForVideo(video: Video, position: TimeInterval) {
-		movieVideo?.watching?.time = Int(position) // Updating time marker without leaving the view
+	/// Включает просмотр эпизода (многсерийного фильма или сериала). Так же позволяет отметить эпизод просмотренным.
+	internal func playEpisode(episode: Video) {
+		
+		guard let files = episode.files, let kinoItem = kinoItem else {
+			log.warning("No media available for this episode")
+			return
+		}
+		
+		let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+		let qualityIndex = setQualityForAvailableMedia(media: files)
+		
+		guard let videoURL = files[qualityIndex].url?.http, let url = URL(string: videoURL) else {
+			log.error("Unable to select appropriate quality for this episode")
+			return
+		}
+		
+		// Добавляем кнопочку "Продолжить просмотр" если не начинали смотреть эпизод до этого.
+		if let continueWatchingPosition = episode.watching?.time, continueWatchingPosition > 0 && episode.watching?.status != .watched {
+			
+			let buttonContinue = UIAlertAction(title: "Продолжить просмотр", style: UIAlertActionStyle.default) { action in
+				self.playVideo(videoURL: url, episode: episode, season: nil, fromPosition: continueWatchingPosition) { position in
+					self.updateWatchingProgressForVideo(type: kinoItem.type!, video: episode, position: position)
+				}
+			}
+			alert.addAction(buttonContinue)
+		}
+		
+		let buttonStart = UIAlertAction(title: "Смотреть фильм с начала", style: UIAlertActionStyle.default) { action in
+			self.playVideo(videoURL: url, episode: episode, season: nil, fromPosition: nil) { position in
+				self.updateWatchingProgressForVideo(type: kinoItem.type!, video: episode, position: position)
+			}
+		}
+		alert.addAction(buttonStart)
+		
+		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.destructive) { (btn) -> Void in }
+		alert.addAction(cancelButton)
+		
+		self.present(alert, animated: true, completion: nil)
+		
+		
 	}
 
-
+	
+	/// Включаем трейлер к фильму (если доступен)
 	internal func playTrailer() {
 		guard let youtubeID = item?.trailer?.id else {
 			log.error("No trailer ID found")
@@ -224,7 +438,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 		log.debug("trailer youtube id: \(youtubeID)")
 		XCDYouTubeClient.default().getVideoWithIdentifier(youtubeID) { video, error in
-			if let video = video {
+			if let _ = video {
 //				var videoURL: URL?
 //				for vi in video.streamURLs {
 //					if vi.key == XCDYouTubeVideoQuality.HD720.rawValue as AnyHashable {
@@ -259,10 +473,13 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 	}
 	
+	
+	/// Помечает кино просмотренным
 	internal func markWatched() {
 	
 	}
 	
+	/// Добавляем в закладки
 	internal func addToFavorites() {
 	
 	}
@@ -270,7 +487,11 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	
 }
 
-extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+/// Всяческие делегады collectionView эпизодов
+extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
@@ -281,11 +502,25 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "episodeCell", for: indexPath) as! EpisodeCollectionViewCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! EpisodeCollectionViewCell
 		let episode = episodes[indexPath.row]
 		cell.update(episode: episode)
 		return cell
 	}
 	
+	func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
+		return lastSelectedIndex
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let episode = episodes[indexPath.row]
+		lastSelectedIndex = indexPath
+		playEpisode(episode: episode)
+	}
+	
+	// Padding для collectionView. Чтоб эпизоды не клеились к стенке
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+	}
 	
 }

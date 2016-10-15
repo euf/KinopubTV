@@ -14,7 +14,6 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
 	@IBOutlet var thumbnail: UIImageView!
 	@IBOutlet var title: UILabel!
 	@IBOutlet var episodeTitleConstraint: NSLayoutConstraint!
-	@IBOutlet var overlay: UIView!
 	@IBOutlet var watchedImage: UIImageView!
 	@IBOutlet var progressBar: UIProgressView!
 	
@@ -30,7 +29,6 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
 	
 	func reset() {
 		progressBar.isHidden = true
-		overlay.isHidden = true
 		watchedImage.isHidden = true
 		title.text = ""
 	}
@@ -52,11 +50,6 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
 			}
 		}
 		
-		/*if let watched = episode.watched where watched == 1 {
-		cell.overlay.hidden = false
-		cell.watchedImage.hidden = false
-		}*/
-		
 		if let watching = episode.watching {
 			updateWatchStatus(watch: watching, episode: episode)
 		}
@@ -64,9 +57,7 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
 	
 	func updateWatchStatus(watch: Watching, episode: Video) {
 		guard let status = watch.status else {return}
-		overlay.isHidden = status == .watched ? false : true
 		watchedImage.isHidden = status == .watched ? false : true
-		
 		if status == .watching {
 			if let duration = episode.duration, duration > 0, let time = watch.time {
 				progressBar.isHidden = false
@@ -78,5 +69,10 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
 		} else {
 			progressBar.isHidden = true
 		}
+	}
+	
+	func toggleWatchStatus(status: Int) {
+		watchedImage.isHidden = status == 1 ? false : true
+		progressBar.isHidden = true // Always true, because this method only cares about watched/unwatched.
 	}
 }
