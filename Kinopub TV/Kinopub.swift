@@ -74,6 +74,7 @@ protocol KinoViewable: class, Connectable {
 	var kinoItem: KinoItem? {get set} // Priliminary item (before we got a response from the sever)
 	func fetchItem(id: Int, type: ItemType, callback: @escaping (_ response: ItemResponse) -> ()) -> Void
 	func playVideo(videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
+	func toggleWatched(video: Video?, season: Int?, callback: @escaping (_ status: Int) -> ()) -> Void
 }
 
 extension KinoViewable where Self: UIViewController {
@@ -90,7 +91,6 @@ extension KinoViewable where Self: UIViewController {
 			switch (result, error) {
 			case(let result?, _):
 				if result["status"] == 200 {
-					
 					if let item = Mapper<Item>().map(JSONObject: result["item"].dictionaryObject) {
 						callback(.success(item: item))
 					} else {
@@ -162,12 +162,10 @@ extension KinoViewable where Self: UIViewController {
 	- parameter time:		currently elapsed time
 	*/
 	private func logCurrentPosition(video: Video?, season: Season?, time: TimeInterval) {
-		
 		guard let id = kinoItem?.id else {
 			log.error("Id is not set. Nothing to log")
 			return
 		}
-		
 		var parameters: Dictionary<String, AnyObject> = [
 			"id": id as AnyObject,
 			"time": Int(time) as AnyObject
@@ -193,6 +191,40 @@ extension KinoViewable where Self: UIViewController {
 			}
 		}
 	}
+	
+	func toggleWatched(video: Video?, season: Int?, callback: @escaping (_ status: Int) -> ()) {
+		guard let id = kinoItem?.id else {
+			log.error("Id is not set. Nothing to log")
+			return
+		}
+		var parameters: Dictionary<String, AnyObject> = [
+			"id": id as AnyObject
+		]
+		if let video = video {
+			parameters["video"] = video.number as AnyObject?
+		}
+		if let season = season {
+			parameters["season"] = season as AnyObject?
+		}
+		let request = Request(type: .resource, resourceURL: "/watching/toggle", method: .get, parameters: parameters)
+		performRequest(resource: request) { result, error in
+			switch (result, error) {
+			case(let result?, _):
+				if result["watched"] == 1 {
+					callback(1)
+				} else if result["watched"] == 0 {
+					callback(0)
+				}
+				break
+			case(_, let error?):
+				log.error("Error accessing the service \(error)")
+				break
+			default: break
+			}
+		}
+	}
+	
+	
 	
 }
 
