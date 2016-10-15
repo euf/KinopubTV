@@ -7,29 +7,65 @@
 //
 
 import UIKit
+import AVKit
 
-class TVViewController: UIViewController {
-
+class TVViewController: UIViewController, TVViewable {
+	
+	var playerController: AVPlayerViewController!
+	var channels: [TVChannel] = [] {
+		didSet {
+			collectionView.reloadData()
+		}
+	}
+	
+	@IBOutlet var collectionView: UICollectionView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		loadChannels()
     }
+	
+	private func loadChannels() {
+		fetchChannels() { response in
+			switch response {
+			case .success(let channels):
+				if let channels = channels {
+					self.channels = channels
+				}
+				break
+			case .error(let error):
+				log.error("Error getting channels: \(error)")
+				break
+			}
+		}
+	}
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension TVViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+	
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return channels.count
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let channel = channels[indexPath.row]
+		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell", for: indexPath) as? TVItemCollectionViewCell {
+			cell.channel = channel
+			return cell
+		}
+		return UICollectionViewCell()
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let channel = channels[indexPath.row]
+		if let url = channel.stream, let streamURL = URL(string: url) {
+			watchChannel(url: streamURL)
+		}
+		
+	}
+	
 }

@@ -35,6 +35,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	var viewType: ItemType? {
 		didSet {
 			self.dataStore.removeAllPages()
+			self.dataStore.updatesCountWhenSettingPages = true
 			getItems(page: 1) { items, pagination in
 				guard let items = items else {return}
 				// self.dataStore = items

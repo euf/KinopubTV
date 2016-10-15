@@ -26,6 +26,9 @@
 		D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */; };
 		D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A891D8D7A8000241ED2 /* HomeViewController.swift */; };
 		D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */; };
+		D05B45051DB28E330064FC6D /* TVViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B45041DB28E330064FC6D /* TVViewable.swift */; };
+		D05B45071DB28E610064FC6D /* TVChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B45061DB28E610064FC6D /* TVChannel.swift */; };
+		D05B45091DB293010064FC6D /* TVItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B45081DB293010064FC6D /* TVItemCollectionViewCell.swift */; };
 		D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0769E661D8E860E00197D01 /* LoginViewController.swift */; };
 		D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890C1D92A2D600DBF46F /* TVViewController.swift */; };
 		D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */; };
@@ -68,6 +71,9 @@
 		D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarReplacementStyleKit.swift; sourceTree = "<group>"; };
 		D0289A891D8D7A8000241ED2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicksViewController.swift; sourceTree = "<group>"; };
+		D05B45041DB28E330064FC6D /* TVViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewable.swift; sourceTree = "<group>"; };
+		D05B45061DB28E610064FC6D /* TVChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVChannel.swift; sourceTree = "<group>"; };
+		D05B45081DB293010064FC6D /* TVItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0769E661D8E860E00197D01 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D08B890C1D92A2D600DBF46F /* TVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 				D0289A661D89A18F00241ED2 /* KinopubLogin.swift */,
 				D0289A681D89E0F200241ED2 /* Connectable.swift */,
 				D0F61C3A1DA16F9000D58027 /* Pageable.swift */,
+				D05B45041DB28E330064FC6D /* TVViewable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 				D0289A6D1D89EECD00241ED2 /* Auth.swift */,
 				D0289A6F1D89EEE800241ED2 /* Item.swift */,
 				D0289A711D89EF0500241ED2 /* Categories.swift */,
+				D05B45061DB28E610064FC6D /* TVChannel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 				D0DB944D1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift */,
 				D08E04681D97C0D400A4074C /* ItemCollectionViewCell.xib */,
 				D08E04691D97C0D400A4074C /* ItemCollectionViewCell.swift */,
+				D05B45081DB293010064FC6D /* TVItemCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -385,11 +394,13 @@
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
 				D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */,
 				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
+				D05B45051DB28E330064FC6D /* TVViewable.swift in Sources */,
 				D0DB94531DAA59B10031CD13 /* FocusableText.swift in Sources */,
 				D08E04661D97B27300A4074C /* WatchViewController.swift in Sources */,
 				D0DB94551DAA5A4B0031CD13 /* MovieDescriptionViewController.swift in Sources */,
 				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
+				D05B45071DB28E610064FC6D /* TVChannel.swift in Sources */,
 				D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */,
 				D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */,
 				D0289A701D89EEE800241ED2 /* Item.swift in Sources */,
@@ -398,6 +409,7 @@
 				D0FD64871D89302000660496 /* AppDelegate.swift in Sources */,
 				D0DB94511DAA590F0031CD13 /* ItemViewController.swift in Sources */,
 				D0DB94571DAA5D1C0031CD13 /* ItemViewController_Extension.swift in Sources */,
+				D05B45091DB293010064FC6D /* TVItemCollectionViewCell.swift in Sources */,
 				D0289A621D899CA700241ED2 /* Common.swift in Sources */,
 				D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */,
 				D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */,
