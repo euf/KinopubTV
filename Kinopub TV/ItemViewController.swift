@@ -52,6 +52,7 @@ class ItemViewController: UIViewController {
 
 	@IBOutlet weak var bg: UIImageView!
 	@IBOutlet weak var poster: UIImageView!
+	@IBOutlet var movieWatchedRibbon: UIImageView!
 	@IBOutlet weak var titleRu: UILabel!
 	@IBOutlet weak var titleEn: UILabel!
 	@IBOutlet var intro: FocusableText!

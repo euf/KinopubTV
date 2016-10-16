@@ -321,5 +321,3 @@ struct Pagination: Mappable {
 	}
 }
 
-
-

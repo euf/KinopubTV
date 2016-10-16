@@ -20,6 +20,7 @@
                 <outlet property="intro" destination="wLg-c9-XkA" id="g7l-Z2-DxQ"/>
                 <outlet property="likedButton" destination="8Zu-QI-iNi" id="pHB-yQ-pl8"/>
                 <outlet property="markWatchedLabel" destination="Ufg-Bo-x7e" id="DZc-hL-xZd"/>
+                <outlet property="movieWatchedRibbon" destination="FJr-Ap-n4y" id="p8u-Gp-1Lr"/>
                 <outlet property="playButton" destination="mKN-f8-BwX" id="G4m-vI-Inz"/>
                 <outlet property="poster" destination="lkU-ql-J2v" id="GKU-n1-C5O"/>
                 <outlet property="progressBar" destination="uNe-VC-UoI" id="YGe-jP-NGf"/>
@@ -52,6 +53,12 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="625" id="Cpe-Ws-kFc"/>
                         <constraint firstAttribute="width" constant="400" id="gX9-OB-RRE"/>
+                    </constraints>
+                </imageView>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-movie-watched" translatesAutoresizingMaskIntoConstraints="NO" id="FJr-Ap-n4y" userLabel="Movie Watched Sticker">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="625" id="0Jn-fo-KKc"/>
+                        <constraint firstAttribute="width" constant="400" id="1Oc-m0-jzU"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAW-cc-gg9">
@@ -171,7 +178,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgt-4U-YZ2">
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="w0w-Bq-suj">
-                            <frame key="frameInset" minY="4" width="1920" height="342"/>
+                            <frame key="frameInset" minY="-11" width="1920" height="357"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="50" minimumInteritemSpacing="30" id="mKo-fe-bYu">
@@ -327,11 +334,13 @@
                 <constraint firstItem="Vhd-wV-mhJ" firstAttribute="leading" secondItem="c6s-Rq-YFc" secondAttribute="trailing" constant="76" id="KUG-Oa-Kml"/>
                 <constraint firstItem="4Lx-dF-SLD" firstAttribute="centerY" secondItem="Vhd-wV-mhJ" secondAttribute="centerY" id="New-C6-swe"/>
                 <constraint firstAttribute="trailing" secondItem="lkU-ql-J2v" secondAttribute="trailing" constant="53" id="NlH-na-Rhb"/>
+                <constraint firstItem="FJr-Ap-n4y" firstAttribute="centerY" secondItem="lkU-ql-J2v" secondAttribute="centerY" id="OVj-pL-Uvd"/>
                 <constraint firstItem="Vhd-wV-mhJ" firstAttribute="top" secondItem="2F3-DP-2GG" secondAttribute="bottom" constant="17" id="RI8-bi-EWG"/>
                 <constraint firstItem="LAW-cc-gg9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="49" id="Rli-oR-Q6g"/>
                 <constraint firstItem="XIl-E7-LNr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SDs-lb-y9j"/>
                 <constraint firstItem="5pd-o0-d4f" firstAttribute="top" secondItem="8Zu-QI-iNi" secondAttribute="bottom" constant="4" id="Shy-zO-6Gv"/>
                 <constraint firstItem="c6s-Rq-YFc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="T6v-en-y5V"/>
+                <constraint firstItem="FJr-Ap-n4y" firstAttribute="centerX" secondItem="lkU-ql-J2v" secondAttribute="centerX" id="Yny-hX-OIk"/>
                 <constraint firstItem="c6s-Rq-YFc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="ZBJ-EF-mD1"/>
                 <constraint firstItem="lkU-ql-J2v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="ZoY-SS-shk"/>
                 <constraint firstItem="4lp-HZ-Xex" firstAttribute="centerY" secondItem="UKS-kp-PV2" secondAttribute="centerY" id="evV-w8-cI3"/>
@@ -361,6 +370,7 @@
         <image name="btn-play" width="37" height="49"/>
         <image name="btn-trailer" width="54" height="54"/>
         <image name="btn-watch" width="64" height="36"/>
+        <image name="icon-movie-watched" width="500" height="718"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
