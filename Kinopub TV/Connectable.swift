@@ -25,7 +25,12 @@ enum RequestType: String {
 	case auth
 }
 
-struct Request: Connectable {
+struct Request: Connectable, CustomDebugStringConvertible {
+	
+	var debugDescription: String {
+		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(parameters!) \n =========================================="
+	}
+	
 	var type: RequestType
 	var resourceURL: String
 	var method: HTTPMethod
