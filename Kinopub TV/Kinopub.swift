@@ -166,6 +166,7 @@ extension KinoViewable where Self: UIViewController {
 			log.error("Id is not set. Nothing to log")
 			return
 		}
+		
 		var parameters: Dictionary<String, AnyObject> = [
 			"id": id as AnyObject,
 			"time": Int(time) as AnyObject
@@ -178,11 +179,13 @@ extension KinoViewable where Self: UIViewController {
 		if let season = season {
 			parameters["season"] = season.number as AnyObject?
 		}
+		
 		let request = Request(type: .resource, resourceURL: "/watching/marktime", method: .get, parameters: parameters)
+//		log.debug(request)
 		performRequest(resource: request) { result, error in
 			switch (result, error) {
 			case(let result?, _):
-				log.debug(result)
+				log.verbose(result)
 				break
 			case(_, let error?):
 				log.error("Error accessing the service \(error)")
@@ -236,7 +239,7 @@ extension QualityDefinable {
 	
 	func setQualityForAvailableMedia(media: [File]) -> Int {
 		guard let defaultQuality = Defaults[.defaultQuality], let quality = Quality(rawValue: defaultQuality) else {
-//			log.warning("Quality not defined in user defaults")
+			log.warning("Quality not defined in user defaults")
 			return 0
 		}
 		var index = 0

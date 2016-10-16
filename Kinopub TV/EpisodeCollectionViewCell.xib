@@ -9,10 +9,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EpisodeCell" id="Rz2-K0-ksD" customClass="EpisodeCollectionViewCell" customModule="Kinopub_TV" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="360" height="330"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="360" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="360" height="330"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qOH-KI-5XN"/>
@@ -26,24 +26,23 @@
                         <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-watched" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WZx-Ec-7xp">
-                        <frame key="frameInset" minY="28" width="360" height="203"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-watched" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WZx-Ec-7xp"/>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="qOH-KI-5XN" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="2Pi-ZW-w7O"/>
+                <constraint firstItem="WZx-Ec-7xp" firstAttribute="centerY" secondItem="V7i-U8-TWt" secondAttribute="centerY" id="7rV-RM-TCL"/>
                 <constraint firstItem="V7i-U8-TWt" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="CdU-Vr-N79"/>
-                <constraint firstItem="U0U-sv-DGh" firstAttribute="top" secondItem="V7i-U8-TWt" secondAttribute="bottom" constant="3" id="DQL-uD-XkB"/>
+                <constraint firstItem="U0U-sv-DGh" firstAttribute="top" secondItem="V7i-U8-TWt" secondAttribute="bottom" constant="18" id="DQL-uD-XkB"/>
                 <constraint firstItem="U0U-sv-DGh" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="IBe-Ee-1Yo"/>
                 <constraint firstAttribute="trailing" secondItem="U0U-sv-DGh" secondAttribute="trailing" id="M1V-nL-gi5"/>
-                <constraint firstItem="V7i-U8-TWt" firstAttribute="top" secondItem="qOH-KI-5XN" secondAttribute="bottom" constant="18" id="Uch-x4-L8o"/>
+                <constraint firstItem="V7i-U8-TWt" firstAttribute="top" secondItem="qOH-KI-5XN" secondAttribute="bottom" constant="8" id="Uch-x4-L8o"/>
                 <constraint firstAttribute="trailing" secondItem="V7i-U8-TWt" secondAttribute="trailing" id="cH6-UI-K1c"/>
-                <constraint firstItem="qOH-KI-5XN" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="ubj-NQ-paI"/>
+                <constraint firstItem="qOH-KI-5XN" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="20" id="ubj-NQ-paI"/>
+                <constraint firstItem="WZx-Ec-7xp" firstAttribute="centerX" secondItem="V7i-U8-TWt" secondAttribute="centerX" id="y9D-Dq-bHF"/>
                 <constraint firstAttribute="trailing" secondItem="qOH-KI-5XN" secondAttribute="trailing" id="zhN-Bj-ih3"/>
             </constraints>
-            <size key="customSize" width="240" height="195"/>
+            <size key="customSize" width="240" height="226"/>
             <connections>
                 <outlet property="episodeTitleConstraint" destination="DQL-uD-XkB" id="dS7-Mr-idN"/>
                 <outlet property="progressBar" destination="qOH-KI-5XN" id="MRc-f2-wFj"/>
@@ -51,7 +50,7 @@
                 <outlet property="title" destination="U0U-sv-DGh" id="n2M-kG-toD"/>
                 <outlet property="watchedImage" destination="WZx-Ec-7xp" id="kvc-ym-EAR"/>
             </connections>
-            <point key="canvasLocation" x="639" y="536"/>
+            <point key="canvasLocation" x="639" y="551"/>
         </collectionViewCell>
     </objects>
     <resources>

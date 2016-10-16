@@ -141,9 +141,21 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	/// - parameter item: Item контент
 	private func setupMedia(item: Item) {
 		
-		if isMovie {
+		if isMovie { // Кино
+			
 			self.watchMovieButtonBottomConstraint.constant = 65 // Pushing all the button further down, because there are no episodes to select
+			
 			if kinoItem?.subtype == .multi { // Многосерийный фильм
+				
+				self.playButton.isHidden = true
+				self.watchMovieLabel.isHidden = true
+				self.watchMovieButtonConstraint.constant = 0
+				self.qualitySegment.isHidden = true
+
+				if let episodes = item.videos {
+					self.episodes = episodes
+					self.collectionView.reloadData()
+				}
 				
 			} else { // Односерийный фильм
 				
@@ -161,6 +173,20 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				self.qualitySegment.setTitleTextAttributes(attributes, for: .selected)
 				self.qualitySegment.setTitleTextAttributes(attributes, for: .focused)
 				
+				// Прогресс
+				if video.watching?.status == .watching, let watchingTime = video.watching?.time {
+					let progress:Float = Float(watchingTime) / Float(video.duration!)
+					self.progressBar.isHidden = false
+					self.progressBar.setProgress(progress, animated: true)
+				}
+
+				// Посмотрел или нет
+				if video.watching?.status == .watched {
+					self.movieWatchedRibbon.isHidden = false
+					self.watchedButton.setImage(UIImage(named: "btn-unwatch"), for: .normal)
+					self.markWatchedLabel.text = "Отметить не просмотренным"
+				}
+				
 				if let files = video.files {
 					self.qualitySegment.replaceSegments(segments: files.map{($0.quality?.rawValue)!})
 					self.availableMedia = files
@@ -169,7 +195,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				}
 			}
 
-		} else { // Series
+		} else { // Сериалы
 			
 			self.playButton.isHidden = true
 			self.watchMovieLabel.isHidden = true
@@ -355,12 +381,12 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		
 		if let media = selectedMedia, let videoURL = media.url?.http, let video = movieVideo, let url = URL(string: videoURL) {
 			
-			print("Current watch time: \( video.watching?.time)")
-			print("Movie status: \(video.watching?.status)")
+//			print("Current watch time: \( video.watching?.time)")
+//			print("Movie status: \(video.watching?.status)")
 			
 			if let continueWatchingPosition = video.watching?.time, continueWatchingPosition > 0 && video.watching?.status != .watched {
 				
-				let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+				let alert = UIAlertController(title: item?.title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
 				
 				let buttonContinue = UIAlertAction(title: "Продолжить просмотр", style: UIAlertActionStyle.default) { action in
 					self.playVideo(videoURL: url, episode: video, season: nil, fromPosition: continueWatchingPosition) { position in
@@ -368,7 +394,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 					}
 				}
 				alert.addAction(buttonContinue)
-				let buttonStart = UIAlertAction(title: "Смотреть фильм с начала", style: UIAlertActionStyle.default) { action in
+				let buttonStart = UIAlertAction(title: "Смотреть с начала", style: UIAlertActionStyle.default) { action in
 					self.playVideo(videoURL: url, episode: video, season: nil, fromPosition: nil) { position in
 						self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 					}
@@ -395,7 +421,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			return
 		}
 		
-		let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+		let alert = UIAlertController(title: item?.title, message: episode.title, preferredStyle: UIAlertControllerStyle.alert)
 		let qualityIndex = setQualityForAvailableMedia(media: files)
 		
 		guard let videoURL = files[qualityIndex].url?.http, let url = URL(string: videoURL) else {
@@ -407,15 +433,15 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		if let continueWatchingPosition = episode.watching?.time, continueWatchingPosition > 0 && episode.watching?.status != .watched {
 			
 			let buttonContinue = UIAlertAction(title: "Продолжить просмотр", style: UIAlertActionStyle.default) { action in
-				self.playVideo(videoURL: url, episode: episode, season: nil, fromPosition: continueWatchingPosition) { position in
+				self.playVideo(videoURL: url, episode: episode, season: self.currentSeason, fromPosition: continueWatchingPosition) { position in
 					self.updateWatchingProgressForVideo(type: kinoItem.type!, video: episode, position: position)
 				}
 			}
 			alert.addAction(buttonContinue)
 		}
 		
-		let buttonStart = UIAlertAction(title: "Смотреть фильм с начала", style: UIAlertActionStyle.default) { action in
-			self.playVideo(videoURL: url, episode: episode, season: nil, fromPosition: nil) { position in
+		let buttonStart = UIAlertAction(title: "Смотреть эпизод с начала", style: UIAlertActionStyle.default) { action in
+			self.playVideo(videoURL: url, episode: episode, season: self.currentSeason, fromPosition: nil) { position in
 				self.updateWatchingProgressForVideo(type: kinoItem.type!, video: episode, position: position)
 			}
 		}
@@ -476,12 +502,41 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	
 	/// Помечает кино просмотренным
 	internal func markWatched() {
-	
+		
+		guard let video = movieVideo else {
+			log.error("Toggling watched/unwatched: Video not set")
+			return
+		}
+		
+		toggleWatched(video: video, season: nil) { status in
+			if status == 1 {
+				self.movieWatchedRibbon.isHidden = false
+				self.watchedButton.setImage(UIImage(named: "btn-unwatch"), for: .normal)
+				self.markWatchedLabel.text = "Отметить не просмотренным"
+				self.movieVideo?.watching?.status = .watched
+			} else {
+				self.movieWatchedRibbon.isHidden = true
+				self.watchedButton.setImage(UIImage(named: "btn-watch"), for: .normal)
+				self.markWatchedLabel.text = "Отметить просмотренным"
+				self.movieVideo?.watching?.status = .unwatched
+			}
+		}
+		
 	}
 	
 	/// Добавляем в закладки
 	internal func addToFavorites() {
 	
+	}
+	
+	// MARK: - Delegates
+ 
+	override var preferredFocusEnvironments: [UIFocusEnvironment] {
+		if isMovie {
+			return [self.playButton, self.collectionView]
+		} else {
+			return [self.collectionView]
+		}
 	}
 	
 	
