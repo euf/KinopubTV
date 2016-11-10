@@ -19,16 +19,9 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
 	var pagesLoading = Set<Int>()
 	
-	@IBOutlet var collectionView: UICollectionView!
+	@IBOutlet weak var collectionView: UICollectionView!
 	
-	var dataStore = PagedArray<Item>(count: 1, pageSize: 1) {
-		didSet {
-			if self.dataStore.count > oldValue.count
-			{
-				log.debug("Refreshing collection")
-			}
-		}
-	}
+	var dataStore = PagedArray<Item>(count: 1, pageSize: 1)
 	
 	// var dataStore = [Item]()
 	
@@ -38,11 +31,9 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			self.dataStore.updatesCountWhenSettingPages = true
 			getItems(page: 1) { items, pagination in
 				guard let items = items else {return}
-				// self.dataStore = items
 				self.dataStore = PagedArray<Item>(count: (pagination?.totalItems)!, pageSize: 50, startPage: 1)
 				self.dataStore.set(items, forPage: 1)
 				self.performDataChanges()
-				// self.collectionView.reloadData() // Заменили вышестоящим методом
 			}
 		}
 	}
@@ -73,6 +64,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 	
 	func performDataChanges() {
+//		collectionView.reloadData()
 		let range = NSMakeRange(0, self.collectionView.numberOfSections)
 		let sections = NSIndexSet(indexesIn: range)
 		collectionView.reloadSections(sections as IndexSet)
@@ -106,18 +98,18 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		let currentPage = dataStore.page(for: row)
 //		log.debug("Current page: \(currentPage)")
 		if needsLoadDataForPage(page: currentPage) {
-			log.debug("We need more data!")
+//			log.debug("We need more data!")
 			loadDataForPage(currentPage)
 		}
 		
 		let preloadIndex = row+PreloadMargin
 		
 		if preloadIndex < dataStore.endIndex {
-			log.debug("We're still withing the cells limit")
-			log.debug("Do we need more cells?")
+//			log.debug("We're still withing the cells limit")
+//			log.debug("Do we need more cells?")
 			let preloadPage = dataStore.page(for: preloadIndex)
 			if preloadPage > currentPage && needsLoadDataForPage(page: preloadPage) {
-				log.debug("Yup")
+//				log.debug("Yup")
 				loadDataForPage(preloadPage)
 			}
 		}
@@ -131,13 +123,13 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 
 	private func loadDataForPage(_ page: Int) {
-		log.debug("Loading data for page: \(page)")
+//		log.debug("Loading data for page: \(page)")
 		let indexes = dataStore.indexes(for: page)
 
 		getItems(page: page) { (items, pagination) in
-			guard let items = items, let pagination = pagination else {return}
-			log.debug("We now have page: \(pagination.current)")
-			self.dataStore.set(items, forPage: pagination.current!)
+			guard let items = items, let pagination = pagination, let current = pagination.current else {return}
+//			log.debug("We now have page: \(pagination.current)")
+			self.dataStore.set(items, forPage: current)
 			if let indexPathsToReload = self.visibleIndexPathsForIndexes(indexes) {
 				self.collectionView.reloadItems(at: indexPathsToReload)
 			}

@@ -13,6 +13,7 @@ import Cosmos
 class ItemViewController: UIViewController {
 	
 	let identifier = "EpisodeCell"
+	let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
 	
 	var playerController: AVPlayerViewController!
 	
@@ -44,7 +45,6 @@ class ItemViewController: UIViewController {
 	var seasonsSegment: UISegmentedControl!
 	var currentSeason: Season? = nil
 	var lastSelectedIndex: IndexPath?
-	
 	
 	@IBOutlet var progressBar: UIProgressView!
 	@IBOutlet var watchMovieButtonConstraint: NSLayoutConstraint!

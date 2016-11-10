@@ -112,7 +112,7 @@ public struct PagedArray<T> {
         
         if !updatesCountWhenSettingPages {
             assert(page <= lastPage, "Page index out of bounds")
-            assert(elements.count == expectedSize, "Incorrect page size")
+//            assert(elements.count == expectedSize, "Incorrect page size")
         } else {
             // High Chaparall mode, array can change in size
             count += elements.count-expectedSize

@@ -37,13 +37,12 @@ extension KinoListable {
 		performRequest(resource: request) { result, error in
 			switch (result, error) {
 			case(let result?, _):
-				log.verbose("Received response from the server for type: \(type)")
 				if result["status"] == 200 {
 					
 					if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject),
 					let pagination = Mapper<Pagination>().map(JSONObject: result["pagination"].object)
 					{
-						log.debug("Successfully mapped all the entries")
+//						log.debug("Successfully mapped all the entries")
 						callback(.success(items: items, pagination: pagination))
 					} else {
 						log.warning("Problem mapping items. Returning nil")

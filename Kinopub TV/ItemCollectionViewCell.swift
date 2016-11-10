@@ -26,13 +26,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
 	}
 	
 	private func prepareCell() {
+		
+		let placehoder = UIImage(named: "placeholder")
+		
 		title.text = data?.title
 		if let y = data?.year {
 			year.text = String(y)
 		} else {year.text = ""}
 		if let p = data?.posters, let medium = p.medium {
 			if let URL = NSURL(string: medium) {
-				poster.af_setImage(withURL: URL as URL, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: true, completion: nil)
+				poster.af_setImage(withURL: URL as URL, placeholderImage: placehoder, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: true, completion: nil)
 				poster.isUserInteractionEnabled = true
 			}
 		}

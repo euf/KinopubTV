@@ -22,6 +22,9 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	}
 	
 	internal func prepareForDisplay() {
+		
+		view.addSubview(visualEffectView)
+		
 		guard let id = kinoItem?.id, let type = kinoItem?.type else {
 			log.error("No item id or type provided")
 			return
@@ -32,7 +35,6 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			switch status {
 			case .success(let item):
 				if let item = item {
-					//self.item = item // Just setting item to a global variable
 					// TODO: Hide spinning wheel. Fade in the results
 					
 					// Плакат
@@ -192,6 +194,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 					self.availableMedia = files
 					self.movieVideo = video
 					self.setQuality()
+					self.visualEffectView.removeFromSuperview()
 				}
 			}
 
@@ -219,7 +222,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			self.seasons = seasons
 			self.setupSeasons(seasons: seasons)
 			self.collectionView.reloadData()
-		
+			self.visualEffectView.removeFromSuperview()
 		}
 	}
 	
