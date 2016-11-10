@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B4016977CE6525E3E39C5FFC3016A950'
+               BlueprintIdentifier = 'E0046A811240ACB8A2B4D8A7236F02D6'
                BlueprintName = 'PagedArray'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PagedArray.framework'>

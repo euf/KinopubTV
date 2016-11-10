@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4FD42EC9B524D67A71318CFC21794E37'
+               BlueprintIdentifier = 'EF5242B819B32E016A5460C3FB741B34'
                BlueprintName = 'PMKVObserver'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PMKVObserver.framework'>

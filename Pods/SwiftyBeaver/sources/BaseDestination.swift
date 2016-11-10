@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import Dispatch
 
 // store operating system / platform
 #if os(iOS)
@@ -238,7 +239,8 @@ open class BaseDestination: Hashable, Equatable {
             formatter.timeZone = TimeZone(abbreviation: timeZone)
         }
         formatter.dateFormat = dateFormat
-        let dateStr = formatter.string(from: NSDate() as Date)
+        //let dateStr = formatter.string(from: NSDate() as Date)
+        let dateStr = formatter.string(from: Date())
         return dateStr
     }
 
@@ -264,12 +266,9 @@ open class BaseDestination: Hashable, Equatable {
         // try to create JSON string
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
-            if let str = NSString(data: jsonData,
-                                  encoding: String.Encoding.utf8.rawValue) as? String {
-                jsonString = str
-            }
-        } catch let error as NSError {
-            print("SwiftyBeaver could not create JSON from dict. \(error)")
+            jsonString = String(data: jsonData, encoding: .utf8)
+        } catch {
+            print("SwiftyBeaver could not create JSON from dict.")
         }
         return jsonString
     }
