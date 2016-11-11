@@ -13,8 +13,6 @@ import Cosmos
 class ItemViewController: UIViewController {
 	
 	let identifier = "EpisodeCell"
-	let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-	
 	var playerController: AVPlayerViewController!
 	
 	var item: Item?
@@ -85,6 +83,8 @@ class ItemViewController: UIViewController {
 	@IBOutlet weak var seasonsScrollView: UIScrollView!
 	@IBOutlet var collectionView: UICollectionView!
 
+	@IBOutlet var loadingCover: UIView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		prepareForDisplay()

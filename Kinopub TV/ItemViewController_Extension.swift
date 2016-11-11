@@ -23,7 +23,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	
 	internal func prepareForDisplay() {
 		
-		view.addSubview(visualEffectView)
+		loadingCover.addBlurEffect()
 		
 		guard let id = kinoItem?.id, let type = kinoItem?.type else {
 			log.error("No item id or type provided")
@@ -194,7 +194,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 					self.availableMedia = files
 					self.movieVideo = video
 					self.setQuality()
-					self.visualEffectView.removeFromSuperview()
+					self.loadingCover.isHidden = true
 				}
 			}
 
@@ -222,7 +222,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			self.seasons = seasons
 			self.setupSeasons(seasons: seasons)
 			self.collectionView.reloadData()
-			self.visualEffectView.removeFromSuperview()
+			self.loadingCover.isHidden = true
 		}
 	}
 	
