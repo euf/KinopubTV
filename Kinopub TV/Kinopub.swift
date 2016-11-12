@@ -13,6 +13,8 @@ import ObjectMapper
 import AVFoundation
 import AVKit
 import PMKVObserver
+import AlamofireImage
+import Alamofire
 
 // List protocol
 
@@ -67,12 +69,12 @@ enum ItemResponse {
 	case error(error: NSError)
 }
 
-protocol KinoViewable: class, Connectable {
+protocol KinoViewable: class, Connectable, QualityDefinable {
 	var playerController: AVPlayerViewController! {get set}
 	var item: Item? {get set}
 	var kinoItem: KinoItem? {get set} // Priliminary item (before we got a response from the sever)
 	func fetchItem(id: Int, type: ItemType, callback: @escaping (_ response: ItemResponse) -> ()) -> Void
-	func playVideo(videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
+	func playVideo(with videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
 	func toggleWatched(video: Video?, season: Int?, callback: @escaping (_ status: Int) -> ()) -> Void
 }
 
@@ -112,8 +114,7 @@ extension KinoViewable where Self: UIViewController {
 	- parameter fromPosition:	starting position
 	- parameter callback:			callback to update watched progress in the view controller
 	*/
-	func playVideo(videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) {
-		log.verbose("Starting video")
+	func playVideo(with videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) {
 		
 		let playerItem = AVPlayerItem(url: videoURL)
 		let player = AVPlayer(playerItem: playerItem)
@@ -126,6 +127,22 @@ extension KinoViewable where Self: UIViewController {
 		print("Current status: \(object.status.rawValue)")
 		kvo.cancel()
 		}*/
+		
+		// Next episode proposal
+		if let _ = season, let episode = episode, let nextEpisode = episode.nextVideo {
+			if let imageUrl = URL(string: nextEpisode.thumbnail!) {
+				let qualityIndex = setQualityForAvailableMedia(media: nextEpisode.files!)
+				guard let videoURL = nextEpisode.files?[qualityIndex].url?.http, let url = URL(string: videoURL) else {
+					log.error("Unable to select appropriate quality for this episode")
+					return
+				}
+				getRemoteImage(for: imageUrl) { image in
+					let contentProposal = AVContentProposal(contentTimeForTransition: kCMTimeZero, title: nextEpisode.title!, previewImage: image)
+					contentProposal.url = url
+					playerItem.nextContentProposal = contentProposal
+				}
+			}
+		}
 		
 		_ = KVObserver(object: player, keyPath: "rate", options: NSKeyValueObservingOptions()) { object, _, kvo in
 			if object.rate == 0 {
@@ -153,6 +170,18 @@ extension KinoViewable where Self: UIViewController {
 			self.playerController.player?.play()
 		}
 	}
+	
+	func getRemoteImage(for url: URL, callback: @escaping (_ image: UIImage) -> ()) {
+		Alamofire.request(url).responseImage { response in
+			if let image = response.result.value {
+				callback(image)
+			}
+		}
+	}
+	
+//	fileprivate func findNextEpisode(for episode: Video, season: Season) -> Video {
+//		
+//	}
 	
 	/**
 	Logs currently playing item's time to a stopped position. So it can be resumed later
