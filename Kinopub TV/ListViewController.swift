@@ -9,7 +9,6 @@
 import UIKit
 import AlamofireImage
 import SwiftyUserDefaults
-import PagedArray
 
 fileprivate let reuseIdentifier = "itemCell"
 fileprivate let sectionInsets = UIEdgeInsets(top: 40.0, left: 50.0, bottom: 40.0, right: 50.0)
@@ -21,19 +20,14 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
-	var dataStore = PagedArray<Item>(count: 1, pageSize: 1)
-	
-	// var dataStore = [Item]()
+	var dataStore = [Item]()
+	var page = 1
+	var totalPages = 1
 	
 	var viewType: ItemType? {
 		didSet {
-			self.dataStore.removeAllPages()
-			self.dataStore.updatesCountWhenSettingPages = true
-			getItems(page: 1) { items, pagination in
-				guard let items = items else {return}
-				self.dataStore = PagedArray<Item>(count: (pagination?.totalItems)!, pageSize: 50, startPage: 1)
-				self.dataStore.set(items, forPage: 1)
-				self.performDataChanges()
+			if collectionView != nil {
+				loadInfiniteScroll(genre: nil, year: nil, sort: nil)
 			}
 		}
 	}
@@ -48,7 +42,10 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		menuGesture.delegate = self
 		collectionView.addGestureRecognizer(menuGesture)
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-		collectionView.remembersLastFocusedIndexPath = false
+		collectionView.remembersLastFocusedIndexPath = true
+		collectionView.prefetchDataSource = self
+		collectionView.infiniteScrollTriggerOffset = 500
+		loadInfiniteScroll(genre: nil, year: nil, sort: nil)
 	}
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -56,27 +53,68 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		return super.preferredFocusEnvironments
 	}
 	
-	func focusSubMenu(_ recognizer: UITapGestureRecognizer) {
+	internal func focusSubMenu(_ recognizer: UITapGestureRecognizer) {
 		shouldFocusSubmenu = true
 		setNeedsFocusUpdate()
 		updateFocusIfNeeded()
 		shouldFocusSubmenu = false
 	}
+}
+
+extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, KinoListable {
 	
-	func performDataChanges() {
-//		collectionView.reloadData()
+	fileprivate func fadeCells() {
 		let range = NSMakeRange(0, self.collectionView.numberOfSections)
 		let sections = NSIndexSet(indexesIn: range)
 		collectionView.reloadSections(sections as IndexSet)
-		let index = IndexPath(item: 0, section: 0)
-		collectionView.scrollToItem(at: index, at: .top, animated: false)
 	}
 	
-}
+	internal func loadInfiniteScroll(genre: Genre?, year: String?, sort: String?) {
+		self.page = 1
+		if dataStore.count > 0 {
+			self.dataStore.removeAll(keepingCapacity: false)
+			self.fadeCells()
+		}
+		self.collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
+			
+			guard let page = self?.page else { return }
+			if self?.totalPages == page-1 {
+				self?.collectionView.removeInfiniteScroll()
+				return
+			} else {
+				self?.getItems(page: page) { items, pagination in
+					
+					guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {return}
+					guard let items = items else { return }
+					// log.debug("Paging result: total pages -> \(totalpages)")
+					if totalpages == 0 {
+						log.debug("We got 0 results. Resetting")
+						scrollView.finishInfiniteScroll()
+					} else {
+						
+						let firstIndex = self?.dataStore.count
+						var indexPaths = [IndexPath]()
+						for (i, item) in items.enumerated() {
+							let indexPath = IndexPath(item: firstIndex! + i, section: 0)
+							self?.dataStore.append(item)
+							indexPaths.append(indexPath)
+						}
+						// log.debug("Performing batch update of collectionView")
+						self?.collectionView.performBatchUpdates({ () -> Void in
+							self?.collectionView.insertItems(at: indexPaths)
+						}, completion: { (finished) -> Void in
+							// Do something at the very end. Or not :)
+						})
+						self?.totalPages = totalpages
+						self?.page = current+1 // Next page
+						scrollView.finishInfiniteScroll()
+					}
+				}
+			}
+		}
+	}
 
-extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, KinoListable {
-	
-	func getItems(page: Int, callback: @escaping (_ items: [Item]?, _ pagination: Pagination?) -> ()) {
+	fileprivate func getItems(page: Int, callback: @escaping (_ items: [Item]?, _ pagination: Pagination?) -> ()) {
 		if let type = viewType {
 			fetchItems(type: type, page: page) { (status) in
 				switch status {
@@ -94,48 +132,6 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		}
 	}
 	
-	fileprivate func loadDataIfNeededForRow(_ row: Int) {
-		let currentPage = dataStore.page(for: row)
-//		log.debug("Current page: \(currentPage)")
-		if needsLoadDataForPage(page: currentPage) {
-//			log.debug("We need more data!")
-			loadDataForPage(currentPage)
-		}
-		
-		let preloadIndex = row+PreloadMargin
-		
-		if preloadIndex < dataStore.endIndex {
-//			log.debug("We're still withing the cells limit")
-//			log.debug("Do we need more cells?")
-			let preloadPage = dataStore.page(for: preloadIndex)
-			if preloadPage > currentPage && needsLoadDataForPage(page: preloadPage) {
-//				log.debug("Yup")
-				loadDataForPage(preloadPage)
-			}
-		}
-	}
-	
-	fileprivate func needsLoadDataForPage(page: Int) -> Bool {
-		if let index = dataStore.indexes(for: page).first?.advanced(by: 1), index < dataStore.count {
-			return dataStore[index] == nil && !pagesLoading.contains(page)
-		}
-		return false
-	}
-
-	private func loadDataForPage(_ page: Int) {
-//		log.debug("Loading data for page: \(page)")
-		let indexes = dataStore.indexes(for: page)
-
-		getItems(page: page) { (items, pagination) in
-			guard let items = items, let pagination = pagination, let current = pagination.current else {return}
-//			log.debug("We now have page: \(pagination.current)")
-			self.dataStore.set(items, forPage: current)
-			if let indexPathsToReload = self.visibleIndexPathsForIndexes(indexes) {
-				self.collectionView.reloadItems(at: indexPathsToReload)
-			}
-		}
-	}
-	
 	private func visibleIndexPathsForIndexes(_ indexes: CountableRange<Int>) -> [IndexPath]? {
 		return collectionView.indexPathsForVisibleItems.filter {indexes.contains(($0 as NSIndexPath).row) }
 	}
@@ -149,7 +145,6 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		loadDataIfNeededForRow((indexPath as NSIndexPath).row)
 		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? ItemCollectionViewCell {
 			let item = dataStore[indexPath.row]
 			cell.data = item
@@ -158,29 +153,31 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		return UICollectionViewCell()
 	}
 	
-	//	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-	//		return sectionInsets
-	//	}
-	//
-	//	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-	//		return 30.0
-	//	}
-	//
-	//	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-	//		return 30.0
-	//	}
-	//
-	//	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-	//		return CGSize(width: 305, height: 475)
-	//	}
-
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		if let item = dataStore[indexPath.row] {
-			let controller = ItemViewController(nibName: "ItemViewController", bundle: nil)
-			let subtype = item.subtype != "" ? ItemSubType(rawValue: item.subtype!) : nil
-			controller.kinoItem = KinoItem(id: item.id, type: ItemType(rawValue: item.type!), subtype: subtype)
-			self.present(controller, animated: true, completion: nil)
+		let item = dataStore[indexPath.row]
+		let controller = ItemViewController(nibName: "ItemViewController", bundle: nil)
+		let subtype = item.subtype != "" ? ItemSubType(rawValue: item.subtype!) : nil
+		controller.kinoItem = KinoItem(id: item.id, type: ItemType(rawValue: item.type!), subtype: subtype)
+		self.present(controller, animated: true, completion: nil)
+	}
+	
+	// MARK: Prefetching
+	
+	func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+		for indexPath in indexPaths {
+			if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? ItemCollectionViewCell {
+				let item = dataStore[indexPath.row]
+				cell.data = item
+			}
 		}
 	}
 	
+	func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+		for indexPath in indexPaths {
+			if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? ItemCollectionViewCell {
+				cell.cancelPrefetching()
+			}
+		}
+	}
+
 }

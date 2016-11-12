@@ -57,10 +57,8 @@ class WatchViewController: UIViewController {
 		default: type = .movies
 		}
 		listController?.viewType = type
-		
 //		Answers.logCustomEvent(withName: "Activation", customAttributes: ["Action":"Startup Auth Check", "Status":"Authorized"])
 		Answers.logContentView(withName: "List View", contentType: type.rawValue, contentId: nil, customAttributes: nil)
-
 	}
 
     // MARK: - Navigation

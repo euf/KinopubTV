@@ -40,9 +40,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
 			}
 		}
 	}
+	
+	func cancelPrefetching() {
+		poster.af_cancelImageRequest()
+	}
 
-	
-	
 	/// Вытворяет всякие фокусы с "фокусом" )) Для наших плакатов в списке фильмов увеличивает их и прячет название.
 	/// На самом деле анимация сильно подтормаживает интерфейс лучше ее отключить.
 	///
