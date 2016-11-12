@@ -32,7 +32,6 @@
                 <outlet property="rating" destination="4Lx-dF-SLD" id="7Rv-Dr-gkT"/>
                 <outlet property="seasonLabel" destination="nyY-I8-L4b" id="zuC-5u-tYh"/>
                 <outlet property="seasonsScroll" destination="o7O-n2-B64" id="iqM-SG-eoY"/>
-                <outlet property="seasonsScrollView" destination="ex0-An-4qb" id="wkI-M8-Gmu"/>
                 <outlet property="stars" destination="Vhd-wV-mhJ" id="vz2-WR-EuV"/>
                 <outlet property="titleEn" destination="2F3-DP-2GG" id="Kp7-5M-Wrd"/>
                 <outlet property="titleRu" destination="LAW-cc-gg9" id="vfd-ma-89m"/>
@@ -289,9 +288,6 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex0-An-4qb">
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В  РОЛЯХ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Un3-P1-HnO">
                     <rect key="frame" x="215" y="174" width="93" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -334,7 +330,7 @@
                     <color key="textColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8a-Sp-frf" userLabel="Loading cover">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8a-Sp-frf" userLabel="Loading cover">
                     <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LJP-SH-3hC">
