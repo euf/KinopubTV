@@ -80,7 +80,6 @@ class ItemViewController: UIViewController {
 	@IBOutlet weak var watchTrailerLabel: UILabel!
 	@IBOutlet weak var markWatchedLabel: UILabel!
 	@IBOutlet weak var addFavoriteLabel: UILabel!
-	@IBOutlet weak var seasonsScrollView: UIScrollView!
 	@IBOutlet var collectionView: UICollectionView!
 
 	@IBOutlet var loadingCover: UIView!
