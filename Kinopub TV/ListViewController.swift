@@ -19,6 +19,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	var pagesLoading = Set<Int>()
 	
 	@IBOutlet weak var collectionView: UICollectionView!
+	@IBOutlet var activityIndicator: UIActivityIndicatorView!
 	
 	var dataStore = [Item]()
 	var page = 1
@@ -43,9 +44,10 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		collectionView.addGestureRecognizer(menuGesture)
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView.remembersLastFocusedIndexPath = true
-		collectionView.prefetchDataSource = self
+//		collectionView.prefetchDataSource = self
 		collectionView.infiniteScrollTriggerOffset = 500
 		loadInfiniteScroll(genre: nil, year: nil, sort: nil)
+		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
 	}
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -61,7 +63,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 }
 
-extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, KinoListable {
+extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, /*UICollectionViewDataSourcePrefetching,*/ KinoListable {
 	
 	fileprivate func fadeCells() {
 		let range = NSMakeRange(0, self.collectionView.numberOfSections)
@@ -70,25 +72,28 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 	
 	internal func loadInfiniteScroll(genre: Genre?, year: String?, sort: String?) {
+//		log.debug("Setting up infinite load")
 		self.page = 1
 		if dataStore.count > 0 {
+			activityIndicator.startAnimating()
 			self.dataStore.removeAll(keepingCapacity: false)
 			self.fadeCells()
 		}
 		self.collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
-			
+//			log.debug("Initiated infinite scroll")
 			guard let page = self?.page else { return }
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()
 				return
 			} else {
 				self?.getItems(page: page) { items, pagination in
-					
+//					log.debug("Got response from server with items")
 					guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {return}
 					guard let items = items else { return }
 					// log.debug("Paging result: total pages -> \(totalpages)")
 					if totalpages == 0 {
 						log.debug("We got 0 results. Resetting")
+						self?.activityIndicator.stopAnimating()
 						scrollView.finishInfiniteScroll()
 					} else {
 						
@@ -103,7 +108,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 						self?.collectionView.performBatchUpdates({ () -> Void in
 							self?.collectionView.insertItems(at: indexPaths)
 						}, completion: { (finished) -> Void in
-							// Do something at the very end. Or not :)
+							self?.activityIndicator.stopAnimating()
 						})
 						self?.totalPages = totalpages
 						self?.page = current+1 // Next page
@@ -163,7 +168,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	
 	// MARK: Prefetching
 	
-	func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+/*	func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
 		for indexPath in indexPaths {
 			if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? ItemCollectionViewCell {
 				let item = dataStore[indexPath.row]
@@ -178,6 +183,6 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 				cell.cancelPrefetching()
 			}
 		}
-	}
+	}*/
 
 }

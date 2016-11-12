@@ -21,6 +21,11 @@ class WatchViewController: UIViewController {
         super.viewDidLoad()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		subMenuSegments.backgroundColor = UIColor(red:0.37, green:0.37, blue:0.37, alpha:1.00)
+	}
+	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		if let _ = context.previouslyFocusedView as? PITabBarButton {
 			subMenuTopConstraint.constant = 20
@@ -66,6 +71,7 @@ class WatchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "listView" {
 			if let controller = segue.destination as? ListViewController {
+				log.debug("Preparing List view from WatchController")
 				listController = controller
 				listController?.segments = subMenuSegments
 				changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)
