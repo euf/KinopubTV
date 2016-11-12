@@ -101,3 +101,4 @@ class ItemViewController: UIViewController {
 	@IBAction func qualitySegmentChanged(_ sender: UISegmentedControl) { updateQuality(control: sender) }
 
 }
+

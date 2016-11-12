@@ -468,40 +468,12 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		log.debug("trailer youtube id: \(youtubeID)")
 		XCDYouTubeClient.default().getVideoWithIdentifier(youtubeID) { video, error in
 			if let _ = video {
-//				var videoURL: URL?
-//				for vi in video.streamURLs {
-//					if vi.key == XCDYouTubeVideoQuality.HD720.rawValue as AnyHashable {
-//						videoURL = vi.value
-//						break
-//					}
-//				}
-//				for vi in video.streamURLs {
-//					if vi.key == XCDYouTubeVideoQuality.medium360.rawValue as AnyHashable {
-//						videoURL = vi.value
-//						break
-//					}
-//				}
-//				for vi in video.streamURLs {
-//					if vi.key == XCDYouTubeVideoQuality.small240.rawValue as AnyHashable {
-//						videoURL = vi.value
-//						break
-//					}
-//				}
-//				print(videoURL)
-//				guard let url = videoURL else {return}
-//				self.playVideo(videoURL: url, episode: nil, season: nil, fromPosition: nil) { _ in }
-//				
-				
-				/*if let streamURL = (video.streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] ??
-					video.streamURLs[XCDYouTubeVideoQuality.medium360.rawValue] ??
-					video.streamURLs[XCDYouTubeVideoQuality.small240.rawValue]) {
-					print("Should start playing trailer")
+				if let streamURLs = video?.streamURLs, let streamURL = (streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ?? streamURLs[YouTubeVideoQuality.hd720] ?? streamURLs[YouTubeVideoQuality.medium360] ?? streamURLs[YouTubeVideoQuality.small240]) {
 					self.playVideo(videoURL: streamURL, episode: nil, season: nil, fromPosition: nil) { _ in }
-				}*/
+				}
 			}
 		}
 	}
-	
 	
 	/// Помечает кино просмотренным
 	internal func markWatched() {
@@ -581,4 +553,11 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
 		return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
 	}
 	
+}
+
+
+struct YouTubeVideoQuality {
+	static let hd720 = NSNumber(value: XCDYouTubeVideoQuality.HD720.rawValue)
+	static let medium360 = NSNumber(value: XCDYouTubeVideoQuality.medium360.rawValue)
+	static let small240 = NSNumber(value: XCDYouTubeVideoQuality.small240.rawValue)
 }
