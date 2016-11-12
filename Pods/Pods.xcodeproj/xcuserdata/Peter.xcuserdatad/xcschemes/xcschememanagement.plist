@@ -39,11 +39,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PagedArray.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Kinopub TV.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,12 +82,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>26CA8A9BABF92D327E677BCC3D6BD97D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F0FE1E2A5B1EF15139E10A40F05CE94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>333E47F1004946B94926B19979768D18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +112,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4FD42EC9B524D67A71318CFC21794E37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>608B49B5DDACC601EE8044A1931993F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6D8E2862AB825FE29C672D92F2B34AA9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EB0BC88A11ECA7D68D630B8BF554EC4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B88E1327F395CA3DEA170771728C52E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>838A2C6DA366DE138E5FDF1AF19D94C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +172,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A7B6FF4EF14B8624E74E28958D08392F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5CBCAA97E951CC882334464FBDF983D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD568372141CE735976CFEDA166C7528</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E0046A811240ACB8A2B4D8A7236F02D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EF5242B819B32E016A5460C3FB741B34</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5D8CC8669AF817AFAA7CDF846973494</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBD082A0D35F7917EAB9DD9D3CCA9976</key>
 		<dict>
 			<key>primary</key>
 			<true/>
