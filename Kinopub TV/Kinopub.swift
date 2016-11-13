@@ -255,8 +255,6 @@ extension KinoViewable where Self: UIViewController {
 		}
 	}
 	
-	
-	
 }
 
 protocol QualityDefinable {
@@ -313,4 +311,18 @@ extension KinoPlayable {
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -72,7 +72,6 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 	
 	internal func loadInfiniteScroll(genre: Genre?, year: String?, sort: String?) {
-//		log.debug("Setting up infinite load")
 		self.page = 1
 		if dataStore.count > 0 {
 			activityIndicator.startAnimating()
@@ -80,57 +79,55 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 			self.fadeCells()
 		}
 		self.collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
-//			log.debug("Initiated infinite scroll")
 			guard let page = self?.page else { return }
+			
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()
 				return
 			} else {
-				self?.getItems(page: page) { items, pagination in
-//					log.debug("Got response from server with items")
-					guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {return}
-					guard let items = items else { return }
-					// log.debug("Paging result: total pages -> \(totalpages)")
-					if totalpages == 0 {
-						log.debug("We got 0 results. Resetting")
-						self?.activityIndicator.stopAnimating()
-						scrollView.finishInfiniteScroll()
-					} else {
-						
-						let firstIndex = self?.dataStore.count
-						var indexPaths = [IndexPath]()
-						for (i, item) in items.enumerated() {
-							let indexPath = IndexPath(item: firstIndex! + i, section: 0)
-							self?.dataStore.append(item)
-							indexPaths.append(indexPath)
-						}
-						// log.debug("Performing batch update of collectionView")
-						self?.collectionView.performBatchUpdates({ () -> Void in
-							self?.collectionView.insertItems(at: indexPaths)
-						}, completion: { (finished) -> Void in
-							self?.activityIndicator.stopAnimating()
-						})
-						self?.totalPages = totalpages
-						self?.page = current+1 // Next page
-						scrollView.finishInfiniteScroll()
-					}
+				self?.getItems(for: page) { pagination in
+					self?.activityIndicator.stopAnimating()
+					scrollView.finishInfiniteScroll()
 				}
 			}
 		}
 	}
 
-	fileprivate func getItems(page: Int, callback: @escaping (_ items: [Item]?, _ pagination: Pagination?) -> ()) {
+	fileprivate func getItems(for page: Int, callback: @escaping (_ pagination: Pagination?) -> ()) {
 		if let type = viewType {
 			fetchItems(type: type, page: page) { (status) in
 				switch status {
 				case .success(let items, let pagination):
 					if let items = items {
-						callback(items, pagination)
+						
+						guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {
+							callback(nil)
+							return
+						}
+						
+						if totalpages > 0 {
+							let firstIndex = self.dataStore.count
+							var indexPaths = [IndexPath]()
+							for (i, item) in items.enumerated() {
+								let indexPath = IndexPath(item: firstIndex + i, section: 0)
+								self.dataStore.append(item)
+								indexPaths.append(indexPath)
+							}
+							self.collectionView.performBatchUpdates({ () -> Void in
+								self.collectionView.insertItems(at: indexPaths)
+							}, completion: { (finished) -> Void in
+								
+							})
+							self.totalPages = totalpages
+							self.page = current+1
+						}
+						
+						callback(pagination)
 					}
 					break
 				case .error(let error):
 					log.error("Error getting items: \(error)")
-					callback(nil, nil)
+					callback(nil)
 					break
 				}
 			}
