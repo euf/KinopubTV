@@ -18,9 +18,10 @@ struct Pick: Mappable {
 	
 	init?(map: Map) {}
 	mutating func mapping(map: Map) {
-		current <- map["current"]
-		total <- map["total"]
-		perpage <- map["perpage"]
-		totalItems <- map["total_items"]
+		id <- map["id"]
+		title <- map["title"]
+		views <- map["views"]
+		watchers <- map["watchers"]
+		posters <- map["posters"]
 	}
 }

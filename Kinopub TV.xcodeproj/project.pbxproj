@@ -44,7 +44,6 @@
 		D0DB94531DAA59B10031CD13 /* FocusableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94521DAA59B10031CD13 /* FocusableText.swift */; };
 		D0DB94551DAA5A4B0031CD13 /* MovieDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94541DAA5A4B0031CD13 /* MovieDescriptionViewController.swift */; };
 		D0DB94571DAA5D1C0031CD13 /* ItemViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */; };
-		D0F61C3B1DA16F9000D58027 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F61C3A1DA16F9000D58027 /* Pageable.swift */; };
 		D0FD64871D89302000660496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD64861D89302000660496 /* AppDelegate.swift */; };
 		D0FD648C1D89302000660496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FD648A1D89302000660496 /* Main.storyboard */; };
 		D0FD648E1D89302000660496 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0FD648D1D89302000660496 /* Assets.xcassets */; };
@@ -91,7 +90,6 @@
 		D0DB94541DAA5A4B0031CD13 /* MovieDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDescriptionViewController.swift; sourceTree = "<group>"; };
 		D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController_Extension.swift; sourceTree = "<group>"; };
 		D0DEE47F1D9B044100FD05A7 /* Kinopub TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kinopub TV-Bridging-Header.h"; sourceTree = "<group>"; };
-		D0F61C3A1DA16F9000D58027 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pageable.swift; sourceTree = "<group>"; };
 		D0FD64831D89302000660496 /* Kinopub TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kinopub TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FD64861D89302000660496 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FD648B1D89302000660496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				D0289A641D89A14000241ED2 /* Kinopub.swift */,
 				D0289A661D89A18F00241ED2 /* KinopubLogin.swift */,
 				D0289A681D89E0F200241ED2 /* Connectable.swift */,
-				D0F61C3A1DA16F9000D58027 /* Pageable.swift */,
 				D05B45041DB28E330064FC6D /* TVViewable.swift */,
 			);
 			name = Protocols;
@@ -392,7 +389,6 @@
 				D0DB944F1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift in Sources */,
 				D0DB944B1DAA517E0031CD13 /* _ItemViewController.swift in Sources */,
 				D0289A651D89A14000241ED2 /* Kinopub.swift in Sources */,
-				D0F61C3B1DA16F9000D58027 /* Pageable.swift in Sources */,
 				D0289A7E1D8AEE5C00241ED2 /* TabbarController.swift in Sources */,
 				D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */,
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
