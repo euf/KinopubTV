@@ -39,11 +39,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PagedArray.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Kinopub TV.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,16 +72,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2093B24ABEA3239604D7A5E11E3514F7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2641217CB7DF374EB3E5B3627D63AA40</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2F0FE1E2A5B1EF15139E10A40F05CE94</key>
 		<dict>
 			<key>primary</key>
@@ -97,22 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>368F545F37E1E7CF8BEF5EC947ED1E78</key>
+		<key>5E064491EA3AE76BDF3C32D8E0C777B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C60B194332E4B75EAFC31023E4DDF62</key>
+		<key>6631665DB648D1BB19662F4B7DF92148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D8E2862AB825FE29C672D92F2B34AA9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8693810DAC239CDDB27859DFE3ABB97D</key>
+		<key>6EE79260C08BD2F4F3BBB9E39E3A2FAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +117,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0046A811240ACB8A2B4D8A7236F02D6</key>
+		<key>D9F1B419447A9A02DF5A8440D2D53D74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E67F406948BE5203C53FB0EFECBE10C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EF5242B819B32E016A5460C3FB741B34</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBF11608ED6609E947FCFFAD1177C376</key>
 		<dict>
 			<key>primary</key>
 			<true/>
