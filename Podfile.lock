@@ -5,13 +5,12 @@ PODS:
   - AlamofireObjectMapper (4.0.0):
     - Alamofire (~> 4.0)
     - ObjectMapper (~> 2.0)
-  - Cosmos (6.0.0)
+  - Cosmos (7.0.0)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
   - KeychainAccess (3.0.1)
   - ObjectMapper (2.2.1)
-  - PagedArray (0.5)
   - PMKVObserver (2.0.1):
     - PMKVObserver/ObjC (= 2.0.1)
     - PMKVObserver/Swift (= 2.0.1)
@@ -19,7 +18,7 @@ PODS:
   - PMKVObserver/Swift (2.0.1):
     - PMKVObserver/ObjC
   - SwiftyBeaver (1.1.1)
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (3.1.1)
   - SwiftyUserDefaults (3.0.0)
   - UIScrollView-InfiniteScroll (0.9.2)
   - XCDYouTubeKit (2.5.3)
@@ -27,52 +26,24 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - AlamofireObjectMapper (from `https://github.com/tristanhimmelman/AlamofireObjectMapper.git`)
-  - Cosmos (from `https://github.com/marketplacer/Cosmos.git`, tag `6.0.0`)
+  - AlamofireObjectMapper (~> 4.0)
+  - Cosmos (~> 7.0)
   - Crashlytics
   - Fabric
-  - KeychainAccess (from `https://github.com/kishikawakatsumi/KeychainAccess.git`)
+  - KeychainAccess
   - ObjectMapper
-  - PagedArray (~> 0.5)
-  - PMKVObserver (from `https://github.com/postmates/PMKVObserver.git`, branch `master`)
+  - PMKVObserver
   - SwiftyBeaver
-  - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON`)
+  - SwiftyJSON
   - SwiftyUserDefaults
   - UIScrollView-InfiniteScroll (from `https://github.com/staticdreams/UIScrollView-InfiniteScroll.git`)
   - XCDYouTubeKit
 
 EXTERNAL SOURCES:
-  AlamofireObjectMapper:
-    :git: https://github.com/tristanhimmelman/AlamofireObjectMapper.git
-  Cosmos:
-    :git: https://github.com/marketplacer/Cosmos.git
-    :tag: 6.0.0
-  KeychainAccess:
-    :git: https://github.com/kishikawakatsumi/KeychainAccess.git
-  PMKVObserver:
-    :branch: master
-    :git: https://github.com/postmates/PMKVObserver.git
-  SwiftyJSON:
-    :git: https://github.com/IBM-Swift/SwiftyJSON
   UIScrollView-InfiniteScroll:
     :git: https://github.com/staticdreams/UIScrollView-InfiniteScroll.git
 
 CHECKOUT OPTIONS:
-  AlamofireObjectMapper:
-    :commit: 92bace8ffb07af31def22bc910a2f0f8ad6e1d53
-    :git: https://github.com/tristanhimmelman/AlamofireObjectMapper.git
-  Cosmos:
-    :git: https://github.com/marketplacer/Cosmos.git
-    :tag: 6.0.0
-  KeychainAccess:
-    :commit: 20f0c126c3cdd279a385b8444b55d3499f41fb82
-    :git: https://github.com/kishikawakatsumi/KeychainAccess.git
-  PMKVObserver:
-    :commit: d523d53a03b268443d0041f842888a5841144bca
-    :git: https://github.com/postmates/PMKVObserver.git
-  SwiftyJSON:
-    :commit: 9b339c17e4910b47be26f21dd660905e9d9a6634
-    :git: https://github.com/IBM-Swift/SwiftyJSON
   UIScrollView-InfiniteScroll:
     :commit: 005d71fd5d190da0eebd3d73cc47710433ce67f1
     :git: https://github.com/staticdreams/UIScrollView-InfiniteScroll.git
@@ -81,19 +52,18 @@ SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
-  Cosmos: 65034961774a9292a7ce3da30fce8e2ec02efcaf
+  Cosmos: 2c8299147138758f6ebbb247cf1aeed77998bdf9
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
-  PagedArray: bf24601ebcc5f2afccb4d5d3637247dc26850df5
   PMKVObserver: f3955b3beae9c6198ad347d4eb9b125477e9cb72
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   UIScrollView-InfiniteScroll: 428d0e9485a97de0ecccfbf161e7e2fec0bdae90
   XCDYouTubeKit: 90690f9e3523735dc93b8024269d991b0cfffe78
 
-PODFILE CHECKSUM: 9f3688a9fad46833f3383373a6fdd53e6175dc6f
+PODFILE CHECKSUM: b5a5881366fe0a6dd2a865753cd34a227a2a0034
 
 COCOAPODS: 1.1.1

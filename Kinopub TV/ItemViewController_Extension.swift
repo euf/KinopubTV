@@ -11,6 +11,7 @@ import SwiftyUserDefaults
 import AlamofireImage
 import Cosmos
 import XCDYouTubeKit
+import AVKit
 
 extension ItemViewController: KinoViewable, QualityDefinable {
 	
@@ -392,13 +393,13 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				let alert = UIAlertController(title: item?.title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
 				
 				let buttonContinue = UIAlertAction(title: "Продолжить просмотр", style: UIAlertActionStyle.default) { action in
-					self.playVideo(videoURL: url, episode: video, season: nil, fromPosition: continueWatchingPosition) { position in
+					self.playVideo(with: url, episode: video, season: nil, fromPosition: continueWatchingPosition) { position in
 						self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 					}
 				}
 				alert.addAction(buttonContinue)
 				let buttonStart = UIAlertAction(title: "Смотреть с начала", style: UIAlertActionStyle.default) { action in
-					self.playVideo(videoURL: url, episode: video, season: nil, fromPosition: nil) { position in
+					self.playVideo(with: url, episode: video, season: nil, fromPosition: nil) { position in
 						self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 					}
 				}
@@ -409,7 +410,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				
 			} else { // Мы еще не начинали смотреть этот фильм. Запускаем, минуя менюшку
 				
-				self.playVideo(videoURL: url as URL, episode: video, season: nil, fromPosition: nil) { position in
+				self.playVideo(with: url as URL, episode: video, season: nil, fromPosition: nil) { position in
 					self.updateWatchingProgressForVideo(type: kinoItem.type!, video: video, position: position)
 				}
 			}
@@ -436,7 +437,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		if let continueWatchingPosition = episode.watching?.time, continueWatchingPosition > 0 && episode.watching?.status != .watched {
 			
 			let buttonContinue = UIAlertAction(title: "Продолжить просмотр", style: UIAlertActionStyle.default) { action in
-				self.playVideo(videoURL: url, episode: episode, season: self.currentSeason, fromPosition: continueWatchingPosition) { position in
+				self.playVideo(with: url, episode: episode, season: self.currentSeason, fromPosition: continueWatchingPosition) { position in
 					self.updateWatchingProgressForVideo(type: kinoItem.type!, video: episode, position: position)
 				}
 			}
@@ -444,7 +445,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 		
 		let buttonStart = UIAlertAction(title: "Смотреть эпизод с начала", style: UIAlertActionStyle.default) { action in
-			self.playVideo(videoURL: url, episode: episode, season: self.currentSeason, fromPosition: nil) { position in
+			self.playVideo(with: url, episode: episode, season: self.currentSeason, fromPosition: nil) { position in
 				self.updateWatchingProgressForVideo(type: kinoItem.type!, video: episode, position: position)
 			}
 		}
@@ -469,7 +470,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		XCDYouTubeClient.default().getVideoWithIdentifier(youtubeID) { video, error in
 			if let _ = video {
 				if let streamURLs = video?.streamURLs, let streamURL = (streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ?? streamURLs[YouTubeVideoQuality.hd720] ?? streamURLs[YouTubeVideoQuality.medium360] ?? streamURLs[YouTubeVideoQuality.small240]) {
-					self.playVideo(videoURL: streamURL, episode: nil, season: nil, fromPosition: nil) { _ in }
+					self.playVideo(with: streamURL, episode: nil, season: nil, fromPosition: nil) { _ in }
 				}
 			}
 		}
