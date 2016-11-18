@@ -56,7 +56,7 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5D-ON-mpf">
-                                <rect key="frame" x="0.0" y="251" width="1920" height="809"/>
+                                <rect key="frame" x="0.0" y="229" width="1920" height="831"/>
                                 <connections>
                                     <segue destination="RFD-6v-0tW" kind="embed" identifier="listView" id="TVB-pc-ru8"/>
                                 </connections>
@@ -69,7 +69,7 @@
                             <constraint firstAttribute="trailing" secondItem="1nk-LA-auQ" secondAttribute="trailing" constant="20" id="QFb-E7-hk5"/>
                             <constraint firstItem="1nk-LA-auQ" firstAttribute="leading" secondItem="vYB-Io-O0c" secondAttribute="leading" constant="20" id="WHa-C7-7wP"/>
                             <constraint firstItem="1nk-LA-auQ" firstAttribute="top" secondItem="t9z-QH-ZDY" secondAttribute="bottom" constant="150" id="fvg-Xe-9gF"/>
-                            <constraint firstItem="I5D-ON-mpf" firstAttribute="top" secondItem="1nk-LA-auQ" secondAttribute="bottom" constant="32" id="g1H-z4-WEa"/>
+                            <constraint firstItem="I5D-ON-mpf" firstAttribute="top" secondItem="1nk-LA-auQ" secondAttribute="bottom" constant="10" id="g1H-z4-WEa"/>
                             <constraint firstItem="sTX-Jm-lZe" firstAttribute="top" secondItem="I5D-ON-mpf" secondAttribute="bottom" constant="20" id="gnu-HC-ThJ"/>
                         </constraints>
                     </view>
@@ -338,11 +338,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Yaf-OQ-bes"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="les-fz-aZB">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="809"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="831"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4O-SJ-FGo">
-                                <rect key="frame" x="20" y="20" width="1880" height="769"/>
+                                <rect key="frame" x="20" y="20" width="1880" height="791"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="30" id="CyS-Wu-OGz">
                                     <size key="itemSize" width="305" height="475"/>
@@ -360,6 +360,20 @@
                                 <rect key="frame" x="928" y="372" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSL-Pb-3pD">
+                                <rect key="frame" x="0.0" y="1" width="1920" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufm-TN-knq">
+                                        <rect key="frame" x="19" y="17" width="1879" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -371,12 +385,15 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="d8x-eU-8aT" id="DzX-Hr-wej"/>
+                        <outlet property="collectionTopConstraint" destination="KvE-Fl-cyU" id="OE1-m4-cLn"/>
                         <outlet property="collectionView" destination="G4O-SJ-FGo" id="wlT-qF-lSy"/>
+                        <outlet property="picksBarView" destination="zSL-Pb-3pD" id="Vea-CO-M4s"/>
+                        <outlet property="picksCategoryLabel" destination="Ufm-TN-knq" id="Tl6-La-fBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87h-AR-QjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89" y="3059"/>
+            <point key="canvasLocation" x="89" y="3058.5"/>
         </scene>
         <!--Description View-->
         <scene sceneID="gmG-ce-biD">

@@ -16,8 +16,11 @@ fileprivate let PreloadMargin = 100
 
 class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
+	@IBOutlet var picksBarView: UIView!
+	@IBOutlet var picksCategoryLabel: UILabel!
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet var collectionTopConstraint: NSLayoutConstraint!
 	
 	var shouldFocusSubmenu = false
 	var segments: UISegmentedControl?
@@ -42,26 +45,31 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		didSet { if collectionView != nil { loadInfiniteScroll() } }
 	}
 	
-	var pick: Pick? {
-		didSet { if collectionView != nil { loadPicks() } }
-	}
+	var pick: Pick?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-		collectionView.remembersLastFocusedIndexPath = true
-		
+		collectionView.remembersLastFocusedIndexPath = false
 		if let _ = viewType {
 			let menuGesture = UITapGestureRecognizer(target: self, action: #selector(self.focusSubMenu(_:)))
 			menuGesture.allowedPressTypes = [NSNumber(value: UIPressType.menu.rawValue as Int)]
 			menuGesture.delegate = self
 			collectionView.addGestureRecognizer(menuGesture)
 			collectionView.infiniteScrollTriggerOffset = 500
+			collectionView.remembersLastFocusedIndexPath = true
+			collectionTopConstraint.constant = 10
 			loadInfiniteScroll()
 		} else {
+			picksBarView.isHidden = false
+			collectionTopConstraint.constant = 60
+			picksCategoryLabel.text = pick?.title
+			picksBarView.addBlurEffect()
 			loadPicks()
 		}
+		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
 		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
 	}
 	
@@ -76,6 +84,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		updateFocusIfNeeded()
 		shouldFocusSubmenu = false
 	}
+	
 }
 
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, /*UICollectionViewDataSourcePrefetching,*/ KinoListable {
