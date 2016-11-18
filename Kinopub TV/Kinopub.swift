@@ -24,11 +24,25 @@ enum ItemsResponse {
 }
 
 protocol KinoListable: Connectable {
-	func fetchItems(type: ItemType, page: Int?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
+	func fetchItems(for type: ItemType, page: Int?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
+	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 }
 
 extension KinoListable {
-	func fetchItems(type: ItemType, page: Int? = 1, callback: @escaping (_ response: ItemsResponse) -> ()) {
+	
+	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) {
+		let parameters: Dictionary<String, AnyObject> = [
+			"id": pick.id as AnyObject
+		]
+		let request = Request(type: .resource, resourceURL: "/collections/view", method: .get, parameters: parameters)
+		performRequest(resource: request) { result, error in
+			self.processItemsResponse(for: result, error: error) { response in
+				callback(response)
+			}
+		}
+	}
+	
+	func fetchItems(for type: ItemType, page: Int? = 1, callback: @escaping (_ response: ItemsResponse) -> ()) {
 		let parameters: Dictionary<String, AnyObject> = [
 			"type": type.rawValue as AnyObject,
 			"perpage": 50 as AnyObject,
@@ -37,28 +51,34 @@ extension KinoListable {
 		
 		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
 		performRequest(resource: request) { result, error in
-			switch (result, error) {
-			case(let result?, _):
-				if result["status"] == 200 {
-					
-					if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject),
-					let pagination = Mapper<Pagination>().map(JSONObject: result["pagination"].object)
-					{
-//						log.debug("Successfully mapped all the entries")
-						callback(.success(items: items, pagination: pagination))
-					} else {
-						log.warning("Problem mapping items. Returning nil")
-						callback(.success(items: nil, pagination: nil))
-					}
-				}
-			case(_, let error?):
-				log.error("Error accessing the service \(error)")
-				callback(.error(error: error))
-				break
-			default: break
+			self.processItemsResponse(for: result, error: error) { response in
+				callback(response)
 			}
 		}
-		
+	}
+	
+	fileprivate func processItemsResponse(for result: JSON?, error: NSError?, callback: @escaping (_ response: ItemsResponse) -> ()) {
+		switch (result, error) {
+		case(let result?, _):
+			if result["status"] == 200 {
+				
+				if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject),
+					let pagination = Mapper<Pagination>().map(JSONObject: result["pagination"].object)
+				{
+					callback(.success(items: items, pagination: pagination))
+				} else if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject) { // Case of picks, where there is no pagination
+					callback(.success(items: items, pagination: nil))
+				} else {
+					log.warning("Problem mapping items. Returning nil")
+					callback(.success(items: nil, pagination: nil))
+				}
+			}
+		case(_, let error?):
+			log.error("Error accessing the service \(error)")
+			callback(.error(error: error))
+			break
+		default: break
+		}
 	}
 }
 

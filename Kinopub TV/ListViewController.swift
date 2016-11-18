@@ -16,42 +16,57 @@ fileprivate let PreloadMargin = 100
 
 class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
-	var pagesLoading = Set<Int>()
-	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet var activityIndicator: UIActivityIndicatorView!
+	
+	var shouldFocusSubmenu = false
+	var segments: UISegmentedControl?
 	
 	var dataStore = [Item]()
 	var page = 1
 	var totalPages = 1
 	
-	var viewType: ItemType? {
-		didSet {
-			if collectionView != nil {
-				loadInfiniteScroll(genre: nil, year: nil, sort: nil)
-			}
-		}
+	var year: String? = nil {
+		didSet { if collectionView != nil { loadInfiniteScroll() } }
 	}
 	
-	var shouldFocusSubmenu = false
-	var segments: UISegmentedControl?
+	var genre: String? {
+		didSet { if collectionView != nil { loadInfiniteScroll() } }
+	}
+	
+	var sort: String? = nil {
+		didSet { if collectionView != nil { loadInfiniteScroll() } }
+	}
+	
+	var viewType: ItemType? {
+		didSet { if collectionView != nil { loadInfiniteScroll() } }
+	}
+	
+	var pick: Pick? {
+		didSet { if collectionView != nil { loadPicks() } }
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let menuGesture = UITapGestureRecognizer(target: self, action: #selector(self.focusSubMenu(_:)))
-		menuGesture.allowedPressTypes = [NSNumber(value: UIPressType.menu.rawValue as Int)]
-		menuGesture.delegate = self
-		collectionView.addGestureRecognizer(menuGesture)
+		
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView.remembersLastFocusedIndexPath = true
-//		collectionView.prefetchDataSource = self
-		collectionView.infiniteScrollTriggerOffset = 500
-		loadInfiniteScroll(genre: nil, year: nil, sort: nil)
+		
+		if let _ = viewType {
+			let menuGesture = UITapGestureRecognizer(target: self, action: #selector(self.focusSubMenu(_:)))
+			menuGesture.allowedPressTypes = [NSNumber(value: UIPressType.menu.rawValue as Int)]
+			menuGesture.delegate = self
+			collectionView.addGestureRecognizer(menuGesture)
+			collectionView.infiniteScrollTriggerOffset = 500
+			loadInfiniteScroll()
+		} else {
+			loadPicks()
+		}
 		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
 	}
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
-		if shouldFocusSubmenu { return [segments!] }
+		if shouldFocusSubmenu && segments != nil { return [segments!] }
 		return super.preferredFocusEnvironments
 	}
 	
@@ -71,7 +86,13 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		collectionView.reloadSections(sections as IndexSet)
 	}
 	
-	internal func loadInfiniteScroll(genre: Genre?, year: String?, sort: String?) {
+	internal func loadPicks() {
+		getPickItems() { pagination in
+			self.activityIndicator.stopAnimating()
+		}
+	}
+	
+	internal func loadInfiniteScroll() {
 		self.page = 1
 		if dataStore.count > 0 {
 			activityIndicator.startAnimating()
@@ -85,52 +106,76 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 				self?.collectionView.removeInfiniteScroll()
 				return
 			} else {
+				// TODO : Add genre, sort, year?
 				self?.getItems(for: page) { pagination in
 					self?.activityIndicator.stopAnimating()
 					scrollView.finishInfiniteScroll()
 				}
 			}
 		}
+		
+	}
+	
+	fileprivate func getPickItems(callback: @escaping (_ pagination: Pagination?) -> ()) {
+		guard let pick = pick else {return}
+		fetchItems(for: pick) { status in
+			self.processItems(for: status) { pagination in
+				callback(pagination)
+			}
+		}
 	}
 
 	fileprivate func getItems(for page: Int, callback: @escaping (_ pagination: Pagination?) -> ()) {
 		if let type = viewType {
-			fetchItems(type: type, page: page) { (status) in
-				switch status {
-				case .success(let items, let pagination):
-					if let items = items {
-						
-						guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {
-							callback(nil)
-							return
-						}
-						
-						if totalpages > 0 {
-							let firstIndex = self.dataStore.count
-							var indexPaths = [IndexPath]()
-							for (i, item) in items.enumerated() {
-								let indexPath = IndexPath(item: firstIndex + i, section: 0)
-								self.dataStore.append(item)
-								indexPaths.append(indexPath)
-							}
-							self.collectionView.performBatchUpdates({ () -> Void in
-								self.collectionView.insertItems(at: indexPaths)
-							}, completion: { (finished) -> Void in
-								
-							})
-							self.totalPages = totalpages
-							self.page = current+1
-						}
-						
-						callback(pagination)
-					}
-					break
-				case .error(let error):
-					log.error("Error getting items: \(error)")
-					callback(nil)
-					break
+			fetchItems(for: type, page: page) { status in
+				self.processItems(for: status) { pagination in
+					callback(pagination)
 				}
 			}
+		}
+	}
+	
+	fileprivate func processItems(for status: ItemsResponse, callback: @escaping (_ pagination: Pagination?) -> ()) {
+		switch status {
+		case .success(let items, let pagination):
+			if let items = items {
+				
+				if let _ = pick {
+					
+					self.dataStore = items
+					self.collectionView.reloadData()
+					
+				} else {
+					guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {
+						callback(nil)
+						return
+					}
+					
+					if totalpages > 0 {
+						let firstIndex = self.dataStore.count
+						var indexPaths = [IndexPath]()
+						for (i, item) in items.enumerated() {
+							let indexPath = IndexPath(item: firstIndex + i, section: 0)
+							self.dataStore.append(item)
+							indexPaths.append(indexPath)
+						}
+						self.collectionView.performBatchUpdates({ () -> Void in
+							self.collectionView.insertItems(at: indexPaths)
+						}, completion: { (finished) -> Void in
+							
+						})
+						self.totalPages = totalpages
+						self.page = current+1
+					}
+				}
+				
+				callback(pagination)
+			}
+			break
+		case .error(let error):
+			log.error("Error getting items: \(error)")
+			callback(nil)
+			break
 		}
 	}
 	

@@ -62,7 +62,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1039831283244681" green="0.1039831283244681" blue="0.1039831283244681" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="I5D-ON-mpf" firstAttribute="leading" secondItem="vYB-Io-O0c" secondAttribute="leading" id="Ln7-Fz-jmV"/>
                             <constraint firstAttribute="trailing" secondItem="I5D-ON-mpf" secondAttribute="trailing" id="P6i-c8-EES"/>
@@ -361,7 +361,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="G4O-SJ-FGo" firstAttribute="leading" secondItem="les-fz-aZB" secondAttribute="leading" constant="20" id="9tP-XD-vWl"/>
                             <constraint firstAttribute="trailing" secondItem="G4O-SJ-FGo" secondAttribute="trailing" constant="20" id="Fc5-98-XKo"/>

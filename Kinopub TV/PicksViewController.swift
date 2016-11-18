@@ -50,8 +50,6 @@ class PicksViewController: UIViewController {
 			}
 		}
 	}
-	
-	
 }
 
 extension PicksViewController: KinoPickable {
@@ -61,12 +59,10 @@ extension PicksViewController: KinoPickable {
 			switch status {
 			case .success(let items, let pagination):
 				if let items = items {
-					
 					guard let pagination = pagination, let totalpages = pagination.total, let current = pagination.current else {
 						callback(nil)
 						return
 					}
-					
 					if totalpages > 0 {
 						let firstIndex = self.dataStore.count
 						var indexPaths = [IndexPath]()
@@ -96,8 +92,9 @@ extension PicksViewController: KinoPickable {
 	}
 	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-		let nextFocus = context.nextFocusedView!
-		let prevFocus = context.previouslyFocusedView!
+		guard let nextFocus = context.nextFocusedView else { return }
+		guard let prevFocus = context.previouslyFocusedView else { return }
+		
 		if nextFocus.isMember(of: PITabBarButton.self) && prevFocus.isMember(of: PickCollectionViewCell.self) {
 			topConstraint.constant = 100
 			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
@@ -132,6 +129,15 @@ extension PicksViewController: UICollectionViewDelegate, UICollectionViewDataSou
 			return cell
 		}
 		return UICollectionViewCell()
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let item = dataStore[indexPath.row]
+		if let controller = storyboard?.instantiateViewController(withIdentifier: "listController") as? ListViewController {
+			controller.viewType = nil
+			controller.pick = item
+			self.present(controller, animated: true, completion: nil)
+		}
 	}
 	
 }
