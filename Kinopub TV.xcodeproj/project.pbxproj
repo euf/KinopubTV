@@ -10,6 +10,8 @@
 		2C62793C49CCAD9A13FA1481 /* Pods_Kinopub_TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */; };
 		D02601FC1DD885810090E005 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */; };
 		D02601FE1DD888530090E005 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02601FD1DD888530090E005 /* ItemCollectionViewCell.xib */; };
+		D02850B71DE0570400849913 /* UpNextProposalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02850B51DE0570400849913 /* UpNextProposalViewController.swift */; };
+		D02850B81DE0570400849913 /* UpNextProposalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02850B61DE0570400849913 /* UpNextProposalViewController.xib */; };
 		D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A5D1D899AE900241ED2 /* Extensions.swift */; };
 		D0289A601D899C5000241ED2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A5F1D899C5000241ED2 /* Config.swift */; };
 		D0289A621D899CA700241ED2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A611D899CA700241ED2 /* Common.swift */; };
@@ -57,6 +59,8 @@
 		C4C1D63E132E55D8DF212CCD /* Pods-Kinopub TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.release.xcconfig"; sourceTree = "<group>"; };
 		D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		D02601FD1DD888530090E005 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		D02850B51DE0570400849913 /* UpNextProposalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpNextProposalViewController.swift; sourceTree = "<group>"; };
+		D02850B61DE0570400849913 /* UpNextProposalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpNextProposalViewController.xib; sourceTree = "<group>"; };
 		D0289A5D1D899AE900241ED2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0289A5F1D899C5000241ED2 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D0289A611D899CA700241ED2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				D0DB94501DAA590F0031CD13 /* ItemViewController.swift */,
 				D0DB94481DAA517E0031CD13 /* ItemViewController.xib */,
 				D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */,
+				D02850B51DE0570400849913 /* UpNextProposalViewController.swift */,
+				D02850B61DE0570400849913 /* UpNextProposalViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				D02601FE1DD888530090E005 /* ItemCollectionViewCell.xib in Resources */,
 				D0FD648E1D89302000660496 /* Assets.xcassets in Resources */,
 				D0FD648C1D89302000660496 /* Main.storyboard in Resources */,
+				D02850B81DE0570400849913 /* UpNextProposalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +412,7 @@
 				D0A397861DD86ADE00832F14 /* Kinopickable.swift in Sources */,
 				D08E04661D97B27300A4074C /* WatchViewController.swift in Sources */,
 				D02601FC1DD885810090E005 /* ItemCollectionViewCell.swift in Sources */,
+				D02850B71DE0570400849913 /* UpNextProposalViewController.swift in Sources */,
 				D0DB94551DAA5A4B0031CD13 /* MovieDescriptionViewController.swift in Sources */,
 				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
