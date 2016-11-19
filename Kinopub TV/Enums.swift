@@ -9,14 +9,15 @@
 import Foundation
 
 enum SortOption: String {
-	case id = "id"
-	case year = "year"
-	case title = "title"
-	case created = "created"
-	case updated = "updated"
-	case rating = "rating"
-	case views = "view"
-	case watchers = "watchers"
+	
+	case id
+	case year
+	case title
+	case created
+	case updated
+	case rating
+	case views
+	case watchers
 	
 	static let all = [year, title, created, updated, rating, views, watchers]
 	
@@ -65,7 +66,7 @@ enum Quality: String {
 }
 
 enum ItemSubType: String {
-	case multi = "multi"
+	case multi
 }
 
 enum GenreType: String {

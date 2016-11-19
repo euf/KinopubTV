@@ -33,7 +33,6 @@ class PicksViewController: UIViewController {
 	}
 	
 	internal func loadInfiniteScroll() {
-		log.debug("Loafing infinite scrtoll")
 		self.page = 1
 		collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
 			log.debug("Scroll initied")

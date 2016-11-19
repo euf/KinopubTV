@@ -11,12 +11,11 @@ import Crashlytics
 
 class WatchViewController: UIViewController {
 
-	
 	@IBOutlet var subMenuSegments: UISegmentedControl!
 	@IBOutlet var subMenuTopConstraint: NSLayoutConstraint!
 	
 	var listController: ListViewController?
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 	}
@@ -26,9 +25,14 @@ class WatchViewController: UIViewController {
 		subMenuSegments.backgroundColor = UIColor(red:0.37, green:0.37, blue:0.37, alpha:1.00)
 	}
 	
+	override var preferredFocusEnvironments: [UIFocusEnvironment] {
+		return [subMenuSegments]
+	}
+	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		if let _ = context.previouslyFocusedView as? PITabBarButton {
 			subMenuTopConstraint.constant = 20
+			view.setNeedsFocusUpdate()
 		}
 		if let _ = context.nextFocusedView as? PITabBarButton {
 			subMenuTopConstraint.constant = 150
