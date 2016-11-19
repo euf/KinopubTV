@@ -89,7 +89,7 @@ enum ItemResponse {
 	case error(error: NSError)
 }
 
-protocol KinoViewable: class, Connectable, QualityDefinable {
+protocol KinoViewable: class, Connectable, QualityDefinable, AVPlayerViewControllerDelegate {
 	var playerController: AVPlayerViewController! {get set}
 	var item: Item? {get set}
 	var kinoItem: KinoItem? {get set} // Priliminary item (before we got a response from the sever)
@@ -142,6 +142,7 @@ extension KinoViewable where Self: UIViewController {
 		player.allowsExternalPlayback = true
 		playerController = AVPlayerViewController()
 		playerController.player = player
+		playerController.delegate = self
 		
 		/*_ = KVObserver(object: playerItem, keyPath: "status", options: NSKeyValueObservingOptions()) { object, _, kvo in
 		print("Current status: \(object.status.rawValue)")
@@ -150,15 +151,20 @@ extension KinoViewable where Self: UIViewController {
 		
 		// Next episode proposal
 		if let _ = season, let episode = episode, let nextEpisode = episode.nextVideo {
+			log.debug("Preparing content proposal")
 			if let imageUrl = URL(string: nextEpisode.thumbnail!) {
+				
 				let qualityIndex = setQualityForAvailableMedia(media: nextEpisode.files!)
 				guard let videoURL = nextEpisode.files?[qualityIndex].url?.http, let url = URL(string: videoURL) else {
 					log.error("Unable to select appropriate quality for this episode")
 					return
 				}
 				getRemoteImage(for: imageUrl) { image in
-					let contentProposal = AVContentProposal(contentTimeForTransition: kCMTimeZero, title: nextEpisode.title!, previewImage: image)
+					log.debug("Got image for the next episode")
+					let proposalTime = CMTime(seconds: 20, preferredTimescale: 1)
+					let contentProposal = AVContentProposal(contentTimeForTransition: proposalTime, title: nextEpisode.title!, previewImage: image)
 					contentProposal.url = url
+					contentProposal.automaticAcceptanceInterval = -15
 					playerItem.nextContentProposal = contentProposal
 				}
 			}
@@ -199,6 +205,7 @@ extension KinoViewable where Self: UIViewController {
 		}
 	}
 	
+
 //	fileprivate func findNextEpisode(for episode: Video, season: Season) -> Video {
 //		
 //	}
@@ -274,7 +281,6 @@ extension KinoViewable where Self: UIViewController {
 			}
 		}
 	}
-	
 }
 
 protocol QualityDefinable {

@@ -154,6 +154,58 @@
             </objects>
             <point key="canvasLocation" x="4238" y="2923"/>
         </scene>
+        <!--Up Next View Controller-->
+        <scene sceneID="SAg-H6-tbY">
+            <objects>
+                <viewController storyboardIdentifier="upNextController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uwP-S1-B6Q" customClass="UpNextViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wwg-pK-2gY"/>
+                        <viewControllerLayoutGuide type="bottom" id="73U-hU-MVs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nZ8-nD-qi9">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Смотреть такой-то эпизод" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3M-l9-oxO">
+                                <rect key="frame" x="20" y="608" width="818" height="452"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.9908094330238727" green="0.9908094330238727" blue="0.9908094330238727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6G-8w-bqw">
+                                <rect key="frame" x="898" y="608" width="278" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40117291114058351" green="0.40117291114058351" blue="0.40117291114058351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Смотреть"/>
+                                <connections>
+                                    <action selector="watchNextEpisode:" destination="uwP-S1-B6Q" eventType="primaryActionTriggered" id="Pdd-fr-Gzy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdF-pB-zla">
+                                <rect key="frame" x="898" y="718" width="278" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40117291109999997" green="0.40117291109999997" blue="0.40117291109999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Отмена"/>
+                                <connections>
+                                    <action selector="dismissProposal:" destination="uwP-S1-B6Q" eventType="primaryActionTriggered" id="3DU-y2-GbR"/>
+                                    <action selector="watchNextEpisode:" destination="uwP-S1-B6Q" eventType="primaryActionTriggered" id="Xx0-Ql-5gg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="watchButton" destination="s6G-8w-bqw" id="yQK-a4-oH4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="586-oL-Ofg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6491" y="2923"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="NTY-ZX-SG8">
             <objects>

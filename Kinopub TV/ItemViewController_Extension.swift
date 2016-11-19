@@ -553,6 +553,31 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
 	}
+
+}
+
+extension ItemViewController: AVPlayerViewControllerDelegate {
+	
+	func playerViewController(_ playerViewController: AVPlayerViewController, shouldPresent proposal: AVContentProposal) -> Bool {
+		let proposalController = UpNextProposalViewController(nibName: "UpNextProposalViewController", bundle: nil)
+		var title: String = titleRu.text!
+		if let englishTitle = titleEn, englishTitle.text != "" { title.append(" / \(englishTitle.text)") }
+//		proposalController.showTitle.text = title
+		playerViewController.contentProposalViewController = proposalController
+		return true
+	}
+	
+	func playerViewController(_ playerViewController: AVPlayerViewController, didAccept proposal: AVContentProposal) {
+		log.debug("Did accept proposal!")
+		guard let player = playerViewController.player, let nextURL = proposal.url else { return }
+		let nextPlayerItem = AVPlayerItem(url: nextURL)
+		player.replaceCurrentItem(with: nextPlayerItem)
+	}
+	
+	func playerViewController(_ playerViewController: AVPlayerViewController, didReject proposal: AVContentProposal) {
+		guard let player = playerViewController.player else { return }
+		player.play() // Just continue playing
+	}
 	
 }
 
