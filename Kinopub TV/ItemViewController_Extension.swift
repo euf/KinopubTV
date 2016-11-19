@@ -561,14 +561,13 @@ extension ItemViewController: AVPlayerViewControllerDelegate {
 	func playerViewController(_ playerViewController: AVPlayerViewController, shouldPresent proposal: AVContentProposal) -> Bool {
 		let proposalController = UpNextProposalViewController(nibName: "UpNextProposalViewController", bundle: nil)
 		var title: String = titleRu.text!
-		if let englishTitle = titleEn, englishTitle.text != "" { title.append(" / \(englishTitle.text)") }
-//		proposalController.showTitle.text = title
+		if let englishTitle = titleEn, englishTitle.text != "" { title.append(" / \(englishTitle.text!)") }
+		proposalController.mainTitle = title
 		playerViewController.contentProposalViewController = proposalController
 		return true
 	}
 	
 	func playerViewController(_ playerViewController: AVPlayerViewController, didAccept proposal: AVContentProposal) {
-		log.debug("Did accept proposal!")
 		guard let player = playerViewController.player, let nextURL = proposal.url else { return }
 		let nextPlayerItem = AVPlayerItem(url: nextURL)
 		player.replaceCurrentItem(with: nextPlayerItem)

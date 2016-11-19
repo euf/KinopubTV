@@ -16,11 +16,14 @@ class UpNextProposalViewController: AVContentProposalViewController {
 	@IBOutlet var showTitle: UILabel!
 	@IBOutlet var episodeTitle: UILabel!
 	
+	var mainTitle: String? = "Lala"
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		if let cp = contentProposal {
 			thumbnail.image = cp.previewImage
 			episodeTitle.text = cp.title
+			showTitle.text = mainTitle
 		}
 	}
 	
