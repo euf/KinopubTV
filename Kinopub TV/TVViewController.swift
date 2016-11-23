@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class TVViewController: UIViewController, TVViewable {
+class TVViewController: UIViewController, TVViewable, Menuretractable {
 	
 	var playerController: AVPlayerViewController!
 	var channels: [TVChannel] = [] {
@@ -24,6 +24,10 @@ class TVViewController: UIViewController, TVViewable {
         super.viewDidLoad()
 		loadChannels()
     }
+	
+//	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+//		retractMenu(for: subMenuTopConstraint, and: context)
+//	}
 	
 	private func loadChannels() {
 		fetchChannels() { response in
