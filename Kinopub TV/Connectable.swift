@@ -23,6 +23,7 @@ enum ResourceMethod: String {
 enum RequestType: String {
 	case resource
 	case auth
+	case movieDB
 }
 
 struct Request: Connectable, CustomDebugStringConvertible {
@@ -51,6 +52,9 @@ extension Connectable {
 		case .resource:
 			url = Config.URL.APIBase+request.resourceURL
 			headers = ["Authorization": "Bearer \(Defaults[.token]!)"]
+			break
+		case .movieDB:
+			url = Config.themoviedb.base+request.resourceURL
 			break
 		case .auth:
 			url = Config.URL.OAuthBase+request.resourceURL

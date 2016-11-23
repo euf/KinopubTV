@@ -45,8 +45,9 @@ struct Config {
 	}
 	
 	struct themoviedb {
-		static let base = "https://api.themoviedb.org/3/"
-		static let imageBase = "http://image.tmdb.org/t/p/w1000/"
+		static let base = "https://api.themoviedb.org/3"
+		static let backdropBase = "https://image.tmdb.org/t/p/w1280/"
+		static let imageBase = "https://image.tmdb.org/t/p/w1000/"
 		static let key = "d5dbe118b642f6c09adf9c45cc6cafdb"
 	}
 	
