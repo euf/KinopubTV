@@ -455,11 +455,9 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		alert.addAction(cancelButton)
 		
 		self.present(alert, animated: true, completion: nil)
-		
-		
 	}
 
-	
+`
 	/// Включаем трейлер к фильму (если доступен)
 	internal func playTrailer() {
 		guard let youtubeID = item?.trailer?.id else {
@@ -571,6 +569,8 @@ extension ItemViewController: AVPlayerViewControllerDelegate {
 		guard let player = playerViewController.player, let nextURL = proposal.url else { return }
 		let nextPlayerItem = AVPlayerItem(url: nextURL)
 		player.replaceCurrentItem(with: nextPlayerItem)
+		
+		// Вместо того чтоб так заменять тут. внедрить метод который будет запускать мой эпизод и готовить новый content proposal
 	}
 	
 	func playerViewController(_ playerViewController: AVPlayerViewController, didReject proposal: AVContentProposal) {
