@@ -16,7 +16,7 @@ class UpNextProposalViewController: AVContentProposalViewController {
 	@IBOutlet var showTitle: UILabel!
 	@IBOutlet var episodeTitle: UILabel!
 	
-	var mainTitle: String? = "Lala"
+	var mainTitle: String? = ""
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
