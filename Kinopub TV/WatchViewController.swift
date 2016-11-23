@@ -9,7 +9,7 @@
 import UIKit
 import Crashlytics
 
-class WatchViewController: UIViewController {
+class WatchViewController: UIViewController, Menuretractable {
 
 	@IBOutlet var subMenuSegments: UISegmentedControl!
 	@IBOutlet var subMenuTopConstraint: NSLayoutConstraint!
@@ -30,16 +30,7 @@ class WatchViewController: UIViewController {
 	}
 	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-		if let _ = context.previouslyFocusedView as? PITabBarButton {
-			subMenuTopConstraint.constant = 20
-			view.setNeedsFocusUpdate()
-		}
-		if let _ = context.nextFocusedView as? PITabBarButton {
-			subMenuTopConstraint.constant = 150
-		}
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-			self.view.layoutIfNeeded()
-		}, completion: nil)
+		retractMenu(for: subMenuTopConstraint, and: context)
 	}
 	
 	@IBAction func subMenuChanged(_ sender: UISegmentedControl) {
