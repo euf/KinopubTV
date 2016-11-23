@@ -1,8 +1,8 @@
 //
-//  Kinopub.swift
+//  KinoViewable.swift
 //  Kinopub TV
 //
-//  Created by Peter on 14/09/16.
+//  Created by Peter on 20.11.16.
 //  Copyright © 2016 Peter Tikhomirov. All rights reserved.
 //
 
@@ -16,72 +16,6 @@ import PMKVObserver
 import AlamofireImage
 import Alamofire
 
-// List protocol
-
-enum ItemsResponse {
-	case success(items: [Item]?, pagination: Pagination?)
-	case error(error: NSError)
-}
-
-protocol KinoListable: Connectable {
-	func fetchItems(for type: ItemType, page: Int?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
-	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
-}
-
-extension KinoListable {
-	
-	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) {
-		let parameters: Dictionary<String, AnyObject> = [
-			"id": pick.id as AnyObject
-		]
-		let request = Request(type: .resource, resourceURL: "/collections/view", method: .get, parameters: parameters)
-		performRequest(resource: request) { result, error in
-			self.processItemsResponse(for: result, error: error) { response in
-				callback(response)
-			}
-		}
-	}
-	
-	func fetchItems(for type: ItemType, page: Int? = 1, callback: @escaping (_ response: ItemsResponse) -> ()) {
-		let parameters: Dictionary<String, AnyObject> = [
-			"type": type.rawValue as AnyObject,
-			"perpage": 50 as AnyObject,
-			"page": page as AnyObject
-		]
-		
-		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
-		performRequest(resource: request) { result, error in
-			self.processItemsResponse(for: result, error: error) { response in
-				callback(response)
-			}
-		}
-	}
-	
-	fileprivate func processItemsResponse(for result: JSON?, error: NSError?, callback: @escaping (_ response: ItemsResponse) -> ()) {
-		switch (result, error) {
-		case(let result?, _):
-			if result["status"] == 200 {
-				
-				if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject),
-					let pagination = Mapper<Pagination>().map(JSONObject: result["pagination"].object)
-				{
-					callback(.success(items: items, pagination: pagination))
-				} else if let items = Mapper<Item>().mapArray(JSONObject: result["items"].arrayObject) { // Case of picks, where there is no pagination
-					callback(.success(items: items, pagination: nil))
-				} else {
-					log.warning("Problem mapping items. Returning nil")
-					callback(.success(items: nil, pagination: nil))
-				}
-			}
-		case(_, let error?):
-			log.error("Error accessing the service \(error)")
-			callback(.error(error: error))
-			break
-		default: break
-		}
-	}
-}
-
 // Single Item protocol
 
 enum ItemResponse {
@@ -93,6 +27,7 @@ protocol KinoViewable: class, Connectable, QualityDefinable, AVPlayerViewControl
 	var playerController: AVPlayerViewController! {get set}
 	var item: Item? {get set}
 	var kinoItem: KinoItem? {get set} // Priliminary item (before we got a response from the sever)
+	var nextEpisode: Video? {get set}
 	func fetchItem(id: Int, type: ItemType, callback: @escaping (_ response: ItemResponse) -> ()) -> Void
 	func playVideo(with videoURL: URL, episode: Video?, season: Season?, fromPosition: Int?, callback: @escaping (_ position: TimeInterval) -> ()) -> Void
 	func toggleWatched(video: Video?, season: Int?, callback: @escaping (_ status: Int) -> ()) -> Void
@@ -151,20 +86,19 @@ extension KinoViewable where Self: UIViewController {
 		
 		// Next episode proposal
 		if let _ = season, let episode = episode, let nextEpisode = episode.nextVideo {
-			log.debug("Preparing content proposal")
+			self.nextEpisode = nextEpisode // The one after current next one
 			if let imageUrl = URL(string: nextEpisode.thumbnail!) {
-				
 				let qualityIndex = setQualityForAvailableMedia(media: nextEpisode.files!)
 				guard let videoURL = nextEpisode.files?[qualityIndex].url?.http, let url = URL(string: videoURL) else {
 					log.error("Unable to select appropriate quality for this episode")
 					return
 				}
 				getRemoteImage(for: imageUrl) { image in
-					log.debug("Got image for the next episode")
-					let proposalTime = CMTime(seconds: 20, preferredTimescale: 1)
+					guard let assetTime = player.currentItem?.asset.duration else {return}
+					let proposalTime = CMTimeSubtract(assetTime, CMTime(seconds: 30, preferredTimescale: 1))
 					let contentProposal = AVContentProposal(contentTimeForTransition: proposalTime, title: nextEpisode.title!, previewImage: image)
 					contentProposal.url = url
-					contentProposal.automaticAcceptanceInterval = -15
+					contentProposal.automaticAcceptanceInterval = 15
 					playerItem.nextContentProposal = contentProposal
 				}
 			}
@@ -177,7 +111,6 @@ extension KinoViewable where Self: UIViewController {
 				// 15 seconds error margin.
 				if (currentTime + 15) >= duration {
 					log.verbose("Movie ended :-)")
-					// TODO: Switch to next episode
 					self.playerController.dismiss(animated: true, completion: nil)
 				}
 				self.logCurrentPosition(video: episode, season: season, time: currentTime)
@@ -205,10 +138,10 @@ extension KinoViewable where Self: UIViewController {
 		}
 	}
 	
-
-//	fileprivate func findNextEpisode(for episode: Video, season: Season) -> Video {
-//		
-//	}
+	
+	//	fileprivate func findNextEpisode(for episode: Video, season: Season) -> Video {
+	//
+	//	}
 	
 	/**
 	Logs currently playing item's time to a stopped position. So it can be resumed later
@@ -236,7 +169,7 @@ extension KinoViewable where Self: UIViewController {
 		}
 		
 		let request = Request(type: .resource, resourceURL: "/watching/marktime", method: .get, parameters: parameters)
-//		log.debug(request)
+		//		log.debug(request)
 		performRequest(resource: request) { result, error in
 			switch (result, error) {
 			case(let result?, _):
@@ -337,18 +270,3 @@ extension KinoPlayable {
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
