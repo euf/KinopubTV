@@ -11,6 +11,7 @@ target 'Kinopub TV' do
   pod 'PMKVObserver'
   pod 'SwiftyJSON'
   pod 'UIScrollView-InfiniteScroll', :git => 'https://github.com/staticdreams/UIScrollView-InfiniteScroll.git'
+  pod 'SwiftCarousel', :git => 'https://github.com/staticdreams/SwiftCarousel.git'
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'KeychainAccess'
   pod 'ObjectMapper'

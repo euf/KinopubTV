@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.0.1)
+  - Alamofire (4.1.0)
   - AlamofireImage (3.1.0):
     - Alamofire (~> 4.0)
   - AlamofireObjectMapper (4.0.0):
@@ -17,8 +17,9 @@ PODS:
   - PMKVObserver/ObjC (2.0.1)
   - PMKVObserver/Swift (2.0.1):
     - PMKVObserver/ObjC
+  - SwiftCarousel (0.8.1)
   - SwiftyBeaver (1.1.1)
-  - SwiftyJSON (3.1.1)
+  - SwiftyJSON (3.1.3)
   - SwiftyUserDefaults (3.0.0)
   - UIScrollView-InfiniteScroll (0.9.2)
   - XCDYouTubeKit (2.5.3)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - KeychainAccess
   - ObjectMapper
   - PMKVObserver
+  - SwiftCarousel (from `https://github.com/staticdreams/SwiftCarousel.git`)
   - SwiftyBeaver
   - SwiftyJSON
   - SwiftyUserDefaults
@@ -40,16 +42,21 @@ DEPENDENCIES:
   - XCDYouTubeKit
 
 EXTERNAL SOURCES:
+  SwiftCarousel:
+    :git: https://github.com/staticdreams/SwiftCarousel.git
   UIScrollView-InfiniteScroll:
     :git: https://github.com/staticdreams/UIScrollView-InfiniteScroll.git
 
 CHECKOUT OPTIONS:
+  SwiftCarousel:
+    :commit: c96d8c59710c2528e01d1d301d4bf8c29bb6ed72
+    :git: https://github.com/staticdreams/SwiftCarousel.git
   UIScrollView-InfiniteScroll:
     :commit: 005d71fd5d190da0eebd3d73cc47710433ce67f1
     :git: https://github.com/staticdreams/UIScrollView-InfiniteScroll.git
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Alamofire: e266cf991b933498df791e645e0d8ac294492153
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
   Cosmos: 2c8299147138758f6ebbb247cf1aeed77998bdf9
@@ -58,12 +65,13 @@ SPEC CHECKSUMS:
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
   PMKVObserver: f3955b3beae9c6198ad347d4eb9b125477e9cb72
+  SwiftCarousel: 7c8a83ae2f0884ccfb72ab44f6a16af9a80d2b1f
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
-  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   UIScrollView-InfiniteScroll: 428d0e9485a97de0ecccfbf161e7e2fec0bdae90
   XCDYouTubeKit: 90690f9e3523735dc93b8024269d991b0cfffe78
 
-PODFILE CHECKSUM: b5a5881366fe0a6dd2a865753cd34a227a2a0034
+PODFILE CHECKSUM: d6838af9ef327c94b0a9c6ddd53131042e6f1c29
 
 COCOAPODS: 1.1.1
