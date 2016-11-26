@@ -25,6 +25,7 @@ protocol KinoListable: Connectable {
 	func fetchItems(for type: ItemType, page: Int?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 	func getFeaturedMovies(callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
+	func processItemsResponse(for result: JSON?, error: NSError?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 }
 
 extension KinoListable {
@@ -99,7 +100,7 @@ extension KinoListable {
 		}
 	}
 	
-	fileprivate func processItemsResponse(for result: JSON?, error: NSError?, callback: @escaping (_ response: ItemsResponse) -> ()) {
+	func processItemsResponse(for result: JSON?, error: NSError?, callback: @escaping (_ response: ItemsResponse) -> ()) {
 		switch (result, error) {
 		case(let result?, _):
 			if result["status"] == 200 {

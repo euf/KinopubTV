@@ -57,7 +57,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 			switch response {
 			case .success(let items, _):
 				guard let items = items else { return }
-				log.debug(items)
 				self.bannerSource = items
 				break
 			case .error(let error):

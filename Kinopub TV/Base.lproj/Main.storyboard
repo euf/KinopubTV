@@ -601,6 +601,89 @@
             </objects>
             <point key="canvasLocation" x="4577" y="1892"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="Ub9-P1-Vx1">
+            <objects>
+                <viewController storyboardIdentifier="searchController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sE4-aH-sNa" customClass="SearchViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dtn-y3-5At"/>
+                        <viewControllerLayoutGuide type="bottom" id="ruP-a4-NB4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xC9-dQ-ePB">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvV-bs-Hbq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8758" y="71"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="dqb-Lt-7py">
+            <objects>
+                <viewController storyboardIdentifier="searchResults" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tDz-Sa-O1b" customClass="SearchResultsViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IbX-XQ-7L6"/>
+                        <viewControllerLayoutGuide type="bottom" id="3IU-1f-aPD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aXZ-7N-HSl">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTT-B2-Ilg">
+                                <rect key="frame" x="54" y="0.0" width="1751" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="riV-5C-RJA">
+                                <rect key="frame" x="20" y="160" width="1880" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No matches were found for your search." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlS-wh-3BY">
+                                        <rect key="frame" x="8" y="8" width="1864" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="49"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrp-35-3pL">
+                                        <rect key="frame" x="8" y="83" width="1864" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </view>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dXz-Af-HSi">
+                                <rect key="frame" x="0.0" y="80" width="1920" height="622"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="30" id="ds9-7j-quR">
+                                    <size key="itemSize" width="305" height="475"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="80" minY="0.0" maxX="80" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tDz-Sa-O1b" id="ktV-Y2-dEV"/>
+                                    <outlet property="delegate" destination="tDz-Sa-O1b" id="GFi-1W-fnH"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="dXz-Af-HSi" id="cjy-Ms-B2L"/>
+                        <outlet property="notFoundView" destination="riV-5C-RJA" id="nei-2K-uIz"/>
+                        <outlet property="resultCountLabel" destination="VTT-B2-Ilg" id="aS4-35-r18"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDc-iZ-kjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8758" y="1405"/>
+        </scene>
     </scenes>
     <resources>
         <image name="main-logo" width="1280" height="768"/>
