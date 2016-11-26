@@ -457,11 +457,10 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		self.present(alert, animated: true, completion: nil)
 	}
 
-`
 	/// Включаем трейлер к фильму (если доступен)
 	internal func playTrailer() {
 		guard let youtubeID = item?.trailer?.id else {
-			log.error("No trailer ID found")
+			log.error("No trailer ID found for movie: \(item?.title)")
 			return
 		}
 		log.debug("trailer youtube id: \(youtubeID)")
