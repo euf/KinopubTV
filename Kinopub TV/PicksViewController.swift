@@ -26,12 +26,6 @@ class PicksViewController: UIViewController {
 		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 100), animated: false) // Triggers infinite scroll on the very beginning
 	}
 	
-	fileprivate func fadeCells() {
-		let range = NSMakeRange(0, self.collectionView.numberOfSections)
-		let sections = NSIndexSet(indexesIn: range)
-		collectionView.reloadSections(sections as IndexSet)
-	}
-	
 	internal func loadInfiniteScroll() {
 		self.page = 1
 		collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
@@ -43,7 +37,7 @@ class PicksViewController: UIViewController {
 			} else {
 				self?.getItems(for: page) { pagination in
 //					self?.activityIndicator.stopAnimating()
-					self?.fadeCells()
+					self?.collectionView.fadeCells()
 					scrollView.finishInfiniteScroll()
 				}
 			}
