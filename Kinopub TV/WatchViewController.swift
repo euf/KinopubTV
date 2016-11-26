@@ -9,7 +9,7 @@
 import UIKit
 import Crashlytics
 
-class WatchViewController: UIViewController, Menuretractable {
+class WatchViewController: UIViewController, MenuRetractable {
 
 	@IBOutlet var subMenuSegments: UISegmentedControl!
 	@IBOutlet var subMenuTopConstraint: NSLayoutConstraint!

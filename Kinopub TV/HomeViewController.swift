@@ -8,14 +8,18 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, KinoListable, Menuretractable {
+class HomeViewController: UIViewController, KinoListable, MenuRetractable, SegueHandlerType {
+	
+	enum SegueIdentifier: String {
+		case TVShowsSegue
+	}
 
 	@IBOutlet var collectionView: UICollectionView!
 	@IBOutlet var topConstraint: NSLayoutConstraint!
 	
 	var bannerSource = [Item]() {
 		didSet {
-			fadeCells()
+			collectionView.fadeCells()
 		}
 	}
 	
@@ -27,34 +31,33 @@ class HomeViewController: UIViewController, KinoListable, Menuretractable {
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
-		var insets = self.collectionView.contentInset
-		let value = (self.view.frame.size.width - (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize.width) * 0.5
-		insets.left = value
-		insets.right = value
-		collectionView.contentInset = insets
-		collectionView.decelerationRate = UIScrollViewDecelerationRateFast
 	}
 	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		retractMenu(for: topConstraint, and: context)
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		switch segueIdentifier(for: segue) {
+		case .TVShowsSegue:
+			if let controller = segue.destination as? PopularTVShowsController {
+				log.debug("Destination controller => \(controller)")
+				controller.loadPopularTVShows()
+			}
+			break
+		}
+	}
 	
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-	
-	fileprivate func fadeCells() {
-		let range = NSMakeRange(0, self.collectionView.numberOfSections)
-		let sections = NSIndexSet(indexesIn: range)
-		collectionView.reloadSections(sections as IndexSet)
-	}
 	
 	fileprivate func loadFeatured() {
 		getFeaturedMovies { response in
 			switch response {
 			case .success(let items, _):
 				guard let items = items else { return }
+				log.debug(items)
 				self.bannerSource = items
 				break
 			case .error(let error):
@@ -74,7 +77,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let item = bannerSource[indexPath.row]
-		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerCell", for: indexPath as IndexPath) as? BannerCollectionViewCell {
+		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "posterCell", for: indexPath as IndexPath) as? BannerCollectionViewCell {
 			cell.prepareCell(item: item)
 			return cell
 		}

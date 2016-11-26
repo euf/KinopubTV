@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol Menuretractable {
+protocol MenuRetractable {
 	func retractMenu(for constraint: NSLayoutConstraint, and context: UIFocusUpdateContext)
 }
 
-extension Menuretractable where Self: UIViewController {
+extension MenuRetractable where Self: UIViewController {
 	func retractMenu(for constraint: NSLayoutConstraint, and context: UIFocusUpdateContext) {
 		if let _ = context.previouslyFocusedView as? PITabBarButton {
 			constraint.constant = 20

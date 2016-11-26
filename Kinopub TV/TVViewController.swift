@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class TVViewController: UIViewController, TVViewable, Menuretractable {
+class TVViewController: UIViewController, TVViewable, MenuRetractable {
 	
 	var playerController: AVPlayerViewController!
 	var channels: [TVChannel] = [] {
