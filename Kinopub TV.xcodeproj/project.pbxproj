@@ -32,13 +32,16 @@
 		D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */; };
 		D0289A8A1D8D7A8000241ED2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A891D8D7A8000241ED2 /* HomeViewController.swift */; };
 		D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */; };
+		D046BB0C1DE8948C00698B2E /* APIDelegatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046BB0B1DE8948C00698B2E /* APIDelegatable.swift */; };
+		D046BB0E1DE895F100698B2E /* Fanart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046BB0D1DE895F100698B2E /* Fanart.swift */; };
+		D046BB101DE8982B00698B2E /* PopularTVShowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046BB0F1DE8982B00698B2E /* PopularTVShowsController.swift */; };
+		D046BB121DE899BA00698B2E /* TVBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046BB111DE899BA00698B2E /* TVBannerCollectionViewCell.swift */; };
 		D05B45051DB28E330064FC6D /* TVViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B45041DB28E330064FC6D /* TVViewable.swift */; };
 		D05B45071DB28E610064FC6D /* TVChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B45061DB28E610064FC6D /* TVChannel.swift */; };
 		D05B45091DB293010064FC6D /* TVItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B45081DB293010064FC6D /* TVItemCollectionViewCell.swift */; };
 		D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0769E661D8E860E00197D01 /* LoginViewController.swift */; };
 		D0834D2F1DE1B79500BE382D /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0834D2E1DE1B79500BE382D /* BannerCollectionViewCell.swift */; };
-		D0834D421DE1CB4300BE382D /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0834D411DE1CB4300BE382D /* BannerView.swift */; };
-		D0834D441DE22DC200BE382D /* Menuretractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0834D431DE22DC200BE382D /* Menuretractable.swift */; };
+		D0834D441DE22DC200BE382D /* MenuRetractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0834D431DE22DC200BE382D /* MenuRetractable.swift */; };
 		D0834D481DE233DA00BE382D /* KinoViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0834D471DE233DA00BE382D /* KinoViewable.swift */; };
 		D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890C1D92A2D600DBF46F /* TVViewController.swift */; };
 		D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */; };
@@ -87,13 +90,16 @@
 		D0289A871D8D74D000241ED2 /* TabBarReplacementStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarReplacementStyleKit.swift; sourceTree = "<group>"; };
 		D0289A891D8D7A8000241ED2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0289A8B1D8D7A9800241ED2 /* PicksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicksViewController.swift; sourceTree = "<group>"; };
+		D046BB0B1DE8948C00698B2E /* APIDelegatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDelegatable.swift; sourceTree = "<group>"; };
+		D046BB0D1DE895F100698B2E /* Fanart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fanart.swift; sourceTree = "<group>"; };
+		D046BB0F1DE8982B00698B2E /* PopularTVShowsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularTVShowsController.swift; sourceTree = "<group>"; };
+		D046BB111DE899BA00698B2E /* TVBannerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		D05B45041DB28E330064FC6D /* TVViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewable.swift; sourceTree = "<group>"; };
 		D05B45061DB28E610064FC6D /* TVChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVChannel.swift; sourceTree = "<group>"; };
 		D05B45081DB293010064FC6D /* TVItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0769E661D8E860E00197D01 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0834D2E1DE1B79500BE382D /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
-		D0834D411DE1CB4300BE382D /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		D0834D431DE22DC200BE382D /* Menuretractable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menuretractable.swift; sourceTree = "<group>"; };
+		D0834D431DE22DC200BE382D /* MenuRetractable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRetractable.swift; sourceTree = "<group>"; };
 		D0834D471DE233DA00BE382D /* KinoViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinoViewable.swift; sourceTree = "<group>"; };
 		D08B890C1D92A2D600DBF46F /* TVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		D08B890E1D92A62B00DBF46F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +174,8 @@
 				D05B45041DB28E330064FC6D /* TVViewable.swift */,
 				D0A397851DD86ADE00832F14 /* Kinopickable.swift */,
 				D02850B91DE18F5600849913 /* SegueHandlerType.swift */,
-				D0834D431DE22DC200BE382D /* Menuretractable.swift */,
+				D0834D431DE22DC200BE382D /* MenuRetractable.swift */,
+				D046BB0B1DE8948C00698B2E /* APIDelegatable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -182,6 +189,7 @@
 				D0289A711D89EF0500241ED2 /* Categories.swift */,
 				D05B45061DB28E610064FC6D /* TVChannel.swift */,
 				D0A397681DD7D61D00832F14 /* Pick.swift */,
+				D046BB0D1DE895F100698B2E /* Fanart.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -213,6 +221,7 @@
 				D0DB94561DAA5D1C0031CD13 /* ItemViewController_Extension.swift */,
 				D02850B51DE0570400849913 /* UpNextProposalViewController.swift */,
 				D02850B61DE0570400849913 /* UpNextProposalViewController.xib */,
+				D046BB0F1DE8982B00698B2E /* PopularTVShowsController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -230,7 +239,7 @@
 				D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */,
 				D05B45081DB293010064FC6D /* TVItemCollectionViewCell.swift */,
 				D0834D2E1DE1B79500BE382D /* BannerCollectionViewCell.swift */,
-				D0834D411DE1CB4300BE382D /* BannerView.swift */,
+				D046BB111DE899BA00698B2E /* TVBannerCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 			files = (
 				D0769E671D8E860E00197D01 /* LoginViewController.swift in Sources */,
 				D0289A851D8D748E00241ED2 /* PITabBarButton.swift in Sources */,
+				D046BB0C1DE8948C00698B2E /* APIDelegatable.swift in Sources */,
 				D0289A801D8AEF8C00241ED2 /* ListViewController.swift in Sources */,
 				D0A397691DD7D61D00832F14 /* Pick.swift in Sources */,
 				D0DB944F1DAA56E80031CD13 /* EpisodeCollectionViewCell.swift in Sources */,
@@ -423,6 +433,7 @@
 				D0289A7E1D8AEE5C00241ED2 /* TabbarController.swift in Sources */,
 				D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */,
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
+				D046BB121DE899BA00698B2E /* TVBannerCollectionViewCell.swift in Sources */,
 				D08B890D1D92A2D600DBF46F /* TVViewController.swift in Sources */,
 				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
 				D05B45051DB28E330064FC6D /* TVViewable.swift in Sources */,
@@ -434,8 +445,7 @@
 				D02850B71DE0570400849913 /* UpNextProposalViewController.swift in Sources */,
 				D0834D2F1DE1B79500BE382D /* BannerCollectionViewCell.swift in Sources */,
 				D0DB94551DAA5A4B0031CD13 /* MovieDescriptionViewController.swift in Sources */,
-				D0834D421DE1CB4300BE382D /* BannerView.swift in Sources */,
-				D0834D441DE22DC200BE382D /* Menuretractable.swift in Sources */,
+				D0834D441DE22DC200BE382D /* MenuRetractable.swift in Sources */,
 				D02850BA1DE18F5600849913 /* SegueHandlerType.swift in Sources */,
 				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
@@ -454,8 +464,10 @@
 				D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */,
 				D08E046B1D97C0D400A4074C /* PickCollectionViewCell.swift in Sources */,
 				D0834D481DE233DA00BE382D /* KinoViewable.swift in Sources */,
+				D046BB101DE8982B00698B2E /* PopularTVShowsController.swift in Sources */,
 				D0289A841D8D748E00241ED2 /* PITabBar.swift in Sources */,
 				D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */,
+				D046BB0E1DE895F100698B2E /* Fanart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
