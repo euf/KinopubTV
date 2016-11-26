@@ -30,7 +30,6 @@ extension KinoPickable {
 			switch (result, error) {
 			case(let result?, _):
 				if result["status"] == 200 {
-					
 					if let items = Mapper<Pick>().mapArray(JSONObject: result["items"].arrayObject), let pagination = Mapper<Pagination>().map(JSONObject: result["pagination"].object) {
 						callback(.success(items: items, pagination: pagination))
 					} else {
@@ -45,6 +44,5 @@ extension KinoPickable {
 			default: break
 			}
 		}
-		
 	}
 }
