@@ -113,12 +113,6 @@ extension SearchResultsViewController: UICollectionViewDataSource, UICollectionV
 		return 30.0
 	}
 	
-	
-	
-//	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//		return CGSize(width: 305, height: 475	)
-//	}
-	
 }
 
 
