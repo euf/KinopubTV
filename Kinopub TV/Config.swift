@@ -33,8 +33,8 @@ struct Config {
 	static let clientSecret = "3z5124kj5liqy9gahnjr07qpj65ferl2"
 	
 	struct URL {
-		static let base = "https://api.service-kp.com/"
-		//static let base = "https://api.kino.pub/"
+//		static let base = "https://api.service-kp.com/"
+		static let base = "http://api.service-kp.com/"
 		static let APIBase = Config.URL.base+"v1"
 		static let OAuthBase = Config.URL.base+"oauth2"
 		static let madia = "https://media.kino.pub/poster/item"
@@ -42,6 +42,11 @@ struct Config {
 	
 	struct kinopoisk {
 		static let base = "https://api.kinopoisk.cf"
+	}
+	
+	struct guideBox {
+		static let base = "https://api-public.guidebox.com/v1.43/US/"
+		static let key = "rKRMKPD8h6FMnaglY8OhZP4NlI8ZAqXc"
 	}
 	
 	struct themoviedb {
