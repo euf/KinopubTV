@@ -71,6 +71,23 @@ extension KinoListable {
 		}
 	}
 	
+	func getPopularTVShows(callback: @escaping (_ response: ItemsResponse) -> ()) {
+		let parameters: Dictionary<String, AnyObject> = [
+			"type": ItemType.shows.getValue() as AnyObject,
+			"perpage": 30 as AnyObject,
+			"sort": "-watchers" as AnyObject
+		]
+		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
+		performRequest(resource: request) { result, error in
+			self.processItemsResponse(for: result, error: error) { response in
+				
+				
+				
+				callback(response)
+			}
+		}
+	}
+	
 	fileprivate func fetchMovieResource(for id: String, callback: @escaping (_ response: JSON?) -> ()) {
 		let parameters: Dictionary<String, AnyObject> = [
 			"api_key": Config.themoviedb.key as AnyObject,
