@@ -16,14 +16,22 @@ fileprivate let PreloadMargin = 100
 
 class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
+	@IBOutlet var filterView: UIView!
+	@IBOutlet var filterLabel: UILabel!
+	@IBOutlet var filterViewHeight: NSLayoutConstraint!
+	@IBOutlet var filterBottomConstraint: NSLayoutConstraint!
+	
 	@IBOutlet var picksBarView: UIView!
 	@IBOutlet var picksCategoryLabel: UILabel!
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet var collectionTopConstraint: NSLayoutConstraint!
 	
+	let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
 	var shouldFocusSubmenu = false
 	var segments: UISegmentedControl?
+	var parentView: WatchViewController?
+	var currentFilter = Filter.defaultFilter()
 	
 	var dataStore = [Item]()
 	var page = 1
@@ -49,6 +57,15 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		if let parent = parentView {
+			parent.definesPresentationContext = true
+		}
+		// Gesture recognizer for filters
+		let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(ListViewController.openFilters))
+		lpgr.minimumPressDuration = 0.5
+		lpgr.delaysTouchesBegan = true
+		self.view.addGestureRecognizer(lpgr)
+		filterView.addBlurEffect()
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView.remembersLastFocusedIndexPath = false
 		if let _ = viewType {
@@ -84,6 +101,18 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		updateFocusIfNeeded()
 		shouldFocusSubmenu = false
 	}
+	
+/*	internal func setupGestureRecognizers() {
+		// Filters
+		let directions: [UISwipeGestureRecognizerDirection] = [.up, .down]
+		for direction in directions {
+			let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ListViewController.swiped(_:)))
+			gesture.direction = direction
+			self.view.addGestureRecognizer(gesture)
+		}
+	}*/
+	
+	
 	
 }
 
@@ -235,5 +264,38 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 			}
 		}
 	}*/
+}
 
+extension ListViewController: FiltersViewControllerDelegate {
+	
+	func openFilters() {
+		
+		let filtersController = storyboard?.instantiateViewController(withIdentifier: "filtersController") as! FiltersViewController
+		filtersController.modalPresentationStyle = .overFullScreen
+		filtersController.currentView = viewType!
+		filtersController.delegate = self
+		visualEffectView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height+100)
+		parentView?.view.addSubview(visualEffectView)
+		collectionView.setContentOffset(CGPoint.zero, animated: true)
+		present(filtersController, animated: true) {
+			self.segments?.isHidden = true
+			filtersController.configure(with: self.currentFilter)
+		}
+	}
+	
+	func filtersDidSelectFilter(filter: Filter) {
+		currentFilter = filter
+		filterLabel.text = "Жанр: \(filter.genre?.title ?? "Все"), Год: \(filter.yearString()), Сортировка: \(filter.sortBy?.name() ?? "По дате добавления")"
+//		loadInfiniteScroll(filter.genre, year: filter.yearString(), sort: filter.sortBy?.desc())
+	}
+	
+	func filtersDidDisappear() {
+		self.segments?.isHidden = false
+		UIView.animate(withDuration: 0.4, animations: {
+			self.visualEffectView.alpha = 0.0
+		}) { completed in
+			self.visualEffectView.removeFromSuperview();
+			self.visualEffectView.alpha = 1.0
+		}
+	}
 }

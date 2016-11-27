@@ -56,7 +56,7 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5D-ON-mpf">
-                                <rect key="frame" x="0.0" y="229" width="1920" height="831"/>
+                                <rect key="frame" x="0.0" y="229" width="1920" height="851"/>
                                 <connections>
                                     <segue destination="RFD-6v-0tW" kind="embed" identifier="listView" id="TVB-pc-ru8"/>
                                 </connections>
@@ -70,7 +70,7 @@
                             <constraint firstItem="1nk-LA-auQ" firstAttribute="leading" secondItem="vYB-Io-O0c" secondAttribute="leading" constant="20" id="WHa-C7-7wP"/>
                             <constraint firstItem="1nk-LA-auQ" firstAttribute="top" secondItem="t9z-QH-ZDY" secondAttribute="bottom" constant="150" id="fvg-Xe-9gF"/>
                             <constraint firstItem="I5D-ON-mpf" firstAttribute="top" secondItem="1nk-LA-auQ" secondAttribute="bottom" constant="10" id="g1H-z4-WEa"/>
-                            <constraint firstItem="sTX-Jm-lZe" firstAttribute="top" secondItem="I5D-ON-mpf" secondAttribute="bottom" constant="20" id="gnu-HC-ThJ"/>
+                            <constraint firstItem="sTX-Jm-lZe" firstAttribute="top" secondItem="I5D-ON-mpf" secondAttribute="bottom" id="gnu-HC-ThJ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Смотреть" id="PJu-lc-16A"/>
@@ -446,11 +446,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Yaf-OQ-bes"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="les-fz-aZB">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="831"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="851"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4O-SJ-FGo">
-                                <rect key="frame" x="20" y="20" width="1880" height="791"/>
+                                <rect key="frame" x="20" y="20" width="1880" height="811"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="30" id="CyS-Wu-OGz">
                                     <size key="itemSize" width="305" height="475"/>
@@ -464,6 +464,24 @@
                                     <outlet property="delegate" destination="RFD-6v-0tW" id="3kN-E0-fbh"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-Y7-PM8">
+                                <rect key="frame" x="0.0" y="723" width="1920" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Длительное нажатие на обложку откроет панель фильтров" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpd-si-svi">
+                                        <rect key="frame" x="550" y="46" width="821" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lpd-si-svi" firstAttribute="centerY" secondItem="kUP-Y7-PM8" secondAttribute="centerY" id="9Q1-Gr-YE3"/>
+                                    <constraint firstItem="lpd-si-svi" firstAttribute="centerX" secondItem="kUP-Y7-PM8" secondAttribute="centerX" id="Zfh-as-O2b"/>
+                                    <constraint firstAttribute="height" constant="128" id="dZG-9b-PSn"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="d8x-eU-8aT">
                                 <rect key="frame" x="928" y="372" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -485,16 +503,23 @@
                         </subviews>
                         <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kUP-Y7-PM8" secondAttribute="trailing" id="7Ir-sl-LcQ"/>
                             <constraint firstItem="G4O-SJ-FGo" firstAttribute="leading" secondItem="les-fz-aZB" secondAttribute="leading" constant="20" id="9tP-XD-vWl"/>
                             <constraint firstAttribute="trailing" secondItem="G4O-SJ-FGo" secondAttribute="trailing" constant="20" id="Fc5-98-XKo"/>
                             <constraint firstAttribute="bottom" secondItem="G4O-SJ-FGo" secondAttribute="bottom" constant="20" id="Fqy-tk-2lb"/>
                             <constraint firstItem="G4O-SJ-FGo" firstAttribute="top" secondItem="les-fz-aZB" secondAttribute="top" constant="20" id="KvE-Fl-cyU"/>
+                            <constraint firstItem="Yaf-OQ-bes" firstAttribute="top" secondItem="kUP-Y7-PM8" secondAttribute="bottom" id="aYf-ok-qrF"/>
+                            <constraint firstItem="kUP-Y7-PM8" firstAttribute="leading" secondItem="les-fz-aZB" secondAttribute="leading" id="ddd-LE-BHW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="d8x-eU-8aT" id="DzX-Hr-wej"/>
                         <outlet property="collectionTopConstraint" destination="KvE-Fl-cyU" id="OE1-m4-cLn"/>
                         <outlet property="collectionView" destination="G4O-SJ-FGo" id="wlT-qF-lSy"/>
+                        <outlet property="filterBottomConstraint" destination="aYf-ok-qrF" id="rPl-5A-a90"/>
+                        <outlet property="filterLabel" destination="lpd-si-svi" id="QaB-hl-z57"/>
+                        <outlet property="filterView" destination="kUP-Y7-PM8" id="TJK-0X-MKu"/>
+                        <outlet property="filterViewHeight" destination="dZG-9b-PSn" id="4Ha-Lr-tVg"/>
                         <outlet property="picksBarView" destination="zSL-Pb-3pD" id="Vea-CO-M4s"/>
                         <outlet property="picksCategoryLabel" destination="Ufm-TN-knq" id="Tl6-La-fBG"/>
                     </connections>
@@ -684,8 +709,220 @@
             </objects>
             <point key="canvasLocation" x="8758" y="1405"/>
         </scene>
+        <!--Фильтры-->
+        <scene sceneID="oq6-kM-J0f">
+            <objects>
+                <viewController storyboardIdentifier="filtersController" title="Фильтры" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AkZ-0y-aVc" customClass="FiltersViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mAW-jZ-L6y"/>
+                        <viewControllerLayoutGuide type="bottom" id="eCl-3p-Qm3"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Ot3-0H-GG9">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="EMa-Yu-2Fr">
+                                <rect key="frame" x="724" y="116" width="472" height="791"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sortCell" focusStyle="custom" id="6WS-8s-Loi" customClass="SortingTableViewCell" customModule="Kinopub_TV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="472" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6WS-8s-Loi" id="mBQ-Wo-KFZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNs-M4-yps">
+                                                    <rect key="frame" x="69" y="8" width="325" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-sort-desc" translatesAutoresizingMaskIntoConstraints="NO" id="fVn-lM-rzR">
+                                                    <rect key="frame" x="7" y="15" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="name" destination="RNs-M4-yps" id="q0J-io-lAj"/>
+                                            <outlet property="sortIcon" destination="fVn-lM-rzR" id="H4B-Gx-Z0I"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="hQT-I4-NKE">
+                                <rect key="frame" x="106" y="116" width="400" height="791"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="genreCell" id="35w-1E-xZg" customClass="FilterTableViewCell" customModule="Kinopub_TV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="400" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35w-1E-xZg" id="VpK-dW-8Xj">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwH-El-MGQ">
+                                                    <rect key="frame" x="18" y="8" width="307" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="filter" destination="IwH-El-MGQ" id="wSC-lL-Pbu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AkZ-0y-aVc" id="Cdw-XE-mOQ"/>
+                                    <outlet property="delegate" destination="AkZ-0y-aVc" id="wZF-aG-G7h"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1912" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiP-iH-RCa">
+                                <rect key="frame" x="1336" y="240" width="120" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0n-LK-sUL">
+                                <rect key="frame" x="1702" y="240" width="120" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxy-hq-RVw" customClass="LightButton" customModule="Kinopub_TV" customModuleProvider="target">
+                                <rect key="frame" x="1336" y="164" width="120" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" backgroundImage="btn-arrow-up"/>
+                                <state key="highlighted" backgroundImage="btn-arrow-up-hightlight">
+                                    <color key="titleColor" red="0.28331488370000002" green="0.28358286620000001" blue="0.28334605689999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="focused" backgroundImage="btn-arrow-up-hightlight"/>
+                                <connections>
+                                    <action selector="increaseFrom:" destination="AkZ-0y-aVc" eventType="primaryActionTriggered" id="c1r-kc-ViB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuw-en-Wbr" customClass="LightButton" customModule="Kinopub_TV" customModuleProvider="target">
+                                <rect key="frame" x="1336" y="329" width="120" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" backgroundImage="btn-arrow-down"/>
+                                <state key="highlighted" backgroundImage="btn-arrow-down-hightlight"/>
+                                <state key="focused" backgroundImage="btn-arrow-down-hightlight"/>
+                                <connections>
+                                    <action selector="decreaseFrom:" destination="AkZ-0y-aVc" eventType="primaryActionTriggered" id="FVj-9q-Wgz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4R2-VD-u7v" customClass="LightButton" customModule="Kinopub_TV" customModuleProvider="target">
+                                <rect key="frame" x="1702" y="163" width="120" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" backgroundImage="btn-arrow-up"/>
+                                <state key="highlighted" backgroundImage="btn-arrow-up-hightlight"/>
+                                <state key="focused" backgroundImage="btn-arrow-up-hightlight"/>
+                                <connections>
+                                    <action selector="increaseTo:" destination="AkZ-0y-aVc" eventType="primaryActionTriggered" id="DX6-K2-OSn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUW-0I-bjO" customClass="LightButton" customModule="Kinopub_TV" customModuleProvider="target">
+                                <rect key="frame" x="1702" y="329" width="120" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" backgroundImage="btn-arrow-down"/>
+                                <state key="highlighted" backgroundImage="btn-arrow-down-hightlight"/>
+                                <state key="focused" backgroundImage="btn-arrow-down-hightlight"/>
+                                <connections>
+                                    <action selector="decreaseTo:" destination="AkZ-0y-aVc" eventType="primaryActionTriggered" id="hzL-AQ-qDb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5I5-VT-cNH" customClass="CheckButton" customModule="Kinopub_TV" customModuleProvider="target">
+                                <rect key="frame" x="1727" y="445" width="73" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <connections>
+                                    <action selector="toggleYear:" destination="AkZ-0y-aVc" eventType="primaryActionTriggered" id="PtJ-mS-okz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Использовать только последнее значение" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeC-iR-P4C">
+                                <rect key="frame" x="1391" y="437" width="300" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
+                                <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЖАНР" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fd-eb-RnK">
+                                <rect key="frame" x="106" y="43" width="486" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="СОРТИРОВКА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYZ-xW-SBC">
+                                <rect key="frame" x="724" y="43" width="472" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ГОД" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84q-Rk-mJ4">
+                                <rect key="frame" x="1336" y="43" width="486" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ld9-ZH-sKp">
+                                <rect key="frame" x="1561" y="266" width="36" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo7-Vp-99j">
+                                <rect key="frame" x="863" y="948" width="195" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="ОК"/>
+                                <connections>
+                                    <action selector="closeFilters:" destination="AkZ-0y-aVc" eventType="primaryActionTriggered" id="4AO-xB-Bhz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="applyButton" destination="Bo7-Vp-99j" id="37X-Tc-O4p"/>
+                        <outlet property="fromYear" destination="yiP-iH-RCa" id="O9v-Wg-HF6"/>
+                        <outlet property="fromYearDownButton" destination="vuw-en-Wbr" id="vhM-8t-VAa"/>
+                        <outlet property="fromYearUpButton" destination="vxy-hq-RVw" id="anN-oJ-JFw"/>
+                        <outlet property="genreTable" destination="hQT-I4-NKE" id="6gj-cQ-PbZ"/>
+                        <outlet property="singleYearButton" destination="5I5-VT-cNH" id="Ars-f9-uBe"/>
+                        <outlet property="sortTable" destination="EMa-Yu-2Fr" id="dSz-rW-0RW"/>
+                        <outlet property="toYear" destination="R0n-LK-sUL" id="lKf-kW-ozj"/>
+                        <outlet property="toYearDownButton" destination="YUW-0I-bjO" id="RPb-J7-nTl"/>
+                        <outlet property="toYearUpButton" destination="4R2-VD-u7v" id="yIb-Vz-thx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TmJ-rZ-nTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4612" y="4298"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="btn-arrow-down" width="120" height="45"/>
+        <image name="btn-arrow-down-hightlight" width="120" height="45"/>
+        <image name="btn-arrow-up" width="120" height="45"/>
+        <image name="btn-arrow-up-hightlight" width="120" height="45"/>
+        <image name="icon-sort-desc" width="40" height="40"/>
         <image name="main-logo" width="1280" height="768"/>
     </resources>
 </document>

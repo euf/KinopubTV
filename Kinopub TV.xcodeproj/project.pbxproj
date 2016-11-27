@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C62793C49CCAD9A13FA1481 /* Pods_Kinopub_TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */; };
+		D013D7BA1DEB772200D83E09 /* KinoSortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013D7B91DEB772200D83E09 /* KinoSortable.swift */; };
 		D02601FC1DD885810090E005 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */; };
 		D02601FE1DD888530090E005 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02601FD1DD888530090E005 /* ItemCollectionViewCell.xib */; };
 		D02850B71DE0570400849913 /* UpNextProposalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02850B51DE0570400849913 /* UpNextProposalViewController.swift */; };
@@ -75,6 +76,7 @@
 		1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kinopub_TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2171526F323D8978AB7400 /* Pods-Kinopub TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C1D63E132E55D8DF212CCD /* Pods-Kinopub TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.release.xcconfig"; sourceTree = "<group>"; };
+		D013D7B91DEB772200D83E09 /* KinoSortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinoSortable.swift; sourceTree = "<group>"; };
 		D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		D02601FD1DD888530090E005 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		D02850B51DE0570400849913 /* UpNextProposalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpNextProposalViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				D0834D431DE22DC200BE382D /* MenuRetractable.swift */,
 				D046BB0B1DE8948C00698B2E /* APIDelegatable.swift */,
 				D04C5A701DE9B749004C10A0 /* KinoSearchable.swift */,
+				D013D7B91DEB772200D83E09 /* KinoSortable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				D0289A601D899C5000241ED2 /* Config.swift in Sources */,
 				D05B45051DB28E330064FC6D /* TVViewable.swift in Sources */,
 				D0DB94531DAA59B10031CD13 /* FocusableText.swift in Sources */,
+				D013D7BA1DEB772200D83E09 /* KinoSortable.swift in Sources */,
 				D02850BC1DE1A88200849913 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				D0A397861DD86ADE00832F14 /* KinoPickable.swift in Sources */,
 				D08E04661D97B27300A4074C /* WatchViewController.swift in Sources */,
