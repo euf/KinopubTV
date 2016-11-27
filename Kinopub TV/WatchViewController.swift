@@ -68,6 +68,7 @@ class WatchViewController: UIViewController, MenuRetractable {
 			if let controller = segue.destination as? ListViewController {
 				listController = controller
 				listController?.segments = subMenuSegments
+				listController?.parentView = self
 				changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)
 			}
 		}

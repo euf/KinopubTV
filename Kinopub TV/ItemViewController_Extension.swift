@@ -17,7 +17,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	
 	internal func setQuality() {
 		let qualityIndex = setQualityForAvailableMedia(media: availableMedia)
-		log.info("Setting quality for movie: \(availableMedia[qualityIndex].quality)")
+//		log.info("Setting quality for movie: \(availableMedia[qualityIndex].quality)")
 		qualitySegment.selectedSegmentIndex = qualityIndex
 		updateQuality(control: qualitySegment)
 	}
@@ -190,9 +190,8 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				
 				if let files = video.files {
 					self.qualitySegment.replaceSegments(segments: files.map{($0.quality?.rawValue)!})
-					self.availableMedia = files
+					self.availableMedia = files // Also sets available quality for movie
 					self.movieVideo = video
-					self.setQuality()
 					self.loadingCover.isHidden = true
 				}
 			}
