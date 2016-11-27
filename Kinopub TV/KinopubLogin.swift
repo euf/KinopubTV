@@ -105,7 +105,7 @@ extension DeviceTokenable {
 				case(let result?, _):
 					log.debug("Response for refreshing token: \(result)")
 					if result["status"] != 400, let response = Mapper<ActivationResponse>().map(JSONObject: result.dictionaryObject) {
-						log.debug("Mapped refresh. And saving..")
+						log.debug("Mapped refresh token. And saving..")
 						self.saveToken(response: response)
 						callback(.success)
 					} else {

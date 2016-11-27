@@ -18,8 +18,6 @@ class SearchViewController: UINavigationController {
 		super.init(coder: aDecoder)
 		self.view.backgroundColor = UIColor(red:0.09, green:0.094, blue:0.105, alpha:1)
 		self.tabBarItem.title = "Поиск"
-//		self.tabBarItem.image = TabBarReplacementStyleKit.imageOfSearch(focused: false)
-//		self.tabBarItem.selectedImage = TabBarReplacementStyleKit.imageOfSearch(focused: true)
         self.addContent()
 	}
     
@@ -51,7 +49,6 @@ class SearchViewController: UINavigationController {
         if searchController == nil {
 			let resultsController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "searchResults") as! SearchResultsViewController
             resultsController.delegate = self
-			log.debug("Initialized search controller")
             searchController = UISearchController(searchResultsController: resultsController)
             searchController!.searchResultsUpdater = resultsController
             searchController!.searchBar.keyboardAppearance = .dark

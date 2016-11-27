@@ -31,13 +31,11 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			return
 		}
 		isMovie = moviesSet.contains(type) ? true : false
-		
 		fetchItem(id: id, type: type) { status in
 			switch status {
 			case .success(let item):
 				if let item = item {
-					// TODO: Hide spinning wheel. Fade in the results
-					
+
 					// Плакат
 					if let p = item.posters, let image = p.big, let URL = NSURL(string: image) {
 						self.poster.af_setImage(withURL: URL as URL, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: true, completion: nil)

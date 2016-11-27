@@ -29,7 +29,6 @@ class PicksViewController: UIViewController {
 	internal func loadInfiniteScroll() {
 		self.page = 1
 		collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
-			log.debug("Scroll initied")
 			guard let page = self?.page else { return }
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()

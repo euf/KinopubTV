@@ -66,7 +66,6 @@ class WatchViewController: UIViewController, MenuRetractable {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "listView" {
 			if let controller = segue.destination as? ListViewController {
-				log.debug("Preparing List view from WatchController")
 				listController = controller
 				listController?.segments = subMenuSegments
 				changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)

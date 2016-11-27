@@ -17,16 +17,18 @@ class HomeViewController: UIViewController, KinoListable, MenuRetractable, Segue
 	@IBOutlet var collectionView: UICollectionView!
 	@IBOutlet var topConstraint: NSLayoutConstraint!
 	
+	var popularController: PopularTVShowsController? {
+		didSet { loadFeaturedShows() }
+	}
+	
 	var bannerSource = [Item]() {
-		didSet {
-			collectionView.fadeCells()
-		}
+		didSet { collectionView.fadeCells() }
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		collectionView.remembersLastFocusedIndexPath = true
-		loadFeatured()
+		loadFeaturedMovies()
     }
 	
 	override func viewDidLayoutSubviews() {
@@ -41,8 +43,7 @@ class HomeViewController: UIViewController, KinoListable, MenuRetractable, Segue
 		switch segueIdentifier(for: segue) {
 		case .TVShowsSegue:
 			if let controller = segue.destination as? PopularTVShowsController {
-				log.debug("Destination controller => \(controller)")
-				controller.loadPopularTVShows()
+				popularController = controller
 			}
 			break
 		}
@@ -52,7 +53,13 @@ class HomeViewController: UIViewController, KinoListable, MenuRetractable, Segue
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
-	fileprivate func loadFeatured() {
+	func loadFeaturedShows() {
+		if let controller = popularController {
+			controller.loadPopularTVShows()
+		}
+	}
+	
+	func loadFeaturedMovies() {
 		getFeaturedMovies { response in
 			switch response {
 			case .success(let items, _):

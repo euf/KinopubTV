@@ -35,10 +35,18 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 			getViewController(identifier: "profileController")!,
 			// getViewController("SettingsViewController")!,
 		]
-		
 		self.tabBar.updateDisplay()
 		self.tabBar.itemSpacing = 40
 		self.tabBar.itemOffset = 40
+	}
+	
+	
+	/// This method is called to update HomeViewController after token refresh (which takes more time than validity check)
+	fileprivate func refreshHomeScreen() {
+		if let homeController = viewControllers.first as? HomeViewController {
+			homeController.loadFeaturedMovies()
+			homeController.loadFeaturedShows()
+		}
 	}
 	
 	/**
@@ -59,7 +67,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 					switch status {
 					case .success:
 						Answers.logLogin(withMethod: "token refresh", success: 1, customAttributes: nil)
-						// Managed to refresh token
+						self.refreshHomeScreen() // This is needed when refresh is initiated and our home screen is empty
 						self.setQuality()
 						break
 					default:
