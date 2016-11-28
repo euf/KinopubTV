@@ -111,13 +111,13 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			self.view.addGestureRecognizer(gesture)
 		}
 	}*/
-	
-	
-	
+
 }
 
+
+
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, /*UICollectionViewDataSourcePrefetching,*/ KinoListable {
-	
+
 	fileprivate func fadeCells() {
 		let range = NSMakeRange(0, self.collectionView.numberOfSections)
 		let sections = NSIndexSet(indexesIn: range)

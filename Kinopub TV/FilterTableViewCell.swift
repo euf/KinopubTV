@@ -52,21 +52,19 @@ class FilterTableViewCell: UITableViewCell {
 	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		if context.nextFocusedView === self {
+			self.backgroundColor = UIColor.gray
 			self.setNeedsUpdateConstraints()
 			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
 				self.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-				self.backgroundColor = UIColor.gray
-				self.tintColor = UIColor.white
 			}, completion: { done in
 			})
 		}
 		
 		if context.previouslyFocusedView === self {
+			self.backgroundColor = UIColor.clear
 			self.setNeedsUpdateConstraints()
 			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, options: .curveEaseIn, animations: {
 				self.transform = CGAffineTransform.identity
-				self.backgroundColor = UIColor.clear
-				self.tintColor = UIColor.white
 			}, completion: { done in
 			})
 		}
