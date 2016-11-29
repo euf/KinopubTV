@@ -74,6 +74,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			menuGesture.delegate = self
 			collectionView.addGestureRecognizer(menuGesture)
 			collectionView.infiniteScrollTriggerOffset = 500
+			collectionView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
 			collectionView.remembersLastFocusedIndexPath = true
 			collectionTopConstraint.constant = 10
 			loadInfiniteScroll()
