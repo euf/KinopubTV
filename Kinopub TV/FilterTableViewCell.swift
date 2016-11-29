@@ -18,6 +18,7 @@ enum CellStatus {
 class FilterTableViewCell: UITableViewCell {
 	
 	var genre: Genre?
+	var country: Country?
 	var status: CellStatus = .unchecked {
 		didSet {
 			updateAccessory()

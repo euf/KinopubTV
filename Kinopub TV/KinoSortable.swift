@@ -11,6 +11,7 @@ import ObjectMapper
 
 protocol KinoSortable: Connectable {
 	func getGenres(for type: GenreType, callback: @escaping (_ response: [Genre]) -> ())
+	func getCountries(callback: @escaping (_ response: [Country]) -> ())
 }
 
 extension KinoSortable {
@@ -19,6 +20,7 @@ extension KinoSortable {
 			"type": type.rawValue as AnyObject
 		]
 		let request = Request(type: .resource, resourceURL: "/genres", method: .get, parameters: parameters)
+		
 		performRequest(resource: request) { result, error in
 			switch (result, error) {
 			case(let result?, _):
@@ -35,4 +37,25 @@ extension KinoSortable {
 			
 		}
 	}
+	
+	func getCountries(callback: @escaping (_ response: [Country]) -> ()) {
+	
+		let request = Request(type: .resource, resourceURL: "/countries", method: .get, parameters: [:])
+		performRequest(resource: request) { result, error in
+			switch (result, error) {
+			case(let result?, _):
+				if result["status"] == 200 {
+					if let items = Mapper<Country>().mapArray(JSONObject: result["items"].arrayObject) {
+						callback(items)
+					}
+				}
+			case(_, let error?):
+				log.error("Error accessing the service \(error)")
+				break
+			default: break
+			}
+			
+		}
+	}
+	
 }

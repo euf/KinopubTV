@@ -27,14 +27,17 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 	@IBOutlet var fromYear: UILabel!
 	@IBOutlet var toYear: UILabel!
 	@IBOutlet var sortTable: UITableView!
+	@IBOutlet var countriesTable: UITableView!
 	@IBOutlet var genreTable: UITableView!
 	@IBOutlet var applyButton: LightButton!
 	
     weak var delegate: FiltersViewControllerDelegate?
-    
+	
 	var sortTableSource = SortTableDataSource()
+	var countries = [Country]()
 	var genres = [Genre]()
 	var genreSelectedIndexSelected = IndexPath()
+	var countrySelectedIndexSelected = IndexPath()
 	var currentView = ItemType()
 	let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
 	
@@ -43,6 +46,7 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 	let calendarComponents = NSCalendar.current.dateComponents([.day, .month, .year], from: Date())
 	
 	var selectedGenre: Genre? = nil
+	var selectedCountry: Country? = nil
 	var selectedYearRange: String? = nil
     var selectedSortOption: SortOption?
 	
@@ -66,7 +70,11 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 		sortTable.dataSource = sortTableSource
 		sortTable.delegate = sortTableSource
 		fetchGenres()
-    }
+		fetchCountries()
+		
+		log.debug("Current selected index for genres: \(genreSelectedIndexSelected)")
+		log.debug("Current selected index for countries: \(countrySelectedIndexSelected)")
+	}
 	
 	// MARK: - Methods
 	
@@ -102,6 +110,29 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 			self.genres.append(all)
 			self.genres.append(contentsOf: genres)
 			self.genreTable.reloadData()
+			if genres.count > 0 { // Default selection
+				if self.genreSelectedIndexSelected == [] {
+					let index = IndexPath(row: 0, section: 0)
+					let cell = self.genreTable.cellForRow(at: index) as! FilterTableViewCell
+					cell.status = .checked
+				}
+			}
+		}
+	}
+	
+	func fetchCountries() {
+		getCountries() { countries in
+			let all = Country(id: 0, title: "Все страны")
+			self.countries.append(all)
+			self.countries.append(contentsOf: countries)
+			self.countriesTable.reloadData()
+			if countries.count > 0 { // Default selection
+				if self.countrySelectedIndexSelected == [] {
+					let index = IndexPath(row: 0, section: 0)
+					let cell = self.countriesTable.cellForRow(at: index) as! FilterTableViewCell
+					cell.status = .checked
+				}
+			}
 		}
 	}
 	
@@ -180,7 +211,14 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return genres.count
+		var count: Int?
+		if tableView == self.genreTable {
+			count = genres.count
+		}
+		if tableView == self.countriesTable {
+			count = countries.count
+		}
+		return count!
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -188,25 +226,62 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell") as! FilterTableViewCell
-		let genre = genres[indexPath.row]
-		cell.genre = genre
-		if genreSelectedIndexSelected == indexPath {
-			cell.status = .checked
+		
+		if tableView == self.genreTable {
+			
+			let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell") as! FilterTableViewCell
+			let genre = genres[indexPath.row]
+			cell.genre = genre
+			if genreSelectedIndexSelected == indexPath {
+				cell.status = .checked
+			} else {
+				cell.status = .unchecked
+			}
+			cell.filter.text = genre.title
+			return cell
+			
+		} else if tableView == self.countriesTable {
+			
+			let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell") as! FilterTableViewCell
+			let country = countries[indexPath.row]
+			if countrySelectedIndexSelected == indexPath {
+				cell.status = .checked
+			} else {
+				cell.status = .unchecked
+			}
+			cell.filter.text = country.title
+			return cell
+			
 		} else {
-			cell.status = .unchecked
+			return UITableViewCell()
 		}
-		cell.filter.text = genre.title
-		return cell
+
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		genreSelectedIndexSelected = indexPath
-		let cell = tableView.cellForRow(at: indexPath) as! FilterTableViewCell
-		//cell.toggleCheckMark() // This causes a bug. We would rather select one single genre at a time.
-		if let genre = cell.genre {
-			selectedGenre = genre
+		
+		if tableView == self.genreTable {
+		
+			genreSelectedIndexSelected = indexPath
+			let cell = tableView.cellForRow(at: indexPath) as! FilterTableViewCell
+			//cell.toggleCheckMark() // This causes a bug. We would rather select one single genre at a time.
+			if let genre = cell.genre {
+				selectedGenre = genre
+			}
+				
 		}
+		
+		if tableView == self.countriesTable {
+		
+			countrySelectedIndexSelected = indexPath
+			let cell = tableView.cellForRow(at: indexPath) as! FilterTableViewCell
+			//cell.toggleCheckMark() // This causes a bug. We would rather select one single genre at a time.
+			if let country = cell.country {
+				selectedCountry = country
+			}
+			
+		}
+			
 		tableView.deselectRow(at: indexPath, animated: true)
 		tableView.reloadData()
 		// TODO: gather all the checked indexPaths together so we can save them
@@ -234,7 +309,6 @@ class SortTableDataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
 		parent?.didSelectSortOption(sortOption: selectedRow)
 	}
 }
-
 
 
 

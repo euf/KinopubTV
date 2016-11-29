@@ -27,6 +27,10 @@ struct Country: Mappable {
 	var title: String?
 	
 	init?(map: Map){}
+	init(id: Int, title: String) {
+		self.id = id
+		self.title = title
+	}
 	
 	mutating func mapping(map: Map) {
 		id <- map["id"]
