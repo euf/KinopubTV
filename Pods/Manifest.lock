@@ -16,6 +16,7 @@ PODS:
   - PMKVObserver/ObjC (2.0.1)
   - PMKVObserver/Swift (2.0.1):
     - PMKVObserver/ObjC
+  - Reveal-SDK (4)
   - SwiftyBeaver (1.1.1)
   - SwiftyJSON (3.1.3)
   - SwiftyUserDefaults (3.0.0)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Fabric
   - ObjectMapper
   - PMKVObserver
+  - Reveal-SDK
   - SwiftyBeaver
   - SwiftyJSON
   - SwiftyUserDefaults
@@ -55,12 +57,13 @@ SPEC CHECKSUMS:
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
   PMKVObserver: f3955b3beae9c6198ad347d4eb9b125477e9cb72
+  Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   UIScrollView-InfiniteScroll: 428d0e9485a97de0ecccfbf161e7e2fec0bdae90
   XCDYouTubeKit: 90690f9e3523735dc93b8024269d991b0cfffe78
 
-PODFILE CHECKSUM: b94c19b4d164c2dc4c1f04ec3af6cd136447b3ca
+PODFILE CHECKSUM: 4732e649bbf1e46e3f56f2e46213fb1a19fd1074
 
 COCOAPODS: 1.1.1

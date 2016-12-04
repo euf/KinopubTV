@@ -15,4 +15,5 @@ target 'Kinopub TV' do
   pod 'ObjectMapper'
   pod 'SwiftyUserDefaults'
   pod 'Cosmos', '~> 7.0'
+  pod 'Reveal-SDK', :configurations => ['Debug']
 end
