@@ -56,6 +56,11 @@ struct Config {
 		static let key = "d5dbe118b642f6c09adf9c45cc6cafdb"
 	}
 	
+	struct fanart {
+		static let base = "http://webservice.fanart.tv/v3/tv"
+		static let key = "172e8ebb6f757378c74cd78712b5978f"
+	}
+	
 }
 
 extension DefaultsKeys {

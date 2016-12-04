@@ -26,42 +26,39 @@ extension APIDelegatable {
 //		]
 		let charactersCount = String(id).characters.count
 		let imdb = charactersCount > 6 ? "tt"+String(id) : "tt0"+String(id)
-		Alamofire.request(Config.guideBox.base+Config.guideBox.key+"/search/id/imdb/\(imdb)", parameters: nil).responseJSON { response in
+		Alamofire.request("\(Config.guideBox.base+Config.guideBox.key)/search/id/imdb/\(imdb)", parameters: nil).responseJSON { response in
 			switch response.result {
 			case .success(let data):
 				
 				let result = JSON(data)
 				let tvdb = result["tvdb"]
-//				log.debug(tvdb)
-				Alamofire.request("http://webservice.fanart.tv/v3/tv/\(tvdb)", parameters: ["api_key": "172e8ebb6f757378c74cd78712b5978f"]).responseJSON { response in
+				let fanartURL = "\(Config.fanart.base)/\(tvdb)"
+				Alamofire.request(fanartURL, parameters: ["api_key": Config.fanart.key]).responseJSON { response in
+//					log.debug("Fanart response: ")
+//					log.debug(response)
 					switch response.result {
 					case .success(let data):
 						
 						var url: URL?
 						let result = JSON(data)
 						
-						if result["hdclearart"][0]["url"].null == nil {
-							if let u = URL(string: result["hdclearart"][0]["url"].string!) {
+						if result["tvthumb"][0]["url"].null == nil {
+							if let u = URL(string: result["tvthumb"][0]["url"].string!.URLEncoded) {
 								url = u
 								callback(url)
-							}
-						} else {
-							if result["clearart"][0]["url"].null == nil {
-								if let u = URL(string: result["clearart"][0]["url"].string!) {
-									url = u
-									callback(url)
-								}
+							} else {
+								log.debug("Failed to load recource: \(result["tvthumb"][0]["url"])")
 							}
 						}
 						// another callback here?
-						
+					
 					case .failure(let error):
-						log.error("Error calling TVMaze: \(error)")
+						log.error("Error calling Fanart: \(error)")
 					}
 				}
 				
 			case .failure(let error):
-				log.error("Error calling TVMaze: \(error)")
+				log.error("Error calling Guidebox: \(error)")
 			}
 		}
 		
