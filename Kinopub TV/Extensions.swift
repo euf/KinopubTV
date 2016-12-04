@@ -137,3 +137,10 @@ extension UIViewController {
 		return getMainStoryboard().instantiateViewController(withIdentifier: identifier)
 	}
 }
+
+extension String {
+	var URLEncoded: String {
+		let encodedString = self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+		return encodedString ?? self
+	}
+}
