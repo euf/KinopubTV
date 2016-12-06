@@ -17,7 +17,7 @@ protocol FiltersViewControllerDelegate: class {
     func filtersDidDisappear()
 }
 
-class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable {
+class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureRecognizerDelegate, KinoSortable {
 	
 	@IBOutlet var singleYearButton: CheckButton!
 	@IBOutlet var toYearUpButton: LightButton!
@@ -50,12 +50,13 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 	var selectedYearRange: String? = nil
     var selectedSortOption: SortOption?
 	
+	var saveGesture: UITapGestureRecognizer?
+	
 	// MARK: - Delegate methods 
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		visualEffectView.removeFromSuperview()
-
 	}
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,6 +75,19 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 		
 		log.debug("Current selected index for genres: \(genreSelectedIndexSelected)")
 		log.debug("Current selected index for countries: \(countrySelectedIndexSelected)")
+		
+		// Adding gestureRecognizer
+		
+		saveGesture = UITapGestureRecognizer(target: self, action: #selector(FiltersViewController.saveAndClose))
+		saveGesture?.allowedPressTypes = [NSNumber(value: UIPressType.playPause.rawValue as Int)]
+		saveGesture?.delegate = self
+		view.addGestureRecognizer(saveGesture!)
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		view.removeGestureRecognizer(saveGesture!)
+		saveGesture = nil
 	}
 	
 	// MARK: - Methods
@@ -136,6 +150,22 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 		}
 	}
 	
+	func saveAndClose() {
+		var filter = Filter()
+		if singleYearButton.toggled {
+			filter.fromYear = Int(toYear.text!)
+			filter.toYear = Int(toYear.text!)
+		} else {
+			filter.fromYear = Int(fromYear.text!)
+			filter.toYear = Int(toYear.text!)
+		}
+		filter.genre = selectedGenre
+		filter.sortBy = selectedSortOption
+		
+		delegate?.filtersDidSelectFilter(filter: filter)
+		self.dismiss(animated: true, completion: nil)
+	}
+	
 	// MARK: - Actions
 
 	@IBAction func toggleYear(_ sender: CheckButton) {
@@ -153,19 +183,7 @@ class FiltersViewController: UIViewController, FilterViewDelegate, KinoSortable 
 	}
 	
 	@IBAction func closeFilters(_ sender: UIButton) {
-        var filter = Filter()
-        if singleYearButton.toggled {
-            filter.fromYear = Int(toYear.text!)
-            filter.toYear = Int(toYear.text!)
-        } else {
-            filter.fromYear = Int(fromYear.text!)
-            filter.toYear = Int(toYear.text!)
-        }
-        filter.genre = selectedGenre
-        filter.sortBy = selectedSortOption
-        
-        delegate?.filtersDidSelectFilter(filter: filter)
-		self.dismiss(animated: true, completion: nil)
+		saveAndClose()
 	}
 	
 

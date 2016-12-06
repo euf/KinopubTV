@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2C62793C49CCAD9A13FA1481 /* Pods_Kinopub_TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */; };
-		D0032DFA1DF3176100FC2206 /* TopAlignedCollectionViewCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0032DF91DF3176100FC2206 /* TopAlignedCollectionViewCellLayout.swift */; };
 		D013D7BA1DEB772200D83E09 /* KinoSortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013D7B91DEB772200D83E09 /* KinoSortable.swift */; };
 		D02601FC1DD885810090E005 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */; };
 		D02601FE1DD888530090E005 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D02601FD1DD888530090E005 /* ItemCollectionViewCell.xib */; };
@@ -78,7 +77,6 @@
 		1F609CA2F0D29E5026D75B1F /* Pods_Kinopub_TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kinopub_TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2171526F323D8978AB7400 /* Pods-Kinopub TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C1D63E132E55D8DF212CCD /* Pods-Kinopub TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopub TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopub TV/Pods-Kinopub TV.release.xcconfig"; sourceTree = "<group>"; };
-		D0032DF91DF3176100FC2206 /* TopAlignedCollectionViewCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedCollectionViewCellLayout.swift; sourceTree = "<group>"; };
 		D013D7B91DEB772200D83E09 /* KinoSortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinoSortable.swift; sourceTree = "<group>"; };
 		D02601FB1DD885810090E005 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		D02601FD1DD888530090E005 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				D0289A5F1D899C5000241ED2 /* Config.swift */,
 				D0289A611D899CA700241ED2 /* Common.swift */,
 				D02850BB1DE1A88100849913 /* CenterCellCollectionViewFlowLayout.swift */,
-				D0032DF91DF3176100FC2206 /* TopAlignedCollectionViewCellLayout.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -536,7 +533,6 @@
 				D04C5A791DE9E57D004C10A0 /* SortingTableViewCell.swift in Sources */,
 				D046BB101DE8982B00698B2E /* PopularTVShowsController.swift in Sources */,
 				D0289A841D8D748E00241ED2 /* PITabBar.swift in Sources */,
-				D0032DFA1DF3176100FC2206 /* TopAlignedCollectionViewCellLayout.swift in Sources */,
 				D04C5A7B1DE9E5D1004C10A0 /* Filter.swift in Sources */,
 				D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */,
 				D046BB0E1DE895F100698B2E /* Fanart.swift in Sources */,

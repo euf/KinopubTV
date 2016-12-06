@@ -494,9 +494,9 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		
 	}
 	
-	/// Добавляем в закладки
+	// Добавляем в закладки
 	internal func addToFavorites() {
-	
+//
 	}
 	
 	// MARK: - Delegates
@@ -508,8 +508,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			return [self.collectionView]
 		}
 	}
-	
-	
+
 }
 
 

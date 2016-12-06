@@ -10,13 +10,14 @@ import UIKit
 
 enum CellStatus {
 	case checked, unchecked
+
 	mutating func toggle() {
 		self = self == .checked ? .unchecked : .checked
 	}
 }
 
 class FilterTableViewCell: UITableViewCell {
-	
+
 	var genre: Genre?
 	var country: Country?
 	var status: CellStatus = .unchecked {
@@ -24,25 +25,25 @@ class FilterTableViewCell: UITableViewCell {
 			updateAccessory()
 		}
 	}
-	
+
 	var checkmark = UIImage(named: "icon-checkbox")
-	
+
 	@IBOutlet var filter: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+	override func awakeFromNib() {
+		super.awakeFromNib()
 		prepareCell()
-    }
-	
+	}
+
 	func prepareCell() {
 		self.layer.cornerRadius = 5
 	}
-	
+
 	func toggleCheckMark() {
 		status.toggle()
 		updateAccessory()
 	}
-	
+
 	private func updateAccessory() {
 		if status == .checked {
 			self.accessoryView = UIImageView(image: checkmark)
@@ -50,7 +51,7 @@ class FilterTableViewCell: UITableViewCell {
 			self.accessoryView = nil
 		}
 	}
-	
+
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		if context.nextFocusedView === self {
 			self.backgroundColor = UIColor.gray
@@ -60,7 +61,7 @@ class FilterTableViewCell: UITableViewCell {
 			}, completion: { done in
 			})
 		}
-		
+
 		if context.previouslyFocusedView === self {
 			self.backgroundColor = UIColor.clear
 			self.setNeedsUpdateConstraints()
@@ -70,8 +71,10 @@ class FilterTableViewCell: UITableViewCell {
 			})
 		}
 	}
-	
-//    override func setSelected(selected: Bool, animated: Bool) {
+
+
+
+	//    override func setSelected(selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //    }
 

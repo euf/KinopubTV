@@ -32,6 +32,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	var segments: UISegmentedControl?
 	var parentView: WatchViewController?
 	var currentFilter = Filter.defaultFilter()
+	var filtersGestureRecognizer: UILongPressGestureRecognizer?
 	
 	var dataStore = [Item]()
 	var page = 1
@@ -57,15 +58,20 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		if let parent = parentView {
 			parent.definesPresentationContext = true
 		}
+		
 		// Gesture recognizer for filters
-		let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(ListViewController.openFilters))
-		lpgr.minimumPressDuration = 0.5
-		lpgr.delaysTouchesBegan = true
-		self.view.addGestureRecognizer(lpgr)
-		filterView.addBlurEffect()
+		if filtersGestureRecognizer == nil {
+			filtersGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ListViewController.openFilters))
+			filtersGestureRecognizer?.minimumPressDuration = 0.5
+			filtersGestureRecognizer?.delaysTouchesBegan = true
+			view.addGestureRecognizer(filtersGestureRecognizer!)
+			filterView.addBlurEffect()
+		}
+	
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView.remembersLastFocusedIndexPath = false
 		if let _ = viewType {
@@ -78,6 +84,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			collectionView.remembersLastFocusedIndexPath = true
 			collectionTopConstraint.constant = 10
 			loadInfiniteScroll()
+			pick = nil
 		} else {
 			picksBarView.isHidden = false
 			collectionTopConstraint.constant = 60
@@ -85,10 +92,20 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			picksBarView.addBlurEffect()
 			loadPicks()
 		}
+		
 		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
 			self.view.layoutIfNeeded()
 		}, completion: nil)
 		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
+		
+		filterView.isHidden = pick != nil
+		
+		// If in Picks (Подборки) - Remove gesture recognizer
+		if pick != nil && filtersGestureRecognizer != nil {
+			view.removeGestureRecognizer(filtersGestureRecognizer!)
+			filtersGestureRecognizer = nil
+		}
+		
 	}
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -114,8 +131,6 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	}*/
 
 }
-
-
 
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, /*UICollectionViewDataSourcePrefetching,*/ KinoListable {
 
