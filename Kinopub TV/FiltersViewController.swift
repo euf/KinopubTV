@@ -49,10 +49,20 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 	var selectedCountry: Country? = nil
 	var selectedYearRange: String? = nil
     var selectedSortOption: SortOption?
-	
+	var selectedSortDirection: SortDirection? = .desc
 	var saveGesture: UITapGestureRecognizer?
 	
 	// MARK: - Delegate methods 
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		fetchGenres()
+		fetchCountries()
+//		if genreSelectedIndexSelected != [] {
+//			log.debug("Selected Index for Genre: \(genreSelectedIndexSelected)")
+//			self.genreTable.selectRow(at: genreSelectedIndexSelected, animated: true, scrollPosition: .none)
+//		}
+	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
@@ -70,11 +80,10 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 		sortTableSource.parent = self
 		sortTable.dataSource = sortTableSource
 		sortTable.delegate = sortTableSource
-		fetchGenres()
-		fetchCountries()
 		
-		log.debug("Current selected index for genres: \(genreSelectedIndexSelected)")
-		log.debug("Current selected index for countries: \(countrySelectedIndexSelected)")
+		
+//		log.debug("Current selected index for genres: \(genreSelectedIndexSelected)")
+//		log.debug("Current selected index for countries: \(countrySelectedIndexSelected)")
 		
 		// Adding gestureRecognizer
 		
@@ -107,12 +116,16 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 	}
 	
     func configure(with filter: Filter) {
+		selectedCountry = filter.country
+		selectedGenre = filter.genre
         toYear.text = String(filter.toYear!)
         fromYear.text = String(filter.fromYear!)
-		if let sortBy = filter.sortBy {
+		if let sortBy = filter.sortBy, let sortDirection = filter.sortDirection {
+			selectedSortOption = sortBy
+			selectedSortDirection = sortDirection
 			let index = SortOption.all.index(of: sortBy)
-			let selectedRow = IndexPath(row: index ?? 0, section: 0)
-			sortTable.selectRow(at: selectedRow, animated: false, scrollPosition: .none)
+			let activeRow = IndexPath(row: index ?? 0, section: 0)
+			sortTable.selectRow(at: activeRow, animated: false, scrollPosition: .middle)
 		}
     }
     
@@ -124,11 +137,14 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 			self.genres.append(all)
 			self.genres.append(contentsOf: genres)
 			self.genreTable.reloadData()
-			if genres.count > 0 { // Default selection
-				if self.genreSelectedIndexSelected == [] {
+			self.genreTable.layoutIfNeeded()
+			if genres.count > 0 {
+				if self.genreSelectedIndexSelected.isEmpty { // Default selection
 					let index = IndexPath(row: 0, section: 0)
 					let cell = self.genreTable.cellForRow(at: index) as! FilterTableViewCell
 					cell.status = .checked
+				} else {
+					self.genreTable.scrollToRow(at: self.genreSelectedIndexSelected, at: .middle, animated: true)
 				}
 			}
 		}
@@ -140,11 +156,14 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 			self.countries.append(all)
 			self.countries.append(contentsOf: countries)
 			self.countriesTable.reloadData()
-			if countries.count > 0 { // Default selection
-				if self.countrySelectedIndexSelected == [] {
+			self.countriesTable.layoutIfNeeded()
+			if countries.count > 0 {
+				if self.countrySelectedIndexSelected.isEmpty {
 					let index = IndexPath(row: 0, section: 0)
 					let cell = self.countriesTable.cellForRow(at: index) as! FilterTableViewCell
 					cell.status = .checked
+				} else {
+					self.countriesTable.scrollToRow(at: self.countrySelectedIndexSelected, at: .middle, animated: true)
 				}
 			}
 		}
@@ -161,7 +180,8 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 		}
 		filter.genre = selectedGenre
 		filter.sortBy = selectedSortOption
-		
+		filter.sortDirection = selectedSortDirection
+		filter.country = selectedCountry
 		delegate?.filtersDidSelectFilter(filter: filter)
 		self.dismiss(animated: true, completion: nil)
 	}
@@ -185,7 +205,6 @@ class FiltersViewController: UIViewController, FilterViewDelegate, UIGestureReco
 	@IBAction func closeFilters(_ sender: UIButton) {
 		saveAndClose()
 	}
-	
 
 	@IBAction func increaseFrom(_ sender: LightButton) {
 		var intValue = Int(fromYear.text!)!
@@ -250,6 +269,11 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell") as! FilterTableViewCell
 			let genre = genres[indexPath.row]
 			cell.genre = genre
+			
+			if genre == selectedGenre {
+				genreSelectedIndexSelected = indexPath
+			}
+			
 			if genreSelectedIndexSelected == indexPath {
 				cell.status = .checked
 			} else {
@@ -262,6 +286,12 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 			
 			let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell") as! FilterTableViewCell
 			let country = countries[indexPath.row]
+			cell.country = country
+			
+			if country == selectedCountry {
+				countrySelectedIndexSelected = indexPath
+			}
+			
 			if countrySelectedIndexSelected == indexPath {
 				cell.status = .checked
 			} else {
@@ -293,7 +323,7 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 		
 			countrySelectedIndexSelected = indexPath
 			let cell = tableView.cellForRow(at: indexPath) as! FilterTableViewCell
-			//cell.toggleCheckMark() // This causes a bug. We would rather select one single genre at a time.
+			//cell.toggleCheckMark() // This causes a bug. We would rather select one single country at a time.
 			if let country = cell.country {
 				selectedCountry = country
 			}

@@ -22,7 +22,7 @@ enum ItemsResponse {
 }
 
 protocol KinoListable: Connectable {
-	func fetchItems(for type: ItemType, page: Int?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
+	func fetchItems(for type: ItemType, page: Int?, filter: Filter, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 	func getFeaturedMovies(callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
 	func processItemsResponse(for result: JSON?, error: NSError?, callback: @escaping (_ response: ItemsResponse) -> ()) -> Void
@@ -30,26 +30,44 @@ protocol KinoListable: Connectable {
 
 extension KinoListable {
 	
-	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) {
-		let parameters: Dictionary<String, AnyObject> = [
-			"id": pick.id as AnyObject
+	func fetchItems(for type: ItemType, page: Int? = 1, filter: Filter, callback: @escaping (_ response: ItemsResponse) -> ()) {
+		
+		var parameters: Dictionary<String, AnyObject> = [
+			"type": type.rawValue as AnyObject,
+			"perpage": 50 as AnyObject,
+			"page": page as AnyObject
 		]
-		let request = Request(type: .resource, resourceURL: "/collections/view", method: .get, parameters: parameters)
+		
+		if let _ = filter.fromYear, let _ = filter.toYear {
+			parameters["year"] = filter.yearString() as AnyObject?
+		}
+		
+		if let genre = filter.genre {
+			parameters["genre"] = genre.id as AnyObject
+		}
+		
+		if let country = filter.country {
+			parameters["country"] = country.id as AnyObject
+		}
+		
+		if let sort = filter.sortBy, let direction = filter.sortDirection {
+			parameters["sort"] = "\(direction)\(sort)" as AnyObject
+		}
+		
+		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
+		log.debug(request)
 		performRequest(resource: request) { result, error in
 			self.processItemsResponse(for: result, error: error) { response in
 				callback(response)
 			}
 		}
 	}
-	
-	func fetchItems(for type: ItemType, page: Int? = 1, callback: @escaping (_ response: ItemsResponse) -> ()) {
+
+	func fetchItems(for pick: Pick, callback: @escaping (_ response: ItemsResponse) -> ()) {
 		let parameters: Dictionary<String, AnyObject> = [
-			"type": type.rawValue as AnyObject,
-			"perpage": 50 as AnyObject,
-			"page": page as AnyObject
+			"id": pick.id as AnyObject
 		]
-		
-		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
+		let request = Request(type: .resource, resourceURL: "/collections/view", method: .get, parameters: parameters)
 		performRequest(resource: request) { result, error in
 			self.processItemsResponse(for: result, error: error) { response in
 				callback(response)
@@ -81,9 +99,6 @@ extension KinoListable {
 		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
 		performRequest(resource: request) { result, error in
 			self.processItemsResponse(for: result, error: error) { response in
-				
-				
-				
 				callback(response)
 			}
 		}

@@ -31,27 +31,21 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 	var shouldFocusSubmenu = false
 	var segments: UISegmentedControl?
 	var parentView: WatchViewController?
-	var currentFilter = Filter.defaultFilter()
+	var currentFilter = Filter.defaultFilter() {
+		didSet {
+			if collectionView != nil { loadInfiniteScroll() }
+		}
+	}
 	var filtersGestureRecognizer: UILongPressGestureRecognizer?
 	
 	var dataStore = [Item]()
 	var page = 1
 	var totalPages = 1
 	
-	var year: String? = nil {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
-	}
-	
-	var genre: String? {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
-	}
-	
-	var sort: String? = nil {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
-	}
-	
 	var viewType: ItemType? {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
+		didSet {
+			currentFilter = Filter.defaultFilter()
+		}
 	}
 	
 	var pick: Pick?
@@ -160,8 +154,8 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 				self?.collectionView.removeInfiniteScroll()
 				return
 			} else {
-				// TODO : Add genre, sort, year?
-				self?.getItems(for: page) { pagination in
+				guard let filter = self?.currentFilter else { return }
+				self?.getItems(for: page, filter: filter) { pagination in
 					self?.activityIndicator.stopAnimating()
 					scrollView.finishInfiniteScroll()
 				}
@@ -179,9 +173,9 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		}
 	}
 
-	fileprivate func getItems(for page: Int, callback: @escaping (_ pagination: Pagination?) -> ()) {
+	fileprivate func getItems(for page: Int, filter: Filter, callback: @escaping (_ pagination: Pagination?) -> ()) {
 		if let type = viewType {
-			fetchItems(for: type, page: page) { status in
+			fetchItems(for: type, page: page, filter: filter) { status in
 				self.processItems(for: status) { pagination in
 					callback(pagination)
 				}
@@ -301,8 +295,8 @@ extension ListViewController: FiltersViewControllerDelegate {
 	
 	func filtersDidSelectFilter(filter: Filter) {
 		currentFilter = filter
-		filterLabel.text = "Жанр: \(filter.genre?.title ?? "Все"), Год: \(filter.yearString()), Сортировка: \(filter.sortBy?.name() ?? "По дате добавления")"
-//		loadInfiniteScroll(filter.genre, year: filter.yearString(), sort: filter.sortBy?.desc())
+		filterLabel.text = "Жанр: \(filter.genre?.title ?? "Все"), Год: \(filter.yearString()), Страна: \(filter.country?.title ?? "Все"), Сортировка: \(filter.sortBy?.name() ?? "По дате обновления")"
+		loadInfiniteScroll()
 	}
 	
 	func filtersDidDisappear() {

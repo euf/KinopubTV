@@ -36,6 +36,13 @@ struct Country: Mappable {
 		id <- map["id"]
 		title <- map["title"]
 	}
+	
+}
+
+extension Country: Equatable {
+	static func ==(lhs: Country, rhs: Country) -> Bool {
+		return lhs.id == rhs.id
+	}
 }
 
 struct Genre: Mappable {
@@ -63,8 +70,10 @@ struct Genre: Mappable {
 }
 
 
-extension Genre: Equatable {}
-
-func ==(lhs: Genre, rhs: Genre) -> Bool {
-	return lhs.id == rhs.id
+extension Genre: Equatable {
+	static func ==(lhs: Genre, rhs: Genre) -> Bool {
+		return lhs.id == rhs.id
+	}
 }
+
+

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SortOption: String {
+enum SortOption: String, CustomStringConvertible {
 	
 	case id
 	case year
@@ -32,7 +32,7 @@ enum SortOption: String {
 		case .created:
 			return "По дате добавления"
 		case .updated:
-			return "По дате изменения"
+			return "По дате обновления"
 		case .rating:
 			return "По рейтингу"
 		case .views:
@@ -47,6 +47,21 @@ enum SortOption: String {
 	}
 	
 	func asc() -> String {
+		return self.rawValue
+	}
+	
+	var description: String {
+		return self.rawValue
+	}
+}
+
+enum SortDirection: String, CustomStringConvertible {
+	case asc = ""
+	case desc = "-"
+	init() {
+		self = .asc
+	}
+	var description: String {
 		return self.rawValue
 	}
 }
