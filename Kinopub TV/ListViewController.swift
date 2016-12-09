@@ -141,6 +141,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 	
 	internal func loadInfiniteScroll() {
+		log.debug("Calling infinite scroll")
 		self.page = 1
 		if dataStore.count > 0 {
 			activityIndicator.startAnimating()
@@ -149,12 +150,15 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		}
 		self.collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
 			guard let page = self?.page else { return }
-			
+			log.debug("Infinite scroll initialized")
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()
+				scrollView.finishInfiniteScroll()
 				return
 			} else {
 				guard let filter = self?.currentFilter else { return }
+				log.debug("Applying a filter to items")
+				log.debug(filter)
 				self?.getItems(for: page, filter: filter) { pagination in
 					self?.activityIndicator.stopAnimating()
 					scrollView.finishInfiniteScroll()

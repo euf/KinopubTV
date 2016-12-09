@@ -496,7 +496,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	
 	// Добавляем в закладки
 	internal func addToFavorites() {
-//
+
 	}
 	
 	// MARK: - Delegates
@@ -514,7 +514,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-/// Всяческие делегады collectionView эпизодов
+// Всяческие делегады collectionView эпизодов
 extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	
 	func numberOfSections(in collectionView: UICollectionView) -> Int {

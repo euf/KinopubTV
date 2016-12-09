@@ -9,6 +9,7 @@
 import Foundation
 
 struct Filter: ReflectedStringConvertible {
+
 	var genre: Genre?
 	var fromYear: Int?
 	var toYear: Int?
