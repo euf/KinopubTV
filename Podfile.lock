@@ -9,7 +9,7 @@ PODS:
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - ObjectMapper (2.2.1)
+  - ObjectMapper (2.2.2)
   - PMKVObserver (2.0.1):
     - PMKVObserver/ObjC (= 2.0.1)
     - PMKVObserver/Swift (= 2.0.1)
@@ -45,7 +45,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UIScrollView-InfiniteScroll:
-    :commit: 005d71fd5d190da0eebd3d73cc47710433ce67f1
+    :commit: a7b3c28b7711b2bb1b93143a854aa108251541dc
     :git: https://github.com/staticdreams/UIScrollView-InfiniteScroll.git
 
 SPEC CHECKSUMS:
@@ -55,7 +55,7 @@ SPEC CHECKSUMS:
   Cosmos: 2c8299147138758f6ebbb247cf1aeed77998bdf9
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
+  ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
   PMKVObserver: f3955b3beae9c6198ad347d4eb9b125477e9cb72
   Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
   SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d

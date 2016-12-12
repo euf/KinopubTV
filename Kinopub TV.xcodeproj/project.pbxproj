@@ -58,6 +58,11 @@
 		D08E04661D97B27300A4074C /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E04651D97B27300A4074C /* WatchViewController.swift */; };
 		D08E046A1D97C0D400A4074C /* PickCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08E04681D97C0D400A4074C /* PickCollectionViewCell.xib */; };
 		D08E046B1D97C0D400A4074C /* PickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E04691D97C0D400A4074C /* PickCollectionViewCell.swift */; };
+		D099BE201DFD746100D5B576 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099BE1F1DFD746100D5B576 /* BookmarksViewController.swift */; };
+		D099BE221DFD755100D5B576 /* Bookmarkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099BE211DFD755100D5B576 /* Bookmarkable.swift */; };
+		D099BE241DFD7AB800D5B576 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099BE231DFD7AB800D5B576 /* BookmarkTableViewCell.swift */; };
+		D099BE261DFD7BAF00D5B576 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099BE251DFD7BAF00D5B576 /* Bookmark.swift */; };
+		D099BE281DFD7CA400D5B576 /* ObjectMapperTransforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099BE271DFD7CA400D5B576 /* ObjectMapperTransforms.swift */; };
 		D0A397691DD7D61D00832F14 /* Pick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A397681DD7D61D00832F14 /* Pick.swift */; };
 		D0A397861DD86ADE00832F14 /* KinoPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A397851DD86ADE00832F14 /* KinoPickable.swift */; };
 		D0B27D3A1DEDA57B00696596 /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B27D391DEDA57B00696596 /* CustomInfiniteIndicator.swift */; };
@@ -127,6 +132,11 @@
 		D08E04651D97B27300A4074C /* WatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 		D08E04681D97C0D400A4074C /* PickCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickCollectionViewCell.xib; sourceTree = "<group>"; };
 		D08E04691D97C0D400A4074C /* PickCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickCollectionViewCell.swift; sourceTree = "<group>"; };
+		D099BE1F1DFD746100D5B576 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		D099BE211DFD755100D5B576 /* Bookmarkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmarkable.swift; sourceTree = "<group>"; };
+		D099BE231DFD7AB800D5B576 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
+		D099BE251DFD7BAF00D5B576 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		D099BE271DFD7CA400D5B576 /* ObjectMapperTransforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapperTransforms.swift; sourceTree = "<group>"; };
 		D0A397681DD7D61D00832F14 /* Pick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pick.swift; sourceTree = "<group>"; };
 		D0A397851DD86ADE00832F14 /* KinoPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinoPickable.swift; sourceTree = "<group>"; };
 		D0B27D391DEDA57B00696596 /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
@@ -179,6 +189,7 @@
 			children = (
 				D0289A7B1D8A9C8400241ED2 /* PITabBar */,
 				D0289A5D1D899AE900241ED2 /* Extensions.swift */,
+				D099BE271DFD7CA400D5B576 /* ObjectMapperTransforms.swift */,
 				D0289A5F1D899C5000241ED2 /* Config.swift */,
 				D0289A611D899CA700241ED2 /* Common.swift */,
 				D02850BB1DE1A88100849913 /* CenterCellCollectionViewFlowLayout.swift */,
@@ -200,6 +211,7 @@
 				D046BB0B1DE8948C00698B2E /* APIDelegatable.swift */,
 				D04C5A701DE9B749004C10A0 /* KinoSearchable.swift */,
 				D013D7B91DEB772200D83E09 /* KinoSortable.swift */,
+				D099BE211DFD755100D5B576 /* Bookmarkable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -215,6 +227,7 @@
 				D0A397681DD7D61D00832F14 /* Pick.swift */,
 				D046BB0D1DE895F100698B2E /* Fanart.swift */,
 				D04C5A7A1DE9E5D1004C10A0 /* Filter.swift */,
+				D099BE251DFD7BAF00D5B576 /* Bookmark.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -246,6 +259,7 @@
 				D08E04651D97B27300A4074C /* WatchViewController.swift */,
 				D046BB0F1DE8982B00698B2E /* PopularTVShowsController.swift */,
 				D04C5A751DE9E475004C10A0 /* FiltersViewController.swift */,
+				D099BE1F1DFD746100D5B576 /* BookmarksViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -297,6 +311,7 @@
 				D04C5A7C1DE9E66F004C10A0 /* CheckButton.swift */,
 				D04C5A7E1DE9E6FE004C10A0 /* LightButton.swift */,
 				D0B27D391DEDA57B00696596 /* CustomInfiniteIndicator.swift */,
+				D099BE231DFD7AB800D5B576 /* BookmarkTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -489,6 +504,7 @@
 				D04C5A7F1DE9E6FE004C10A0 /* LightButton.swift in Sources */,
 				D0289A651D89A14000241ED2 /* KinoListable.swift in Sources */,
 				D0289A7E1D8AEE5C00241ED2 /* TabbarController.swift in Sources */,
+				D099BE281DFD7CA400D5B576 /* ObjectMapperTransforms.swift in Sources */,
 				D0289A671D89A18F00241ED2 /* KinopubLogin.swift in Sources */,
 				D0289A691D89E0F200241ED2 /* Connectable.swift in Sources */,
 				D046BB121DE899BA00698B2E /* TVBannerCollectionViewCell.swift in Sources */,
@@ -507,6 +523,7 @@
 				D0834D441DE22DC200BE382D /* MenuRetractable.swift in Sources */,
 				D02850BA1DE18F5600849913 /* SegueHandlerType.swift in Sources */,
 				D0289A861D8D748E00241ED2 /* PITabBarController.swift in Sources */,
+				D099BE201DFD746100D5B576 /* BookmarksViewController.swift in Sources */,
 				D0289A721D89EF0500241ED2 /* Categories.swift in Sources */,
 				D04C5A761DE9E475004C10A0 /* FilterTableViewCell.swift in Sources */,
 				D05B45071DB28E610064FC6D /* TVChannel.swift in Sources */,
@@ -514,6 +531,7 @@
 				D0289A6E1D89EECD00241ED2 /* Auth.swift in Sources */,
 				D0289A881D8D74D000241ED2 /* TabBarReplacementStyleKit.swift in Sources */,
 				D04C5A7D1DE9E66F004C10A0 /* CheckButton.swift in Sources */,
+				D099BE261DFD7BAF00D5B576 /* Bookmark.swift in Sources */,
 				D0289A701D89EEE800241ED2 /* Item.swift in Sources */,
 				D08B890F1D92A62B00DBF46F /* ProfileViewController.swift in Sources */,
 				D0289A8C1D8D7A9800241ED2 /* PicksViewController.swift in Sources */,
@@ -528,10 +546,12 @@
 				D0289A6C1D89EE8F00241ED2 /* Enums.swift in Sources */,
 				D08E046B1D97C0D400A4074C /* PickCollectionViewCell.swift in Sources */,
 				D04C5A711DE9B749004C10A0 /* KinoSearchable.swift in Sources */,
+				D099BE221DFD755100D5B576 /* Bookmarkable.swift in Sources */,
 				D04C5A771DE9E475004C10A0 /* FiltersViewController.swift in Sources */,
 				D0834D481DE233DA00BE382D /* KinoViewable.swift in Sources */,
 				D04C5A791DE9E57D004C10A0 /* SortingTableViewCell.swift in Sources */,
 				D046BB101DE8982B00698B2E /* PopularTVShowsController.swift in Sources */,
+				D099BE241DFD7AB800D5B576 /* BookmarkTableViewCell.swift in Sources */,
 				D0289A841D8D748E00241ED2 /* PITabBar.swift in Sources */,
 				D04C5A7B1DE9E5D1004C10A0 /* Filter.swift in Sources */,
 				D0289A5E1D899AE900241ED2 /* Extensions.swift in Sources */,
