@@ -55,7 +55,7 @@ extension KinoListable {
 		}
 		
 		let request = Request(type: .resource, resourceURL: "/items", method: .get, parameters: parameters)
-		log.debug(request)
+//		log.debug(request)
 		performRequest(resource: request) { result, error in
 			self.processItemsResponse(for: result, error: error) { response in
 				callback(response)

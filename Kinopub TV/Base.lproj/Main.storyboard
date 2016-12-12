@@ -981,6 +981,118 @@
             </objects>
             <point key="canvasLocation" x="4612" y="4298"/>
         </scene>
+        <!--Закладки-->
+        <scene sceneID="A3n-7T-1YX">
+            <objects>
+                <viewController storyboardIdentifier="bookmarksController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Tc-0k-ckb" customClass="BookmarksViewController" customModule="Kinopub_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZWB-z4-efM"/>
+                        <viewControllerLayoutGuide type="bottom" id="cPF-QQ-00L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dk3-Ih-ROa">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9X-QW-0mM">
+                                <rect key="frame" x="0.0" y="150" width="1920" height="910"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="VNc-KF-VfJ">
+                                        <rect key="frame" x="30" y="40" width="530" height="870"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="530" id="G4E-dd-V71"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookmarkCell" rowHeight="99" id="wjE-gI-0cO" customClass="BookmarkTableViewCell" customModule="Kinopub_TV" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="66" width="530" height="99"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wjE-gI-0cO" id="Ti4-98-e0d">
+                                                    <rect key="frame" x="0.0" y="0.0" width="514" height="99"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzI-fp-MxX">
+                                                            <rect key="frame" x="21" y="0.0" width="493" height="61"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Обновлен" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZH-BQ-wkS">
+                                                            <rect key="frame" x="21" y="61" width="242" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Содержит 12 штук" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5R-Yi-xVs">
+                                                            <rect key="frame" x="264" y="61" width="250" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="containsLabel" destination="T5R-Yi-xVs" id="yMv-Nw-6B5"/>
+                                                    <outlet property="titleLabel" destination="mzI-fp-MxX" id="gwu-2v-UBn"/>
+                                                    <outlet property="updatedLabel" destination="gZH-BQ-wkS" id="wQV-5C-cuP"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="5Tc-0k-ckb" id="ig0-Qz-9Vp"/>
+                                            <outlet property="delegate" destination="5Tc-0k-ckb" id="Tsk-gK-uwJ"/>
+                                        </connections>
+                                    </tableView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OrY-eO-3eA">
+                                        <rect key="frame" x="640" y="0.0" width="1250" height="910"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="30" id="4Qe-I7-Tx8">
+                                            <size key="itemSize" width="305" height="475"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="20" minY="40" maxX="20" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="5Tc-0k-ckb" id="YI4-Xq-ZpF"/>
+                                            <outlet property="delegate" destination="5Tc-0k-ckb" id="qDK-uF-B5c"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="OrY-eO-3eA" firstAttribute="top" secondItem="G9X-QW-0mM" secondAttribute="top" id="AGq-Ye-UvI"/>
+                                    <constraint firstItem="VNc-KF-VfJ" firstAttribute="leading" secondItem="G9X-QW-0mM" secondAttribute="leading" constant="30" id="Lnn-RS-VPK"/>
+                                    <constraint firstAttribute="bottom" secondItem="OrY-eO-3eA" secondAttribute="bottom" id="Ovo-Lu-WdP"/>
+                                    <constraint firstAttribute="bottom" secondItem="VNc-KF-VfJ" secondAttribute="bottom" id="SMg-LT-0kf"/>
+                                    <constraint firstAttribute="trailing" secondItem="OrY-eO-3eA" secondAttribute="trailing" constant="30" id="jat-tM-LqK"/>
+                                    <constraint firstItem="VNc-KF-VfJ" firstAttribute="top" secondItem="G9X-QW-0mM" secondAttribute="top" constant="40" id="pnX-dJ-WSM"/>
+                                    <constraint firstItem="OrY-eO-3eA" firstAttribute="leading" secondItem="VNc-KF-VfJ" secondAttribute="trailing" constant="80" id="uYb-AZ-r7G"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10398312830000001" green="0.10398312830000001" blue="0.10398312830000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cPF-QQ-00L" firstAttribute="top" secondItem="G9X-QW-0mM" secondAttribute="bottom" constant="20" id="FaS-Zl-gwa"/>
+                            <constraint firstItem="G9X-QW-0mM" firstAttribute="top" secondItem="ZWB-z4-efM" secondAttribute="bottom" constant="150" id="jrT-0f-JRv"/>
+                            <constraint firstAttribute="trailing" secondItem="G9X-QW-0mM" secondAttribute="trailing" id="xBs-os-4nl"/>
+                            <constraint firstItem="G9X-QW-0mM" firstAttribute="leading" secondItem="Dk3-Ih-ROa" secondAttribute="leading" id="zYR-mj-yIg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Закладки" id="0jA-c2-OTK"/>
+                    <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="OrY-eO-3eA" id="0lA-7W-dnU"/>
+                        <outlet property="tableView" destination="VNc-KF-VfJ" id="tS9-PV-u7e"/>
+                        <outlet property="topConstraint" destination="jrT-0f-JRv" id="nPS-E5-foZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zi1-mU-48G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2229" y="5937"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn-arrow-down" width="120" height="45"/>

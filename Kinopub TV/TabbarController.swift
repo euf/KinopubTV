@@ -31,8 +31,9 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 			getViewController(identifier: "picksController")!,
 			getViewController(identifier: "watchController")!,
 			getViewController(identifier: "tvController")!,
-			getViewController(identifier: "searchController")!,
+			getViewController(identifier: "bookmarksController")!,
 			getViewController(identifier: "profileController")!,
+			getViewController(identifier: "searchController")!,
 			// getViewController("SettingsViewController")!,
 		]
 		self.tabBar.updateDisplay()

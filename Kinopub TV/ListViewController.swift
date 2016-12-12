@@ -90,7 +90,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
 			self.view.layoutIfNeeded()
 		}, completion: nil)
-		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
+		
 		
 		filterView.isHidden = pick != nil
 		
@@ -142,13 +142,14 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	
 	internal func loadInfiniteScroll() {
 		log.debug("Calling infinite scroll")
+		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
 		self.page = 1
 		if dataStore.count > 0 {
 			activityIndicator.startAnimating()
 			self.dataStore.removeAll(keepingCapacity: false)
 			self.fadeCells()
 		}
-		self.collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
+		collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
 			guard let page = self?.page else { return }
 			log.debug("Infinite scroll initialized")
 			if self?.totalPages == page-1 {
@@ -157,8 +158,9 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 				return
 			} else {
 				guard let filter = self?.currentFilter else { return }
-				log.debug("Applying a filter to items")
-				log.debug(filter)
+//				log.debug("Applying a filter to items")
+//				log.debug(filter)
+				self?.adjustFilterInfoPane(with: filter)
 				self?.getItems(for: page, filter: filter) { pagination in
 					self?.activityIndicator.stopAnimating()
 					scrollView.finishInfiniteScroll()
@@ -297,10 +299,12 @@ extension ListViewController: FiltersViewControllerDelegate {
 		}
 	}
 	
+	func adjustFilterInfoPane(with filter: Filter) {
+		filterLabel.text = "Жанр: \(filter.genre?.title ?? "Все"), Год: \(filter.yearString()), Страна: \(filter.country?.title ?? "Все"), Сортировка: \(filter.sortBy?.name() ?? "По дате обновления")"
+	}
+	
 	func filtersDidSelectFilter(filter: Filter) {
 		currentFilter = filter
-		filterLabel.text = "Жанр: \(filter.genre?.title ?? "Все"), Год: \(filter.yearString()), Страна: \(filter.country?.title ?? "Все"), Сортировка: \(filter.sortBy?.name() ?? "По дате обновления")"
-		loadInfiniteScroll()
 	}
 	
 	func filtersDidDisappear() {
