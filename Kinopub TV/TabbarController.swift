@@ -13,7 +13,7 @@ import Crashlytics
 class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	
 	let center = NotificationCenter.default
-	var authState = AuthState.unauthorized // When starting we're unauthorized by default
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,8 +45,11 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	/// This method is called to update HomeViewController after token refresh (which takes more time than validity check)
 	fileprivate func refreshHomeScreen() {
 		if let homeController = viewControllers.first as? HomeViewController {
-			homeController.loadFeaturedMovies()
-			homeController.loadFeaturedShows()
+			if authState == .authorized {
+				log.debug("Authorized. Fetching home content")
+				homeController.loadFeaturedMovies()
+				homeController.loadFeaturedShows()
+			}
 		}
 	}
 	
@@ -56,11 +59,12 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	private func checkActivationStatus() {
 		log.info("Checking activation status")
 		checkAuth() {state in
+			authState = state
 			switch state {
 			case .authorized:
 				log.debug("All good. We're authorized")
-				// Interested in authorized stuff here
 				self.setQuality()
+				self.refreshHomeScreen() // This is needed when refresh is initiated and our home screen is empty
 				Answers.logLogin(withMethod: "token access", success: 1, customAttributes: nil)
 				break
 			case .expired: // Attempting to auto refresh the expired token
@@ -78,12 +82,16 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 					}
 				}
 				break
-			default:
+			case .unauthorized:
 				log.debug("We do not have a valid access or refresh token")
 				Answers.logLogin(withMethod: "token access", success: 0, customAttributes: ["Needs re-activation":true])
 				self.showLoginController(state: state)
 				break
+//			case .error(let error):
+//				log.debug("Error performing token activation status check: \(error)")
+//				break
 			}
+			
 		}
 	}
 	
@@ -92,7 +100,8 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	- parameter state: Current (non working state)
 	*/
 	private func showLoginController(state: AuthState) {
-		self.authState = state
+		log.debug("Presenting login controller")
+		authState = state
 		DispatchQueue.main.async {
 			if let loginController = self.storyboard?.instantiateViewController(withIdentifier: "loginWindow") as? LoginViewController {
 				loginController.authState = state

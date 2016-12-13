@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, KinoListable, MenuRetractable, Segue
 	@IBOutlet var topConstraint: NSLayoutConstraint!
 	
 	var popularController: PopularTVShowsController? {
-		didSet { loadFeaturedShows() }
+		didSet { if authState == .authorized { loadFeaturedShows() } }
 	}
 	
 	var bannerSource = [Item]() {
@@ -28,7 +28,9 @@ class HomeViewController: UIViewController, KinoListable, MenuRetractable, Segue
     override func viewDidLoad() {
         super.viewDidLoad()
 		collectionView.remembersLastFocusedIndexPath = true
-		loadFeaturedMovies()
+//		if authState == .authorized {
+//			loadFeaturedMovies()
+//		}
     }
 	
 	override func viewDidLayoutSubviews() {

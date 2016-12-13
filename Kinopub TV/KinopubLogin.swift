@@ -19,8 +19,14 @@ enum AuthState {
 	case unauthorized
 	case expired
 	case authorized
-	case error(error: NSError)
+//	case error(error: NSError)
 }
+
+//extension AuthState: Equatable {
+//	static func == (lhs: AuthState, rhs: AuthState) -> Bool {
+//		return lhs == rhs
+//	}
+//}
 
 enum ResponseStatus {
 	case success
@@ -41,7 +47,7 @@ enum UserCodeResponse {
 }
 
 protocol Authorizable: Connectable {
-	var authState: AuthState { get set }
+//	var authState: AuthState { get set }
 	func checkAuth(callback: @escaping (_ authState: AuthState) -> ()) -> Void
 }
 
@@ -69,7 +75,7 @@ extension Authorizable {
 					}
 				case(_, let error?):
 					log.error("Error accessing the service \(error)")
-					callback(.error(error: error))
+//					callback(.error(error: error))
 					break
 				default: break
 				}

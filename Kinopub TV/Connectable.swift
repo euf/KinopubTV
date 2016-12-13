@@ -29,7 +29,7 @@ enum RequestType: String {
 struct Request: Connectable, CustomDebugStringConvertible {
 	
 	var debugDescription: String {
-		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(parameters!) \n =========================================="
+		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(parameters) \n =========================================="
 	}
 	
 	var type: RequestType
@@ -47,7 +47,6 @@ extension Connectable {
 		
 		var url = ""
 		var headers: HTTPHeaders = ["Accept": "application/json"]
-		
 		switch request.type {
 		case .resource:
 			url = Config.URL.APIBase+request.resourceURL
