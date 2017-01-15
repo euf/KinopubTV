@@ -95,10 +95,13 @@ extension SearchResultsViewController: UICollectionViewDataSource, UICollectionV
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		if let cell = collectionView.cellForItem(at: indexPath) as? ItemCollectionViewCell {
-			let item = ItemViewController(nibName: "ItemViewController", bundle: nil)
-			item.item = cell.data
-			self.present(item, animated: true, completion: nil)
+			let controller = ItemViewController(nibName: "ItemViewController", bundle: nil)
+			guard let data = cell.data else { return }
+			let subtype = data.subtype != "" ? ItemSubType(rawValue: data.subtype!) : nil
+			controller.kinoItem = KinoItem(id: data.id, type: ItemType(rawValue: data.type!), subtype: subtype)
+			self.present(controller, animated: true, completion: nil)
 		}
+
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
