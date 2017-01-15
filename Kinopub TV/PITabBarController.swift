@@ -67,6 +67,7 @@ class PITabBarController: UIViewController {
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+//		log.debug("Updated focus")
         if let nextFocusedView = context.nextFocusedView {
             tabBarHidden = !(nextFocusedView is PITabBarButton)
         }
@@ -74,6 +75,7 @@ class PITabBarController: UIViewController {
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
 		if tabBarHidden {
+//			log.debug("Focusing on something other than menu. (Correct bahaviour)")
 			return [(selectedViewController?.view)!]
 		}
 		
