@@ -14,7 +14,7 @@ struct KinoItem {
 	var subtype: ItemSubType? = nil
 }
 
-class Item: Mappable {
+class Item: Mappable, ReflectedStringConvertible {
 	
 	var id: Int?
 	var type: String?
