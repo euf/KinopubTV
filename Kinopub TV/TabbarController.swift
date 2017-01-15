@@ -44,6 +44,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 	
 	/// This method is called to update HomeViewController after token refresh (which takes more time than validity check)
 	fileprivate func refreshHomeScreen() {
+		log.debug("Refreshing Home Screen...")
 		if let homeController = viewControllers.first as? HomeViewController {
 			if authState == .authorized {
 				log.debug("Authorized. Fetching home content")
@@ -71,6 +72,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 				self.refreshToken() { status in
 					switch status {
 					case .success:
+						authState = .authorized
 						Answers.logLogin(withMethod: "token refresh", success: 1, customAttributes: nil)
 						self.refreshHomeScreen() // This is needed when refresh is initiated and our home screen is empty
 						self.setQuality()
