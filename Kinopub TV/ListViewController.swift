@@ -141,7 +141,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 	
 	internal func loadInfiniteScroll() {
-		log.debug("Calling infinite scroll")
+//		log.debug("Calling infinite scroll")
 		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
 		self.page = 1
 		if dataStore.count > 0 {
@@ -151,7 +151,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		}
 		collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
 			guard let page = self?.page else { return }
-			log.debug("Infinite scroll initialized")
+//			log.debug("Infinite scroll initialized")
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()
 				scrollView.finishInfiniteScroll()
