@@ -147,7 +147,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			self.watchMovieButtonBottomConstraint.constant = 65 // Pushing all the button further down, because there are no episodes to select
 			
 			if kinoItem?.subtype == .multi { // Многосерийный фильм
-				
+		
 				self.playButton.isHidden = true
 				self.watchMovieLabel.isHidden = true
 				self.watchMovieButtonConstraint.constant = 0
@@ -156,6 +156,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				if let episodes = item.videos {
 					self.episodes = episodes
 					self.collectionView.reloadData()
+					self.loadingCover.isHidden = true
 				}
 				
 			} else { // Односерийный фильм
