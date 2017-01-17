@@ -155,6 +155,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()
 				scrollView.finishInfiniteScroll()
+				self?.preloadingComplete?()
 				return
 			} else {
 				guard let filter = self?.currentFilter else { return }
