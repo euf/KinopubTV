@@ -449,6 +449,11 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 		alert.addAction(buttonStart)
 		
+		let buttonToggle =  UIAlertAction(title: episode.watching?.status != .watched ? "Отметить просмотренным" : "Отметить не просмотренным", style: UIAlertActionStyle.default) { action in
+			self.updateWatchStatusForEpisode(episode: episode)
+		}
+		alert.addAction(buttonToggle)
+		
 		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.destructive) { (btn) -> Void in }
 		alert.addAction(cancelButton)
 		
