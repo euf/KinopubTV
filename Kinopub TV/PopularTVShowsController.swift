@@ -20,6 +20,7 @@ class PopularTVShowsController: UIViewController, KinoListable {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		collectionView.remembersLastFocusedIndexPath = true
 	}
 	
 	func loadPopularTVShows() { // with IMDB only!
@@ -59,8 +60,13 @@ extension PopularTVShowsController: UICollectionViewDelegate, UICollectionViewDa
 		return UICollectionViewCell()
 	}
 	
-	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-		log.debug("Tapped on banner")
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let item = shows[indexPath.row]
+		let controller = ItemViewController(nibName: "ItemViewController", bundle: nil)
+		let subtype = item.subtype != "" ? ItemSubType(rawValue: item.subtype!) : nil
+		controller.kinoItem = KinoItem(id: item.id, type: ItemType(rawValue: item.type!), subtype: subtype)
+		self.present(controller, animated: true, completion: nil)
 	}
+	
 	
 }
