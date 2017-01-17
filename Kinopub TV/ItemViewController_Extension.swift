@@ -321,7 +321,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	///
 	/// - parameter status: статус 1 или 0
 	func toggleEpisodeWatchedStatus(status: Int) {
-		log.debug("New episode status \(status)")
+//		log.debug("New episode status \(status)")
 		guard let index = lastSelectedIndex else {
 			log.error("Cannot really handle cell without last selected index")
 			return
