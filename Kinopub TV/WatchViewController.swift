@@ -37,6 +37,12 @@ class WatchViewController: UIViewController, MenuRetractable {
 		changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)
 	}
 	
+	/// Блокирует / разблокирует передвижение по секциям контента
+	private func toggleInteraction() {
+		subMenuSegments.isEnabled = !subMenuSegments.isEnabled
+	}
+	
+	/// Прыгаем по разным секциям контента. И оповещаем ListViewController
 	private func changeViewToSelectedSegment(segment: Int) {
 		var type = ItemType()
 		switch segment {
@@ -57,8 +63,9 @@ class WatchViewController: UIViewController, MenuRetractable {
 		default: type = .movies
 		}
 		listController?.viewType = type
+		toggleInteraction() // Запираем интерфейс на время смены данных
 //		Answers.logCustomEvent(withName: "Activation", customAttributes: ["Action":"Startup Auth Check", "Status":"Authorized"])
-		Answers.logContentView(withName: "List View", contentType: type.rawValue, contentId: nil, customAttributes: nil)
+//		Answers.logContentView(withName: "List View", contentType: type.rawValue, contentId: nil, customAttributes: nil)
 	}
 
     // MARK: - Navigation
@@ -69,6 +76,9 @@ class WatchViewController: UIViewController, MenuRetractable {
 				listController = controller
 				listController?.segments = subMenuSegments
 				listController?.parentView = self
+				listController?.preloadingComplete = { // Консультируется с ListViewController чтоб проверить закончилась ли загрузка данных и можно ли отпирать интерфейс
+					self.toggleInteraction()
+				}
 				changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)
 			}
 		}

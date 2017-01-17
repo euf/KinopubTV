@@ -37,7 +37,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		}
 	}
 	var filtersGestureRecognizer: UILongPressGestureRecognizer?
-	
+	var preloadingComplete: ((Void) -> Void)?
 	var dataStore = [Item]()
 	var page = 1
 	var totalPages = 1
@@ -48,7 +48,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		}
 	}
 	
-	var pick: Pick?
+	var pick: Pick? // Подборка
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -164,6 +164,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 				self?.getItems(for: page, filter: filter) { pagination in
 					self?.activityIndicator.stopAnimating()
 					scrollView.finishInfiniteScroll()
+					self?.preloadingComplete?()
 				}
 			}
 		}
