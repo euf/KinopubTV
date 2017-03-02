@@ -33,8 +33,8 @@ struct Config {
 	static let clientSecret = "3z5124kj5liqy9gahnjr07qpj65ferl2"
 	
 	struct URL {
-		static let base = "https://api.service-kp.com/"
-		//static let base = "https://api.kino.pub/"
+//		static let base = "https://api.service-kp.com/"
+		static let base = "http://api.service-kp.com/"
 		static let APIBase = Config.URL.base+"v1"
 		static let OAuthBase = Config.URL.base+"oauth2"
 		static let madia = "https://media.kino.pub/poster/item"
@@ -44,10 +44,21 @@ struct Config {
 		static let base = "https://api.kinopoisk.cf"
 	}
 	
+	struct guideBox {
+		static let base = "https://api-public.guidebox.com/v1.43/US/"
+		static let key = "rKRMKPD8h6FMnaglY8OhZP4NlI8ZAqXc"
+	}
+	
 	struct themoviedb {
-		static let base = "https://api.themoviedb.org/3/"
-		static let imageBase = "http://image.tmdb.org/t/p/w1000/"
+		static let base = "https://api.themoviedb.org/3"
+		static let backdropBase = "https://image.tmdb.org/t/p/w1280/"
+		static let imageBase = "https://image.tmdb.org/t/p/w1000/"
 		static let key = "d5dbe118b642f6c09adf9c45cc6cafdb"
+	}
+	
+	struct fanart {
+		static let base = "http://webservice.fanart.tv/v3/tv"
+		static let key = "172e8ebb6f757378c74cd78712b5978f"
 	}
 	
 }

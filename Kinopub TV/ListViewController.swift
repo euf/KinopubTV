@@ -16,39 +16,56 @@ fileprivate let PreloadMargin = 100
 
 class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 
+	@IBOutlet var filterView: UIView!
+	@IBOutlet var filterLabel: UILabel!
+	@IBOutlet var filterViewHeight: NSLayoutConstraint!
+	@IBOutlet var filterBottomConstraint: NSLayoutConstraint!
+	
 	@IBOutlet var picksBarView: UIView!
 	@IBOutlet var picksCategoryLabel: UILabel!
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet var collectionTopConstraint: NSLayoutConstraint!
 	
+	let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
 	var shouldFocusSubmenu = false
 	var segments: UISegmentedControl?
-	
+	var parentView: WatchViewController?
+	var currentFilter = Filter.defaultFilter() {
+		didSet {
+			if collectionView != nil { loadInfiniteScroll() }
+		}
+	}
+	var filtersGestureRecognizer: UILongPressGestureRecognizer?
+	var preloadingComplete: ((Void) -> Void)?
 	var dataStore = [Item]()
 	var page = 1
 	var totalPages = 1
 	
-	var year: String? = nil {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
-	}
-	
-	var genre: String? {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
-	}
-	
-	var sort: String? = nil {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
-	}
-	
 	var viewType: ItemType? {
-		didSet { if collectionView != nil { loadInfiniteScroll() } }
+		didSet {
+			currentFilter = Filter.defaultFilter()
+		}
 	}
 	
-	var pick: Pick?
+	var pick: Pick? // Подборка
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		if let parent = parentView {
+			parent.definesPresentationContext = true
+		}
+		
+		// Gesture recognizer for filters
+		if filtersGestureRecognizer == nil {
+			filtersGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ListViewController.openFilters))
+			filtersGestureRecognizer?.minimumPressDuration = 0.5
+			filtersGestureRecognizer?.delaysTouchesBegan = true
+			view.addGestureRecognizer(filtersGestureRecognizer!)
+			filterView.addBlurEffect()
+		}
+	
 		collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView.remembersLastFocusedIndexPath = false
 		if let _ = viewType {
@@ -57,9 +74,11 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			menuGesture.delegate = self
 			collectionView.addGestureRecognizer(menuGesture)
 			collectionView.infiniteScrollTriggerOffset = 500
+			collectionView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
 			collectionView.remembersLastFocusedIndexPath = true
 			collectionTopConstraint.constant = 10
 			loadInfiniteScroll()
+			pick = nil
 		} else {
 			picksBarView.isHidden = false
 			collectionTopConstraint.constant = 60
@@ -67,10 +86,20 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 			picksBarView.addBlurEffect()
 			loadPicks()
 		}
+		
 		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
 			self.view.layoutIfNeeded()
 		}, completion: nil)
-		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
+		
+		
+		filterView.isHidden = pick != nil
+		
+		// If in Picks (Подборки) - Remove gesture recognizer
+		if pick != nil && filtersGestureRecognizer != nil {
+			view.removeGestureRecognizer(filtersGestureRecognizer!)
+			filtersGestureRecognizer = nil
+		}
+		
 	}
 	
 	override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -85,10 +114,20 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 		shouldFocusSubmenu = false
 	}
 	
+/*	internal func setupGestureRecognizers() {
+		// Filters
+		let directions: [UISwipeGestureRecognizerDirection] = [.up, .down]
+		for direction in directions {
+			let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ListViewController.swiped(_:)))
+			gesture.direction = direction
+			self.view.addGestureRecognizer(gesture)
+		}
+	}*/
+
 }
 
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, /*UICollectionViewDataSourcePrefetching,*/ KinoListable {
-	
+
 	fileprivate func fadeCells() {
 		let range = NSMakeRange(0, self.collectionView.numberOfSections)
 		let sections = NSIndexSet(indexesIn: range)
@@ -102,23 +141,31 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 	}
 	
 	internal func loadInfiniteScroll() {
+//		log.debug("Calling infinite scroll")
+		collectionView.setContentOffset(CGPoint.init(x: 0.1, y: 300), animated: false) // Triggers infinite scroll on the very beginning
 		self.page = 1
 		if dataStore.count > 0 {
 			activityIndicator.startAnimating()
 			self.dataStore.removeAll(keepingCapacity: false)
 			self.fadeCells()
 		}
-		self.collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
+		collectionView.addInfiniteScroll { [weak self] (scrollView) -> Void in
 			guard let page = self?.page else { return }
-			
+//			log.debug("Infinite scroll initialized")
 			if self?.totalPages == page-1 {
 				self?.collectionView.removeInfiniteScroll()
+				scrollView.finishInfiniteScroll()
+				self?.preloadingComplete?()
 				return
 			} else {
-				// TODO : Add genre, sort, year?
-				self?.getItems(for: page) { pagination in
+				guard let filter = self?.currentFilter else { return }
+//				log.debug("Applying a filter to items")
+//				log.debug(filter)
+				self?.adjustFilterInfoPane(with: filter)
+				self?.getItems(for: page, filter: filter) { pagination in
 					self?.activityIndicator.stopAnimating()
 					scrollView.finishInfiniteScroll()
+					self?.preloadingComplete?()
 				}
 			}
 		}
@@ -134,9 +181,9 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 		}
 	}
 
-	fileprivate func getItems(for page: Int, callback: @escaping (_ pagination: Pagination?) -> ()) {
+	fileprivate func getItems(for page: Int, filter: Filter, callback: @escaping (_ pagination: Pagination?) -> ()) {
 		if let type = viewType {
-			fetchItems(for: type, page: page) { status in
+			fetchItems(for: type, page: page, filter: filter) { status in
 				self.processItems(for: status) { pagination in
 					callback(pagination)
 				}
@@ -235,5 +282,40 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 			}
 		}
 	}*/
+}
 
+extension ListViewController: FiltersViewControllerDelegate {
+	
+	func openFilters() {
+		
+		let filtersController = storyboard?.instantiateViewController(withIdentifier: "filtersController") as! FiltersViewController
+		filtersController.modalPresentationStyle = .overFullScreen
+		filtersController.currentView = viewType!
+		filtersController.delegate = self
+		visualEffectView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height+100)
+		parentView?.view.addSubview(visualEffectView)
+		collectionView.setContentOffset(CGPoint.zero, animated: true)
+		present(filtersController, animated: true) {
+			self.segments?.isHidden = true
+			filtersController.configure(with: self.currentFilter)
+		}
+	}
+	
+	func adjustFilterInfoPane(with filter: Filter) {
+		filterLabel.text = "Жанр: \(filter.genre?.title ?? "Все"), Год: \(filter.yearString()), Страна: \(filter.country?.title ?? "Все"), Сортировка: \(filter.sortBy?.name() ?? "По дате обновления")"
+	}
+	
+	func filtersDidSelectFilter(filter: Filter) {
+		currentFilter = filter
+	}
+	
+	func filtersDidDisappear() {
+		self.segments?.isHidden = false
+		UIView.animate(withDuration: 0.4, animations: {
+			self.visualEffectView.alpha = 0.0
+		}) { completed in
+			self.visualEffectView.removeFromSuperview();
+			self.visualEffectView.alpha = 1.0
+		}
+	}
 }

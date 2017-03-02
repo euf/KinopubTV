@@ -43,6 +43,7 @@ class ItemViewController: UIViewController {
 	var seasonsSegment: UISegmentedControl!
 	var currentSeason: Season? = nil
 	var lastSelectedIndex: IndexPath?
+	var nextEpisode: Video?
 	
 	@IBOutlet var progressBar: UIProgressView!
 	@IBOutlet var watchMovieButtonConstraint: NSLayoutConstraint!

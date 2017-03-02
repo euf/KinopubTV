@@ -17,7 +17,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	
 	internal func setQuality() {
 		let qualityIndex = setQualityForAvailableMedia(media: availableMedia)
-		log.info("Setting quality for movie: \(availableMedia[qualityIndex].quality)")
+//		log.info("Setting quality for movie: \(availableMedia[qualityIndex].quality)")
 		qualitySegment.selectedSegmentIndex = qualityIndex
 		updateQuality(control: qualitySegment)
 	}
@@ -31,13 +31,11 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			return
 		}
 		isMovie = moviesSet.contains(type) ? true : false
-		
 		fetchItem(id: id, type: type) { status in
 			switch status {
 			case .success(let item):
 				if let item = item {
-					// TODO: Hide spinning wheel. Fade in the results
-					
+
 					// Плакат
 					if let p = item.posters, let image = p.big, let URL = NSURL(string: image) {
 						self.poster.af_setImage(withURL: URL as URL, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: true, completion: nil)
@@ -149,7 +147,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			self.watchMovieButtonBottomConstraint.constant = 65 // Pushing all the button further down, because there are no episodes to select
 			
 			if kinoItem?.subtype == .multi { // Многосерийный фильм
-				
+		
 				self.playButton.isHidden = true
 				self.watchMovieLabel.isHidden = true
 				self.watchMovieButtonConstraint.constant = 0
@@ -158,6 +156,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				if let episodes = item.videos {
 					self.episodes = episodes
 					self.collectionView.reloadData()
+					self.loadingCover.isHidden = true
 				}
 				
 			} else { // Односерийный фильм
@@ -192,9 +191,8 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 				
 				if let files = video.files {
 					self.qualitySegment.replaceSegments(segments: files.map{($0.quality?.rawValue)!})
-					self.availableMedia = files
+					self.availableMedia = files // Also sets available quality for movie
 					self.movieVideo = video
-					self.setQuality()
 					self.loadingCover.isHidden = true
 				}
 			}
@@ -323,7 +321,7 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 	///
 	/// - parameter status: статус 1 или 0
 	func toggleEpisodeWatchedStatus(status: Int) {
-		log.debug("New episode status \(status)")
+//		log.debug("New episode status \(status)")
 		guard let index = lastSelectedIndex else {
 			log.error("Cannot really handle cell without last selected index")
 			return
@@ -451,19 +449,21 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		}
 		alert.addAction(buttonStart)
 		
+		let buttonToggle =  UIAlertAction(title: episode.watching?.status != .watched ? "Отметить просмотренным" : "Отметить не просмотренным", style: UIAlertActionStyle.default) { action in
+			self.updateWatchStatusForEpisode(episode: episode)
+		}
+		alert.addAction(buttonToggle)
+		
 		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.destructive) { (btn) -> Void in }
 		alert.addAction(cancelButton)
 		
 		self.present(alert, animated: true, completion: nil)
-		
-		
 	}
 
-	
 	/// Включаем трейлер к фильму (если доступен)
 	internal func playTrailer() {
 		guard let youtubeID = item?.trailer?.id else {
-			log.error("No trailer ID found")
+			log.error("No trailer ID found for movie: \(item?.title)")
 			return
 		}
 		log.debug("trailer youtube id: \(youtubeID)")
@@ -500,9 +500,9 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 		
 	}
 	
-	/// Добавляем в закладки
+	// Добавляем в закладки
 	internal func addToFavorites() {
-	
+
 	}
 	
 	// MARK: - Delegates
@@ -514,14 +514,13 @@ extension ItemViewController: KinoViewable, QualityDefinable {
 			return [self.collectionView]
 		}
 	}
-	
-	
+
 }
 
 
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-/// Всяческие делегады collectionView эпизодов
+// Всяческие делегады collectionView эпизодов
 extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -552,6 +551,32 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
 	// Padding для collectionView. Чтоб эпизоды не клеились к стенке
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+	}
+
+}
+
+extension ItemViewController: AVPlayerViewControllerDelegate {
+	
+	func playerViewController(_ playerViewController: AVPlayerViewController, shouldPresent proposal: AVContentProposal) -> Bool {
+		let proposalController = UpNextProposalViewController(nibName: "UpNextProposalViewController", bundle: nil)
+		var title: String = titleRu.text!
+		if let englishTitle = titleEn, englishTitle.text != "" { title.append(" / \(englishTitle.text!)") }
+		proposalController.mainTitle = title
+		playerViewController.contentProposalViewController = proposalController
+		return true
+	}
+	
+	func playerViewController(_ playerViewController: AVPlayerViewController, didAccept proposal: AVContentProposal) {
+		guard let player = playerViewController.player, let nextURL = proposal.url else { return }
+		let nextPlayerItem = AVPlayerItem(url: nextURL)
+		player.replaceCurrentItem(with: nextPlayerItem)
+		
+		// Вместо того чтоб так заменять тут. внедрить метод который будет запускать мой эпизод и готовить новый content proposal
+	}
+	
+	func playerViewController(_ playerViewController: AVPlayerViewController, didReject proposal: AVContentProposal) {
+		guard let player = playerViewController.player else { return }
+		player.play() // Just continue playing
 	}
 	
 }

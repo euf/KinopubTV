@@ -18,17 +18,9 @@ struct AuthResponse: Mappable {
 	
 	init?(map:  Map){}
 	
-	let convertToDate = TransformOf<Date, Int>(fromJSON: { (value: Int?) -> Date? in
-		guard let intervalValue = value else { return nil }
-		let myDate = Date().addingTimeInterval(TimeInterval(intervalValue))
-		return myDate
-		}, toJSON: { (value: Date?) -> Int? in
-			return nil
-	})
-	
 	mutating func mapping(map: Map) {
 		code <- map["code"]
-		expiration <- (map["expires_in"], convertToDate)
+		expiration <- (map["expires_in"], DateIntervalTransform())
 		userCode <- map["user_code"]
 		verificationURI <- map["verification_uri"]
 	}
@@ -42,17 +34,9 @@ struct ActivationResponse: Mappable {
 	
 	init?(map: Map){}
 	
-	let convertToDate = TransformOf<Date, Int>(fromJSON: { (value: Int?) -> Date? in
-		guard let intervalValue = value else { return nil }
-		let myDate = Date().addingTimeInterval(TimeInterval(intervalValue))
-		return myDate
-		}, toJSON: { (value: Date?) -> Int? in
-			return nil
-	})
-	
 	mutating func mapping(map: Map) {
 		token <- map["access_token"]
-		expiration <- (map["expires_in"], convertToDate)
+		expiration <- (map["expires_in"], DateIntervalTransform())
 		refreshToken <- map["refresh_token"]
 	}
 }

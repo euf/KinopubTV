@@ -8,15 +8,16 @@
 
 import Foundation
 
-enum SortOption: String {
-	case id = "id"
-	case year = "year"
-	case title = "title"
-	case created = "created"
-	case updated = "updated"
-	case rating = "rating"
-	case views = "view"
-	case watchers = "watchers"
+enum SortOption: String, CustomStringConvertible {
+	
+	case id
+	case year
+	case title
+	case created
+	case updated
+	case rating
+	case views
+	case watchers
 	
 	static let all = [year, title, created, updated, rating, views, watchers]
 	
@@ -31,7 +32,7 @@ enum SortOption: String {
 		case .created:
 			return "По дате добавления"
 		case .updated:
-			return "По дате изменения"
+			return "По дате обновления"
 		case .rating:
 			return "По рейтингу"
 		case .views:
@@ -48,6 +49,21 @@ enum SortOption: String {
 	func asc() -> String {
 		return self.rawValue
 	}
+	
+	var description: String {
+		return self.rawValue
+	}
+}
+
+enum SortDirection: String, CustomStringConvertible {
+	case asc = ""
+	case desc = "-"
+	init() {
+		self = .asc
+	}
+	var description: String {
+		return self.rawValue
+	}
 }
 
 enum Status: Int {
@@ -60,12 +76,13 @@ enum Quality: String {
 	case sd = "480p"
 	case hd = "720p"
 	case fullHd = "1080p"
+	case k4 = "2160p"
 	case d3 = "3D"
 	static let All = [sd, hd, fullHd]
 }
 
 enum ItemSubType: String {
-	case multi = "multi"
+	case multi
 }
 
 enum GenreType: String {
@@ -83,6 +100,7 @@ enum ItemType: String {
 	case concerts = "concert"
 	case documentaries = "documovie"
 	case series = "docuserial"
+	case k4 = "4k"
 	init() {
 		self = .movies
 	}
@@ -93,7 +111,7 @@ enum ItemType: String {
 		switch self {
 		case .tvshows:
 			return .tvshow
-		case .movies, .shows, .movies3D:
+		case .movies, .shows, .movies3D, .k4:
 			return .movie
 		case .concerts:
 			return .music
@@ -103,6 +121,6 @@ enum ItemType: String {
 	}
 }
 
-let moviesSet: Set<ItemType> = [.movies, .movies3D, .concerts, .documentaries]
+let moviesSet: Set<ItemType> = [.movies, .movies3D, .concerts, .documentaries, .k4]
 let seriesSet: Set<ItemType> = [.shows, .series, .tvshows]
 

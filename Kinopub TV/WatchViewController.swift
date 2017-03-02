@@ -9,14 +9,13 @@
 import UIKit
 import Crashlytics
 
-class WatchViewController: UIViewController {
+class WatchViewController: UIViewController, MenuRetractable {
 
-	
 	@IBOutlet var subMenuSegments: UISegmentedControl!
 	@IBOutlet var subMenuTopConstraint: NSLayoutConstraint!
 	
 	var listController: ListViewController?
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 	}
@@ -26,22 +25,24 @@ class WatchViewController: UIViewController {
 		subMenuSegments.backgroundColor = UIColor(red:0.37, green:0.37, blue:0.37, alpha:1.00)
 	}
 	
+	override var preferredFocusEnvironments: [UIFocusEnvironment] {
+		return [subMenuSegments]
+	}
+	
 	override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-		if let _ = context.previouslyFocusedView as? PITabBarButton {
-			subMenuTopConstraint.constant = 20
-		}
-		if let _ = context.nextFocusedView as? PITabBarButton {
-			subMenuTopConstraint.constant = 150
-		}
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-			self.view.layoutIfNeeded()
-		}, completion: nil)
+		retractMenu(for: subMenuTopConstraint, and: context)
 	}
 	
 	@IBAction func subMenuChanged(_ sender: UISegmentedControl) {
 		changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)
 	}
 	
+	/// Блокирует / разблокирует передвижение по секциям контента
+	private func unlockInteraction(_ lock: Bool) {
+		subMenuSegments.isEnabled = lock
+	}
+	
+	/// Прыгаем по разным секциям контента. И оповещаем ListViewController
 	private func changeViewToSelectedSegment(segment: Int) {
 		var type = ItemType()
 		switch segment {
@@ -62,8 +63,9 @@ class WatchViewController: UIViewController {
 		default: type = .movies
 		}
 		listController?.viewType = type
+		unlockInteraction(false) // Запираем интерфейс на время смены данных
 //		Answers.logCustomEvent(withName: "Activation", customAttributes: ["Action":"Startup Auth Check", "Status":"Authorized"])
-		Answers.logContentView(withName: "List View", contentType: type.rawValue, contentId: nil, customAttributes: nil)
+//		Answers.logContentView(withName: "List View", contentType: type.rawValue, contentId: nil, customAttributes: nil)
 	}
 
     // MARK: - Navigation
@@ -71,10 +73,14 @@ class WatchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "listView" {
 			if let controller = segue.destination as? ListViewController {
-				log.debug("Preparing List view from WatchController")
 				listController = controller
 				listController?.segments = subMenuSegments
+				listController?.parentView = self
 				changeViewToSelectedSegment(segment: subMenuSegments.selectedSegmentIndex)
+				// Консультируется с ListViewController чтоб проверить закончилась ли загрузка данных и можно ли отпирать интерфейс
+				listController?.preloadingComplete = {
+					self.unlockInteraction(true)
+				}
 			}
 		}
     }

@@ -23,12 +23,13 @@ enum ResourceMethod: String {
 enum RequestType: String {
 	case resource
 	case auth
+	case movieDB
 }
 
 struct Request: Connectable, CustomDebugStringConvertible {
 	
 	var debugDescription: String {
-		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(parameters!) \n =========================================="
+		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(parameters) \n =========================================="
 	}
 	
 	var type: RequestType
@@ -46,11 +47,13 @@ extension Connectable {
 		
 		var url = ""
 		var headers: HTTPHeaders = ["Accept": "application/json"]
-		
 		switch request.type {
 		case .resource:
 			url = Config.URL.APIBase+request.resourceURL
 			headers = ["Authorization": "Bearer \(Defaults[.token]!)"]
+			break
+		case .movieDB:
+			url = Config.themoviedb.base+request.resourceURL
 			break
 		case .auth:
 			url = Config.URL.OAuthBase+request.resourceURL

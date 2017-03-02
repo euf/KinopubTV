@@ -14,7 +14,7 @@ struct KinoItem {
 	var subtype: ItemSubType? = nil
 }
 
-class Item: Mappable {
+class Item: Mappable, ReflectedStringConvertible {
 	
 	var id: Int?
 	var type: String?
@@ -52,13 +52,6 @@ class Item: Mappable {
 	var seasons: Array<Season>?
 	
 	required init?(map: Map) {}
-	
-	let convertToFloat = TransformOf<Float, String>(fromJSON: { (value: String?) -> Float? in
-		guard let myFloat = value else { return nil }
-		return Float(myFloat)
-		}, toJSON: { (value: Float?) -> String? in
-			return nil
-	})
 	
 	func mapping(map: Map) {
 		id <- map["id"]
@@ -134,20 +127,6 @@ struct Season: Mappable {
 		episodes <- map["episodes"]
 	}
 }
-
-/*class Movie: Item {
-
-var videos: Array<Video>?
-
-required init?(_ map: Map) {
-super.init(map)
-}
-
-override func mapping(map: Map) {
-super.mapping(map)
-videos <- map["videos"]
-}
-}*/
 
 struct Video: Mappable {
 	
@@ -304,20 +283,13 @@ struct Pagination: Mappable {
 	var total: Int?
 	var perpage: Int?
 	var totalItems: Int?
-	
-	let convertToInt = TransformOf<Int, String>(fromJSON: { (value: String?) -> Int? in
-		guard let totalItems = value else { return nil }
-		return Int(totalItems)
-		}, toJSON: { (value: Int?) -> String? in
-			return nil
-	})
-	
+
 	init?(map: Map) {}
 	mutating func mapping(map: Map) {
 		current <- map["current"]
 		total <- map["total"]
 		perpage <- map["perpage"]
-		totalItems <- (map["total_items"], convertToInt)
+		totalItems <- (map["total_items"], IntTransform())
 	}
 }
 

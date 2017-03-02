@@ -12,8 +12,8 @@ target 'Kinopub TV' do
   pod 'SwiftyJSON'
   pod 'UIScrollView-InfiniteScroll', :git => 'https://github.com/staticdreams/UIScrollView-InfiniteScroll.git'
   pod 'AlamofireObjectMapper', '~> 4.0'
-  pod 'KeychainAccess'
   pod 'ObjectMapper'
   pod 'SwiftyUserDefaults'
   pod 'Cosmos', '~> 7.0'
+  pod 'Reveal-SDK', :configurations => ['Debug']
 end

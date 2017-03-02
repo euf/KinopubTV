@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 
 let log = SwiftyBeaver.self
+var authState = AuthState.unauthorized // When starting we're unauthorized by default
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

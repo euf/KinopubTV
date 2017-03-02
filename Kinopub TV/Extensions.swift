@@ -114,6 +114,14 @@ extension UIView {
 	}
 }
 
+extension UICollectionView {
+	func fadeCells() {
+		let range = NSMakeRange(0, self.numberOfSections)
+		let sections = NSIndexSet(indexesIn: range)
+		self.reloadSections(sections as IndexSet)
+	}
+}
+
 extension UIViewController {
 	
 	func getMainStoryboard() -> UIStoryboard {
@@ -129,3 +137,35 @@ extension UIViewController {
 		return getMainStoryboard().instantiateViewController(withIdentifier: identifier)
 	}
 }
+
+extension String {
+	var URLEncoded: String {
+		let encodedString = self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+		return encodedString ?? self
+	}
+}
+
+public protocol ReflectedStringConvertible : CustomStringConvertible { }
+
+extension ReflectedStringConvertible {
+	public var description: String {
+		let mirror = Mirror(reflecting: self)
+		var str = "\(mirror.subjectType)("
+		var first = true
+		for (label, value) in mirror.children {
+			if let label = label {
+				if first {
+					first = false
+				} else {
+					str += ", "
+				}
+				str += label
+				str += ": "
+				str += "\(value)"
+			}
+		}
+		str += ")"
+		return str
+	}
+}
+
