@@ -1,27 +1,27 @@
 PODS:
-  - Alamofire (4.2.0)
+  - Alamofire (4.4.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
-  - AlamofireObjectMapper (4.0.1):
+  - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
   - Cosmos (7.0.0)
-  - Crashlytics (3.8.3):
+  - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - ObjectMapper (2.2.2)
+  - ObjectMapper (2.2.5)
   - PMKVObserver (2.0.1):
     - PMKVObserver/ObjC (= 2.0.1)
     - PMKVObserver/Swift (= 2.0.1)
   - PMKVObserver/ObjC (2.0.1)
   - PMKVObserver/Swift (2.0.1):
     - PMKVObserver/ObjC
-  - Reveal-SDK (4)
-  - SwiftyBeaver (1.1.1)
-  - SwiftyJSON (3.1.3)
+  - Reveal-SDK (7)
+  - SwiftyBeaver (1.1.3)
+  - SwiftyJSON (3.1.4)
   - SwiftyUserDefaults (3.0.0)
   - UIScrollView-InfiniteScroll (0.9.2)
-  - XCDYouTubeKit (2.5.3)
+  - XCDYouTubeKit (2.5.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -49,21 +49,21 @@ CHECKOUT OPTIONS:
     :git: https://github.com/staticdreams/UIScrollView-InfiniteScroll.git
 
 SPEC CHECKSUMS:
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  AlamofireObjectMapper: 842d2eed43a4d0593ff0110d54ac86a170c4519c
+  AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   Cosmos: 2c8299147138758f6ebbb247cf1aeed77998bdf9
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
+  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   PMKVObserver: f3955b3beae9c6198ad347d4eb9b125477e9cb72
-  Reveal-SDK: 178c927f1a3230648d3a92b96f6e730a35b2750a
-  SwiftyBeaver: 2b68694df862381235e32bcfc4ec991e26bf131d
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  Reveal-SDK: 564657bc66c93d2718b1c0121cdebe99d354ddab
+  SwiftyBeaver: 949aa1439b8fa3667f68555cfef65de46a70ccde
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   UIScrollView-InfiniteScroll: 428d0e9485a97de0ecccfbf161e7e2fec0bdae90
-  XCDYouTubeKit: 90690f9e3523735dc93b8024269d991b0cfffe78
+  XCDYouTubeKit: 80eb3978dae220a0116d198bca6852c6c969fa66
 
 PODFILE CHECKSUM: 4732e649bbf1e46e3f56f2e46213fb1a19fd1074
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
