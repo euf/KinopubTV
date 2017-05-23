@@ -7,143 +7,143 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00E153632A414101E0A66AE23569802B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F77CE9545C5861814F24CADBE2EDEE6 /* Result.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		016009EEFF218E45D9D98E6B9AA8FF9F /* SwiftyBeaver-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 009BBA1AF08ABC1B7CE667C883901714 /* SwiftyBeaver-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		05006BDD7301FCF2678618DEDCC69B94 /* UIImage+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807063DE29D885B81B8655AE1C384793 /* UIImage+AlamofireImage.swift */; };
+		02078AEB199C9C874706C1DCB71B86EB /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5193EB21DFA35820F8AE4366FF91E1 /* Mappable.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0338A3AF1943E63181BCBADFBDCF4E25 /* ImmutableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A28A1812AE0B4D3B201265F049670 /* ImmutableMappable.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		03A2654BD6FDB674767C220FB617B2C8 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BDABCC0D0C59FFDC1E218657FA25E8 /* SwiftyJSON-dummy.m */; };
+		04DB633DC7AE86CE9C5CD768F99F2E8C /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE0DEA408EA29749156787855B2CD9 /* StarLayer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		079D990738735591330332B5F2551AE4 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED7C8F215F1B21E84FB4A5DCFFD898 /* NetworkReachabilityManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		09ED49599DE30DED7F269C181F4695C0 /* XCDYouTubeVideoWebpage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB206AC98FB56D3CFDA9C38859206294 /* XCDYouTubeVideoWebpage.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0A18F74ED42D964102AC06D3268682E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		0C62501218C0CCE04CE6B73363C30991 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB43E6D601D6EF91A2916C3D268EB0D /* ConsoleDestination.swift */; };
-		0DF54EF6561E1295B8765B88B6579241 /* FromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4207D7EE06F293130E415268AF8A25 /* FromJSON.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0E95229FF62BE7AA87EF619718C98790 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BDABCC0D0C59FFDC1E218657FA25E8 /* SwiftyJSON-dummy.m */; };
-		0FDB1D1ACE02C14D3C1986CB292FCE6B /* KVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1FD38C0B12FFD4E1D5C974CA623FA /* KVObserver.swift */; };
+		0A386904772AE0E8418CC2105018061B /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911680F248B1C00CE1B27D3A285AF286 /* DateTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1056FB277D43C7AFE668E4FA2F399CEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1007689C95C3198F7F26093E80E2B30 /* Timeline.swift */; };
-		12EE473A1BC5E4FC71CA609B96B42455 /* SwiftyUserDefaults-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C17BF104876A7D6EE12B8BCCAA27865 /* SwiftyUserDefaults-dummy.m */; };
+		11EA814BBF3744A95B80ADC0D0E07482 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDFAE49E8CACF2DF33E1ACB3BFBCF4E /* CosmosSettings.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		13471963F6095F67AD2190073DBB0537 /* URLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34C3C9EFBA5ADA6939FE962571E240 /* URLTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		14CECE238604E1D44104E5BCD14EB2BE /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22391799EA4373B9EB4E7475B8F1CB4 /* SessionDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		164781197625A3149B3BDBCAA2AC8CC3 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D57E9DEBBF047BB1E7AC0A22EC1974 /* Validation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1674976E5691AC6C3F018C2E42683218 /* ObjectMapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 747A115F242A8E6F13137045ECCF3929 /* ObjectMapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		173E0DDB57B8665C8A31804018C38B22 /* DictionaryTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D9F3B2420FFA32EA63CDDEF0E714F /* DictionaryTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18FE70ED14474EE6A49E85DE9C5E4C17 /* AlamofireImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6302D014F21400132C6D79EDD21863 /* AlamofireImage-dummy.m */; };
 		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DF0881084FE5DDA504E2697605F934B /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CB42B1F1F43D97ADBCF92021F0FE5F6 /* Pods-Kinopub TV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B03C7B7ED2393E52363E6E9AACDDBED2 /* Pods-Kinopub TV-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF7A6AD3DADF9D90F94B5B382166610 /* XCDYouTubeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EBF63CDD2F84438C2D3CC39922EF831 /* XCDYouTubeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F6DB6FDBD4067CCFF2D53A005549D5A /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0756FF66631D39934EE1D13D3372A841 /* AES256CBC.swift */; };
-		1FD1E18B9F5A29E24EA61D8E8458627B /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB352A71F27A48B869D9A0D32CF95CA9 /* SBPlatformDestination.swift */; };
-		202822E4668C16D115A8F68F3ADF0E0F /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C1F372FA95112653D8E9F4EDE8D7A4 /* ImageDownloader.swift */; };
+		1F1457F1DEC2B3D6F88CBD9C1CFB78B1 /* FromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4207D7EE06F293130E415268AF8A25 /* FromJSON.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		204944D67267632DD7CD4BEFB60AC389 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E50E876E497F02ED70CCF3FF3E1FA0 /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		20B1A83364F9D42DCB3826D5A9D9A2FC /* PMKVObserver-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F22B4431E53289DF97456291B365EFF /* PMKVObserver-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24553927300B10F87D89BA7360BD4D7F /* NSDecimalNumberTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEA7F4DE5A6FE4FAE023F470E2D815 /* NSDecimalNumberTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		21FCFA4CA8EE4DB83F7CBD99302F347B /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641841D1E16BB10ADB56E998EE14C225 /* SwiftyUserDefaults.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		249BEC20A95460C784F48DF9AC00A302 /* AlamofireObjectMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4ADCA7A373816F7C339EE7B9964533 /* AlamofireObjectMapper-dummy.m */; };
-		24D8B43FFC94A6DE644A6B4CB353E969 /* XCDYouTubeVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3581E42262C6D54C73C2B007655BF3 /* XCDYouTubeVideoOperation.m */; };
-		25A8E544EE7288222A45CDD100453BE7 /* HexColorTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4880E90895BF1D7B1D2C73EA72A320 /* HexColorTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		27996F52CCABBD6D0874B79D1B913598 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D546E27C81F017CC5FA1241AF385121 /* ImageFilter.swift */; };
-		2B7073A62573893569A5DCEF125948C8 /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11E9C81BB6A13D745E72BF1307D71D /* FileDestination.swift */; };
-		2BD7CFD41DACC439E8C0A527F1643495 /* Request+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E544CF253D4A3CC3305CDB858F479 /* Request+AlamofireImage.swift */; };
-		2EA0415A1A8A4FFC7403E201F915F9A4 /* AFIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B4B73DFE6097BF205CAAAA2442AA /* AFIError.swift */; };
+		266B7F98F80D9C3942C59E1B1E93F711 /* XCDYouTubeVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3581E42262C6D54C73C2B007655BF3 /* XCDYouTubeVideoOperation.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2B58B070F9D7324583D01EE906BC918C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D20EBBE1CC372134D839378A133DA1 /* SessionManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2F2215C91082EF510A9C27FB3FC7E498 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		304C5736AC5D49B526C709397D0CF048 /* UIImageView+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F316A7342F2D59AF78623A209EC83 /* UIImageView+AlamofireImage.swift */; };
-		317F10C5DFB10D5A608005FC7933B786 /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF815261E4A5A1B7D6A9005AF6A682E /* CosmosLocalizedRating.swift */; };
 		32EDA9ED83F4442303A46839027E152E /* AlamofireImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A60412C29E1AC51BDFC1E999317EDCB /* AlamofireImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34108FFDF7941AEF425E791D490CFF61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E19832F68E490F075AD31776448C83 /* TaskDelegate.swift */; };
-		3756F1029FA8DD69021B47FAF44B7C89 /* XCDYouTubePlayerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6157804D5449CD388F1D31314BF3D /* XCDYouTubePlayerScript.m */; };
-		37F951F2BDB75BD682C2999EB7B51A35 /* AlamofireImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6302D014F21400132C6D79EDD21863 /* AlamofireImage-dummy.m */; };
+		343B30C989188B77FB1149FED753A63C /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C257BDE1DE896569616E64EF72602F29 /* ServerTrustPolicy.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		36840E12F93D5E0D201B1D998B96EEB9 /* UIImageView+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F316A7342F2D59AF78623A209EC83 /* UIImageView+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		36DC908DFB46D4EFE1EBBC0456E0C00F /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76CE7ACCB2214276DCF6CA00D62FFB9 /* Map.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3A180BC45665D1B1EA95478929E78E6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		3A24A356DAF7CA974FDC87C30945D587 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD13598A7C4722CCCEE93280235A0459 /* StarFillMode.swift */; };
+		3BAE7F089F029DE5609180450C60AB39 /* XCDYouTubeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6C6612B9CAEB5FBC29281C7F8A9D33 /* XCDYouTubeLogger.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3CD5B6D095660B15140313243BCBE539 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20426642AA633189E8F51DE94F09D86F /* CosmosTouchTarget.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3E7910DD8CF0866F2C1CF5082EDCD45B /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11E9C81BB6A13D745E72BF1307D71D /* FileDestination.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		42CC7CA7E8E0395A8B9024BAEF8EFF70 /* Cosmos-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C94022FCBEF0727A8D0F410F302F51F7 /* Cosmos-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		43335DB8AF71F2E9545B2BA43285E287 /* ImmutableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A28A1812AE0B4D3B201265F049670 /* ImmutableMappable.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		43FBBAF51381FD3A43CF5BE8A1D5A987 /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EFE81029CC24C34D1DD53441E7912 /* CosmosDefaultSettings.swift */; };
-		45B3F3B07CA700F626B91C54D806CD6A /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40AF07851EF9E45464E8F3AB2BC89C4 /* CosmosAccessibility.swift */; };
-		4A5B15F5BD365B620EA6445F1AC559DE /* CustomDateFormatTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C8FC92D5F73EE55E9F6632700A90F /* CustomDateFormatTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4B5D6CB8EBBD386B4F589B25C46F9C0F /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36443B277936CA90267DE6EA5448FF13 /* SwiftyBeaver.swift */; };
-		4CE57BA9F3209F2E5D730F35361D112D /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E8FAEFFADD43EFF55A11B2CB2AAFAF /* ISO8601DateTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		44B246C9B86B49E963AA7E14EF60137E /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40AF07851EF9E45464E8F3AB2BC89C4 /* CosmosAccessibility.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		44C88EF426E7108D474268DBD5FAD71B /* Cosmos-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3CB71CA24446809DE537F7B7D61C3BA /* Cosmos-dummy.m */; };
+		47A22B775A033B05D8D141AB040645F4 /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB4340AEDDA4FB57141CCCAB406355A /* TransformOperators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4E144A5F6A61AACDFDFF8E00A4E5C17B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B16E27BB5FA9BAC0F7050575EEF949A /* Alamofire.framework */; };
-		50497589C9F33A33FFBA4C2D50B335D3 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911680F248B1C00CE1B27D3A285AF286 /* DateTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5170399F1047B250DF01D1B281646E31 /* XCDYouTubeVideoOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 44AA41674EC427C7C9741098B5FE789A /* XCDYouTubeVideoOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		52E1BABD8927CBAB89E0DFBD65D086A1 /* ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0106B14CAEB7B7C45A34AC779ABC48 /* ToJSON.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D66B7F2323A328D9D08929F434036 /* Request.swift */; };
-		5666985B18AAC2D2FCB8457874E6FEC6 /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FDDF9549CC9971DE915D5187E673D /* CosmosSize.swift */; };
+		52880E5F58B99127EB2AD4895385CE45 /* HexColorTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4880E90895BF1D7B1D2C73EA72A320 /* HexColorTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		533DEA89162BC9EF7A80B63B3EE8CF03 /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75CE4428DDFF4E261DF8579E7261B06 /* BaseDestination.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		53BA6F4FB31189EBE40F1EC3184BE62D /* KVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1FD38C0B12FFD4E1D5C974CA623FA /* KVObserver.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		55E2F1A41EA1695F094E78706EFAA9A9 /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01160A64D7CA8B980DFC6F58C2F4FA /* CosmosLayerHelper.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		583F8753D8F4C0AB09D26F5F98739F3D /* EnumTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58939DB639DE4C044DDCE1FF76863693 /* EnumTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		58812AABBC0A1E7AE019752424DF31A7 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F85FD86926C5A497642A00171A2D441 /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5AC6AB111B48573B2017AC4C992202D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		609A2B9C3A862679F4A42F4492B0AE33 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDFAE49E8CACF2DF33E1ACB3BFBCF4E /* CosmosSettings.swift */; };
-		61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DA7E0BF978B6B16694339720CF3D54 /* DispatchQueue+Alamofire.swift */; };
+		5E25BCD30BDE2E7A68D1A6FAF7253AD4 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DA7E0BF978B6B16694339720CF3D54 /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		60E47009DC055C6C140154BC96B5C58C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF80E0D070F934D89571F9AC7B11C3 /* Image.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		613167D898FF421A6F75D1FE5D145B9B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B16E27BB5FA9BAC0F7050575EEF949A /* Alamofire.framework */; };
-		623FA388F76C743809099881B070081D /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76CE7ACCB2214276DCF6CA00D62FFB9 /* Map.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C257BDE1DE896569616E64EF72602F29 /* ServerTrustPolicy.swift */; };
+		62114B9327B542DA7256025248775AB0 /* GoogleCloudDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB702F5FE0E47501D862F28A747CCE5 /* GoogleCloudDestination.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		63D1DABE9DA94A4279A9D753EDE56941 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		6469BCC88D68905136CBB2FC47F590DB /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB4340AEDDA4FB57141CCCAB406355A /* TransformOperators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		659179EFC4D883F90CCFCD9AF4029E72 /* EnumTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58939DB639DE4C044DDCE1FF76863693 /* EnumTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		698ACEFFD3C3465780D173B9640168D6 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20426642AA633189E8F51DE94F09D86F /* CosmosTouchTarget.swift */; };
-		6B39C8852F0BC270E1F12D4F081AAE37 /* XCDYouTubeVideoWebpage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB206AC98FB56D3CFDA9C38859206294 /* XCDYouTubeVideoWebpage.m */; };
-		6D6125745D2472D29B6130DEB874B3BD /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD00D22678AD25DCDE642C8361B4CF /* CosmosText.swift */; };
+		6540CC4D369A32F6DE54AFA8D5D6FAF9 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE67619F222DC66C94293EE3A5DB579F /* Alamofire-dummy.m */; };
+		6B921E9C6F7B977A08E655F8CF0CBF58 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF8C3E024DD5EF19056E1027E7A1B7 /* Filter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6EEED3564B768C004BEA836293AF7804 /* SwiftyBeaver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DED93D83BBB83CFC88F5A6F6CA0339E /* SwiftyBeaver-dummy.m */; };
 		6FEF5B9706BB1A5A6FB9A967CDD10A7D /* XCDYouTubeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2928F314123D50063E93E5E925A3A6B0 /* XCDYouTubeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		703E5DC40BE63BC7C44F14783D8A2B83 /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75CE4428DDFF4E261DF8579E7261B06 /* BaseDestination.swift */; };
-		716C8C47D45ED102DB9BC024A44213A2 /* TransformOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00014743468EE2DD365E2C041826D7A4 /* TransformOf.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		72DCC5CFF1482CCC23C48B2A65767F61 /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB352A71F27A48B869D9A0D32CF95CA9 /* SBPlatformDestination.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		732760FD8DCC86E9032DA0C93B28EE2B /* XCDYouTubeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A042D7C46FE72F66D8E397D11D78772 /* XCDYouTubeVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75EDC1627ABA020EF479DB8FE38F2BEE /* UIScrollView-InfiniteScroll-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6654E30D1B5183137B5C85811676399A /* UIScrollView-InfiniteScroll-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		762AC163D1F3D4BF631B17AE5AD7BC91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		79756BB5901F4D9DD010F3C8702AD094 /* EnumOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04A485BFE25D3BD3CFC59F04FDCDCA /* EnumOperators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22391799EA4373B9EB4E7475B8F1CB4 /* SessionDelegate.swift */; };
-		7C7A9ACFC22141DF0F70CB0FF02266B0 /* XCDYouTubeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AD09C7DA821D20362639CA850214AD /* XCDYouTubeKit-dummy.m */; };
-		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F77CE9545C5861814F24CADBE2EDEE6 /* Result.swift */; };
+		78F4229B4A746A38341474FEB9DADB25 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489165E177E22AE1E4EBE5A50515794F /* ParameterEncoding.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7B75A75DBF910CB414A535328C98AB8F /* EnumOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04A485BFE25D3BD3CFC59F04FDCDCA /* EnumOperators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7D2876C80852672B791BBC5D5B70CB32 /* DictionaryTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D9F3B2420FFA32EA63CDDEF0E714F /* DictionaryTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7EE116702E934DE9ACA15E44AD51402A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
+		80C4FE0C488F8B97AE8C7C584F01FCE6 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65FF2554868476495104180361F6D97 /* CosmosView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		82B33F223516A2AA7DA2985E5A954B88 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B377D0B28E7B0E11EFC7959DAD96CED /* ObjectMapper.framework */; };
-		86C743EB1FCA2FF13C50EADCE263091E /* Cosmos-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3CB71CA24446809DE537F7B7D61C3BA /* Cosmos-dummy.m */; };
+		85B4114292AEC3C6DCD2F9500A064F9B /* UIImage+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807063DE29D885B81B8655AE1C384793 /* UIImage+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		85CB0F18BB446FF111C383DBD2B09288 /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280FDDF9549CC9971DE915D5187E673D /* CosmosSize.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		875BB0490ABD213715D30FCCB65D84DC /* ToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0106B14CAEB7B7C45A34AC779ABC48 /* ToJSON.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8764E69D2C2770B08834936AB2559FE1 /* PMKVObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = DF3C2EC935F8FE62D8E3DCDDB20E45E1 /* PMKVObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AE54699D0182BAF0D6E51024976477A /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01160A64D7CA8B980DFC6F58C2F4FA /* CosmosLayerHelper.swift */; };
-		8B1DCAA3A596869078949E1534E60DB8 /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EDD564120585CBC0EAC1F1BECB76C /* DateFormatterTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8AA99D45B50C815FA4D6028FF1EC6865 /* PMKVObserver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E903D78B1CEA8B5729090EDCDE1B6077 /* PMKVObserver-dummy.m */; };
 		8DC15C630F19C4050E934B8EF615A23A /* UIScrollView+InfiniteScroll.h in Headers */ = {isa = PBXBuildFile; fileRef = 034DA2F6886D57D486B7EE757FBEAE0B /* UIScrollView+InfiniteScroll.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9113FE1274F17B76B03DA0D5B3B335F3 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2841CBF39C4183FF2E56A98BC24976B /* Mapper.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8F5C0849D2757FC5A7C81B81BA3813C3 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FD2055B00109FCBAB32629A17C8DB /* ResponseSerialization.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		93338E804C612EA77F4F042D2CE7C390 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A3FF0878D2B3975AE947105BDFB13 /* CosmosRating.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		949004AD4C11BA93B2E5875ED2CE7C80 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D14BDC3A1C59F5B667B4D4C19B8EB /* AlamofireObjectMapper.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		966193CDC637BEA977C3651D5F79BA0C /* XCDYouTubePlayerScript.h in Headers */ = {isa = PBXBuildFile; fileRef = F67F17F7BA3319D17D51FD13AAE5139F /* XCDYouTubePlayerScript.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		981EFF1371FCE40F1907DA262743B93E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69316B83832AFEB455F9EF414F3AAEBE /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9821EFD7CA2C1A24F3EFDCD81D79F375 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7D447B35949818EB2CFD503E127B7D /* JavaScriptCore.framework */; };
 		982315E40AC7A1F770E2981AA7AF0C1D /* Pods-Kinopub TV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C24765F72C353F343AF744F585E11B1F /* Pods-Kinopub TV-dummy.m */; };
-		9A67AB5E35CB7D84259AD287F52E0EA4 /* XCDYouTubeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C59999F80B968787E29E8E0E39257FE3 /* XCDYouTubeClient.m */; };
 		9C3AEB452463D0C35EBD37E50BED7DDA /* XCDYouTubeVideo+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 9450A0962F517E487AABB6AD4C860628 /* XCDYouTubeVideo+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9D87C63AA789D2902AA8973B4AAC0CB7 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE0DEA408EA29749156787855B2CD9 /* StarLayer.swift */; };
-		9DA213E20108ED36E90D976BD38FE34F /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65FF2554868476495104180361F6D97 /* CosmosView.swift */; };
-		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A29FE53D2A6D1F5BAC12F03ED91915 /* AFError.swift */; };
-		9EE50A99F3EC271D4315836CBC2C0485 /* URLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34C3C9EFBA5ADA6939FE962571E240 /* URLTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A2A2359BF0BE96A64570CBC09069C5FF /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B359C32E027AB9E5266AF0BAD56B23D /* CosmosLayers.swift */; };
-		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED7C8F215F1B21E84FB4A5DCFFD898 /* NetworkReachabilityManager.swift */; };
-		A4626C1D53C39F42FD955C0D2A094B31 /* SwiftyBeaver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DED93D83BBB83CFC88F5A6F6CA0339E /* SwiftyBeaver-dummy.m */; };
+		9D9717AC018F075F378E52B078CDBFB5 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C1F372FA95112653D8E9F4EDE8D7A4 /* ImageDownloader.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9DBB6831E79F70D2E8C4DFD169E228E2 /* Request+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E544CF253D4A3CC3305CDB858F479 /* Request+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9E686D93A33DD9756B0C21B68BD7D758 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D546E27C81F017CC5FA1241AF385121 /* ImageFilter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A007AE76C18114351B279BFDF048EB12 /* KVObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 030C079801500EEDA2B3FAF98AE0ADF7 /* KVObserver.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A133EAE3F50C55B4E1A03A5F9D6B3A4B /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BDFCF26F32C7CDEE73351477F992B6 /* UIButton+AlamofireImage.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A3D25633AC7671D030B622FA918E4806 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2BBA87DC19BFF6502056924CF03D9 /* Operators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A702D1A8C14D264AE7B38E898CE76382 /* ObjectMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AA4A4696FC23ACF105FD9651A108EF /* ObjectMapper-dummy.m */; };
-		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE67619F222DC66C94293EE3A5DB579F /* Alamofire-dummy.m */; };
-		AA58964945F3B3EC6309D7105A0FE424 /* PMKVObserver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E903D78B1CEA8B5729090EDCDE1B6077 /* PMKVObserver-dummy.m */; };
-		AAC91DDB15208691DA405505FB7EEF03 /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DDEE92C9212311FDC6E0E6A33F4357 /* MapError.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AB0362A9E4FD38119D228C2DA2770F7F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2BBA87DC19BFF6502056924CF03D9 /* Operators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACECE9F41CC1F2423487F78054413525 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D14BDC3A1C59F5B667B4D4C19B8EB /* AlamofireObjectMapper.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AD8A87D82FD7DDEC3B0CEE42A5D71DE7 /* UIScrollView-InfiniteScroll-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D41A3D635771E719BA4295DE08AF460 /* UIScrollView-InfiniteScroll-dummy.m */; };
-		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D20EBBE1CC372134D839378A133DA1 /* SessionManager.swift */; };
+		A70709F21724C6007BA93338C4B06579 /* XCDYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 10951A945979CF6AF02691413F541685 /* XCDYouTubeVideo.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A7603947D6B0738864A9A8BCB36BDE1E /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B359C32E027AB9E5266AF0BAD56B23D /* CosmosLayers.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A9A307607E777B7B1E7789C383CDCBF9 /* XCDYouTubeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C59999F80B968787E29E8E0E39257FE3 /* XCDYouTubeClient.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AD2C576F50E67B2417C1D17FBF5E32B2 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A29FE53D2A6D1F5BAC12F03ED91915 /* AFError.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B22794FFA7B51FBB92BA2C56E3EB90F0 /* XCDYouTubeVideoWebpage.h in Headers */ = {isa = PBXBuildFile; fileRef = 51590AD9A630C889A7A095C0C0F91D7D /* XCDYouTubeVideoWebpage.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B283DC3495ECB32E0542A360C6AB47C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
 		B33CEED14EC2BEC972431F7978BDA71C /* KVObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EBC1A399FFAE33D0CD7CC4E79721072 /* KVObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B374D9B085593C62D174EF2906CB13B7 /* KVObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 030C079801500EEDA2B3FAF98AE0ADF7 /* KVObserver.m */; };
-		B532942D790C3749874A90886AB4C8A1 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF8C3E024DD5EF19056E1027E7A1B7 /* Filter.swift */; };
-		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F85FD86926C5A497642A00171A2D441 /* MultipartFormData.swift */; };
-		B66DB5AA59800D672844FD99CDB081E9 /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC5EB3BAFC8BE573F077A83040272F8 /* CosmosTouch.swift */; };
-		BA0106B08E47B23ACD52BABC58270347 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641841D1E16BB10ADB56E998EE14C225 /* SwiftyUserDefaults.swift */; };
+		B9C97D7C7C21C0FC9B64C27A8D30B3B4 /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DDEE92C9212311FDC6E0E6A33F4357 /* MapError.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		BAD833CC41EFB8AD0A991311BE3B31C4 /* XCDYouTubeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53EE8EB5948B9FBDAA2FEB0DE27E1102 /* XCDYouTubeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D57E9DEBBF047BB1E7AC0A22EC1974 /* Validation.swift */; };
-		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489165E177E22AE1E4EBE5A50515794F /* ParameterEncoding.swift */; };
+		BCBE0A5CC074E804E2EE761D8F42E4AE /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC5EB3BAFC8BE573F077A83040272F8 /* CosmosTouch.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BF7896D09B6C0F7CC6A657887BC7AEB1 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB43E6D601D6EF91A2916C3D268EB0D /* ConsoleDestination.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BFBB3A487B157CF18D0121EC6FD2EA45 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36443B277936CA90267DE6EA5448FF13 /* SwiftyBeaver.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C0DC849317C5B009742F513621724B5E /* NSDecimalNumberTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEA7F4DE5A6FE4FAE023F470E2D815 /* NSDecimalNumberTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C0F8551145B920574CE4BDB46FA08864 /* XCDYouTubeLogger+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF0C5D3566447572BD0FD73B2A1DC2D /* XCDYouTubeLogger+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C2013BDC16253140A597B09EEA80AA9D /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A3FF0878D2B3975AE947105BDFB13 /* CosmosRating.swift */; };
-		C73BF39A4CCC3E450E102C23027F8FF8 /* UIButton+AlamofireImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BDFCF26F32C7CDEE73351477F992B6 /* UIButton+AlamofireImage.swift */; };
-		C7486CE7EBA304CDC2159EA5081626D5 /* IntegerOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21A2FD0B713E6FE025BABA7D538DFB /* IntegerOperators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CB580B7DBF3EFB45311B144E84BC78EE /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5193EB21DFA35820F8AE4366FF91E1 /* Mappable.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E50E876E497F02ED70CCF3FF3E1FA0 /* Response.swift */; };
+		C5FD57751548EFFA6567AFD2EB47CD56 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D66B7F2323A328D9D08929F434036 /* Request.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CB1AE668AB8CC3C40C81E9818D2F8990 /* IntegerOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21A2FD0B713E6FE025BABA7D538DFB /* IntegerOperators.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CBBF3C472A9A94FEA2915609B8E660ED /* XCDYouTubeClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5568520AB7A2E890D3756468A1600490 /* XCDYouTubeClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE58743EFA33CB34605AA46B439426B2 /* XCDYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 10951A945979CF6AF02691413F541685 /* XCDYouTubeVideo.m */; };
 		CF3AD2152AFDBE29B23C238FEFCC75E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
+		D00AB7464A68A77FBDB9A1007E29443C /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = A31BC930C0A3D3376544DE9576E255F2 /* UIScrollView+InfiniteScroll.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D309F7CE1553F85B564E000432A679EF /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31CCD9923C5A9C0BA37F3EBEE933B975 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D67592E2B52D494FB2FBD5873D1D13FA /* XCDYouTubeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6C6612B9CAEB5FBC29281C7F8A9D33 /* XCDYouTubeLogger.m */; };
-		D9E544B8CB42DA8DD44838F83610D8E0 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B22C63454D9BE2CFFEE74091A6DEFC /* ImageCache.swift */; };
-		DB833B8FAD23384516AE3A829D703C55 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64178D395FFCAC40B954ED616697E5AE /* TransformType.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		DFDB98933B058BA701CC018D8525078C /* GoogleCloudDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB702F5FE0E47501D862F28A747CCE5 /* GoogleCloudDestination.swift */; };
+		D4518A94BD70C25EED989A5688D9EEA8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77AD4CAD8F8FD5BFE9C4B0C6169186 /* SwiftyJSON.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D5686072DEC1A0E14F8C100FCC873F73 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E19832F68E490F075AD31776448C83 /* TaskDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D861B5DF912E0C48A120B4B9A14E9372 /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD00D22678AD25DCDE642C8361B4CF /* CosmosText.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D9AF4FEA08402085FD88BEE65FE14770 /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EFE81029CC24C34D1DD53441E7912 /* CosmosDefaultSettings.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DE42F2C6F2E331D24F4E998697856FD9 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD13598A7C4722CCCEE93280235A0459 /* StarFillMode.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E027C5DD27665130CCFF4AE2F16AAC3D /* XCDYouTubeLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3377408D94704625E6D31BDF6871B130 /* XCDYouTubeLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E198F398404F07805E5189165F3C1E64 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1007689C95C3198F7F26093E80E2B30 /* Timeline.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E1FDB8EB49DCBA9C697BF5EE4103D28A /* AlamofireObjectMapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 192CE6204C9A1372BDC16F371EABFE45 /* AlamofireObjectMapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1FF4985892E23B75A3381EFF830DFD5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF80E0D070F934D89571F9AC7B11C3 /* Image.swift */; };
+		E1FE8F23546AF9CAB5AB3B15E0C5C02F /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3797947867058025B0E697C515EEC0DA /* DataTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E2773E7D968A1596F1FCC26E6832446E /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2841CBF39C4183FF2E56A98BC24976B /* Mapper.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E2FE3061B9536E3B236721411342DFE6 /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EDD564120585CBC0EAC1F1BECB76C /* DateFormatterTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E5A9BF8DDA9BF385F528B3B3CF7CDBAA /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0756FF66631D39934EE1D13D3372A841 /* AES256CBC.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E68CA36388F2A6742C74051584A3EF26 /* CustomDateFormatTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C8FC92D5F73EE55E9F6632700A90F /* CustomDateFormatTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E78A4FAF82AEB53C1165EA36F036788B /* XCDYouTubeError.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2C47F55B093F64E025C8FCE5A9B3D /* XCDYouTubeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7D25B21874A54B0B88053B9B05BA4DB /* DataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3797947867058025B0E697C515EEC0DA /* DataTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EB903A56160B2301CB9D53386D6C8D4C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77AD4CAD8F8FD5BFE9C4B0C6169186 /* SwiftyJSON.swift */; };
-		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69316B83832AFEB455F9EF414F3AAEBE /* Notifications.swift */; };
+		E96FE670FD66383878795F5041E929E4 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64178D395FFCAC40B954ED616697E5AE /* TransformType.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EBA0781A1E2822CF7DFD56ACD394A63E /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC0068D3C86BD212D38CC4CE0ACC56 /* Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EE78E4996550BE6D90BC7472B3DB6D66 /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E8FAEFFADD43EFF55A11B2CB2AAFAF /* ISO8601DateTransform.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EED6710A761333354CB38806048913D9 /* XCDYouTubePlayerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6157804D5449CD388F1D31314BF3D /* XCDYouTubePlayerScript.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F1B122FED9AA4B58EC75A363BCFCFF8A /* SwiftyUserDefaults-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C17BF104876A7D6EE12B8BCCAA27865 /* SwiftyUserDefaults-dummy.m */; };
+		F254CF02931202CD44537EAD61D27BE8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B22C63454D9BE2CFFEE74091A6DEFC /* ImageCache.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F3D4F8E7FB8DAF76E5A1BF5AE391F899 /* XCDYouTubeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AD09C7DA821D20362639CA850214AD /* XCDYouTubeKit-dummy.m */; };
 		F6991165EBA133E2FF2C12F6D266E306 /* SwiftyUserDefaults-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8DBCB0FF102701433A02909B2DAABE9 /* SwiftyUserDefaults-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FD2055B00109FCBAB32629A17C8DB /* ResponseSerialization.swift */; };
+		F7F9303F0C2B16A3096900D41A38AE06 /* UIScrollView-InfiniteScroll-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D41A3D635771E719BA4295DE08AF460 /* UIScrollView-InfiniteScroll-dummy.m */; };
 		F84599885FA6978FABC03FD88C9C3E0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A591F11D6F08552D85F098951E6275ED /* Foundation.framework */; };
-		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC0068D3C86BD212D38CC4CE0ACC56 /* Alamofire.swift */; };
-		FBA6329109CA7A6D4DCE4678E9BC0045 /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = A31BC930C0A3D3376544DE9576E255F2 /* UIScrollView+InfiniteScroll.m */; };
+		FA538043B4B9AC5159A43668F1F189D9 /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF815261E4A5A1B7D6A9005AF6A682E /* CosmosLocalizedRating.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		FC008DBB38D3EA56A7F49ABBBC94AB6C /* TransformOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00014743468EE2DD365E2C041826D7A4 /* TransformOf.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		FF0007F0502C85600F98BC8E62F739D2 /* AFIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B4B73DFE6097BF205CAAAA2442AA /* AFIError.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1198,7 +1198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9D7724121157C6226F222C9380034C5 /* Build configuration list for PBXNativeTarget "Cosmos" */;
 			buildPhases = (
-				ED1C9BD619C31E555ACEECFB30112CBB /* Sources */,
+				332A2D93B7F8B0B821A1EC13A1D6137B /* Sources */,
 				5D2BDC4D99E66C5E00C8555B4A5B3522 /* Frameworks */,
 				2C994E8D4C84A61B6FDFD58BAA339303 /* Headers */,
 			);
@@ -1232,7 +1232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A709683A2741CC7F1ABBA4440CDB7502 /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */;
 			buildPhases = (
-				2D402E84F21C2FDA4712DF7E98A7319B /* Sources */,
+				4AF0E218B9F646A574F03ED8B5BC0539 /* Sources */,
 				B738F2EDC869346E4F4D97E9A5F83E9B /* Frameworks */,
 				D9567444341E2D168D2E2C5D2815D5C4 /* Headers */,
 			);
@@ -1277,7 +1277,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */;
 			buildPhases = (
-				32B9974868188C4803318E36329C87FE /* Sources */,
+				47AA244DE0C8B2C0F0A585D845356E59 /* Sources */,
 				99195E4207764744AEC07ECCBCD550EB /* Frameworks */,
 				B4002B6E97835FDCCAA5963EFE09A3E0 /* Headers */,
 			);
@@ -1313,7 +1313,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A1F341588344E8A3319061D79B7DAFF /* Build configuration list for PBXNativeTarget "XCDYouTubeKit" */;
 			buildPhases = (
-				DF904A585311DF4FA7584765DE706AA5 /* Sources */,
+				3F120F3F2A57B3343D2738C3D1408B3F /* Sources */,
 				6BD526274F6338CC6CA0A97F113FA05B /* Frameworks */,
 				561625BAD56ACE93E25EDBFC4B18C2D0 /* Headers */,
 			);
@@ -1330,7 +1330,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01F2198AF9DCCF3700AE9DD21E64D480 /* Build configuration list for PBXNativeTarget "AlamofireImage" */;
 			buildPhases = (
-				DB0BE2FBB4DB070AD3C57C41C562C32B /* Sources */,
+				89780FCE56CA2BB731B3A99F5FC88440 /* Sources */,
 				BF98FBBDC964E0CC738F6B323B4C1BB8 /* Frameworks */,
 				EB21FD03B7703901958C3CE43325DAE9 /* Headers */,
 			);
@@ -1348,7 +1348,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDE78F35761EB2F61E7D8CB303B09099 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				4CCD595EC84E6D4022A9FD1BE76F92BB /* Sources */,
+				A6B618ABFE213B1DA1D228406E2128F4 /* Sources */,
 				A363EF0BD32190864FD94EEA2549E9BA /* Frameworks */,
 				2C7F6679D03D6D95192964BA991CCAE4 /* Headers */,
 			);
@@ -1365,7 +1365,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A3B15AD25C981AF289DF9C05FE714CB /* Build configuration list for PBXNativeTarget "UIScrollView-InfiniteScroll" */;
 			buildPhases = (
-				213203E12778F17400B7E2B3037EC12C /* Sources */,
+				B08E119CF1B7C8649BD5E626EB187D1B /* Sources */,
 				21A26B09A975A34FC1A17459A854D096 /* Frameworks */,
 				12F756DA0637CD04769716D62D782BEF /* Headers */,
 			);
@@ -1382,7 +1382,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 597F55B14C5DB5D2DC9ED7D3C1E44DA0 /* Build configuration list for PBXNativeTarget "PMKVObserver" */;
 			buildPhases = (
-				E2AF6BAAC56D65CA4BFD8E1B78103BA3 /* Sources */,
+				30B8DC295E42B66484E603DD85A7E99D /* Sources */,
 				DB216E8E1A5F1CED5A3BBC3F5AD2F029 /* Frameworks */,
 				49062F2C0DDF41D91B7D2627543A886A /* Headers */,
 			);
@@ -1399,7 +1399,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7867F3DA1297E138A4C61FCA183EDCD0 /* Build configuration list for PBXNativeTarget "SwiftyUserDefaults" */;
 			buildPhases = (
-				FBDD098FC8E898A3BA14CD5DD103F1BC /* Sources */,
+				99DA7C3F1CDFCE31DF8582920DA86F5E /* Sources */,
 				D0B974AFA2260EDCB577CB56C82A348B /* Frameworks */,
 				40E411079DC720EBA7B5212A2195A734 /* Headers */,
 			);
@@ -1458,62 +1458,134 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		213203E12778F17400B7E2B3037EC12C /* Sources */ = {
+		30B8DC295E42B66484E603DD85A7E99D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBA6329109CA7A6D4DCE4678E9BC0045 /* UIScrollView+InfiniteScroll.m in Sources */,
-				AD8A87D82FD7DDEC3B0CEE42A5D71DE7 /* UIScrollView-InfiniteScroll-dummy.m in Sources */,
+				A007AE76C18114351B279BFDF048EB12 /* KVObserver.m in Sources */,
+				53BA6F4FB31189EBE40F1EC3184BE62D /* KVObserver.swift in Sources */,
+				8AA99D45B50C815FA4D6028FF1EC6865 /* PMKVObserver-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2D402E84F21C2FDA4712DF7E98A7319B /* Sources */ = {
+		332A2D93B7F8B0B821A1EC13A1D6137B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6DB6FDBD4067CCFF2D53A005549D5A /* AES256CBC.swift in Sources */,
-				703E5DC40BE63BC7C44F14783D8A2B83 /* BaseDestination.swift in Sources */,
-				0C62501218C0CCE04CE6B73363C30991 /* ConsoleDestination.swift in Sources */,
-				2B7073A62573893569A5DCEF125948C8 /* FileDestination.swift in Sources */,
-				B532942D790C3749874A90886AB4C8A1 /* Filter.swift in Sources */,
-				DFDB98933B058BA701CC018D8525078C /* GoogleCloudDestination.swift in Sources */,
-				1FD1E18B9F5A29E24EA61D8E8458627B /* SBPlatformDestination.swift in Sources */,
-				A4626C1D53C39F42FD955C0D2A094B31 /* SwiftyBeaver-dummy.m in Sources */,
-				4B5D6CB8EBBD386B4F589B25C46F9C0F /* SwiftyBeaver.swift in Sources */,
+				44C88EF426E7108D474268DBD5FAD71B /* Cosmos-dummy.m in Sources */,
+				44B246C9B86B49E963AA7E14EF60137E /* CosmosAccessibility.swift in Sources */,
+				D9AF4FEA08402085FD88BEE65FE14770 /* CosmosDefaultSettings.swift in Sources */,
+				55E2F1A41EA1695F094E78706EFAA9A9 /* CosmosLayerHelper.swift in Sources */,
+				A7603947D6B0738864A9A8BCB36BDE1E /* CosmosLayers.swift in Sources */,
+				FA538043B4B9AC5159A43668F1F189D9 /* CosmosLocalizedRating.swift in Sources */,
+				93338E804C612EA77F4F042D2CE7C390 /* CosmosRating.swift in Sources */,
+				11EA814BBF3744A95B80ADC0D0E07482 /* CosmosSettings.swift in Sources */,
+				85CB0F18BB446FF111C383DBD2B09288 /* CosmosSize.swift in Sources */,
+				D861B5DF912E0C48A120B4B9A14E9372 /* CosmosText.swift in Sources */,
+				BCBE0A5CC074E804E2EE761D8F42E4AE /* CosmosTouch.swift in Sources */,
+				3CD5B6D095660B15140313243BCBE539 /* CosmosTouchTarget.swift in Sources */,
+				80C4FE0C488F8B97AE8C7C584F01FCE6 /* CosmosView.swift in Sources */,
+				DE42F2C6F2E331D24F4E998697856FD9 /* StarFillMode.swift in Sources */,
+				04DB633DC7AE86CE9C5CD768F99F2E8C /* StarLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32B9974868188C4803318E36329C87FE /* Sources */ = {
+		3F120F3F2A57B3343D2738C3D1408B3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */,
-				A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */,
-				F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */,
-				61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */,
-				B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */,
-				A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */,
-				EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */,
-				BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */,
-				5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */,
-				CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */,
-				F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */,
-				7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */,
-				62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */,
-				7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */,
-				AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */,
-				3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */,
-				10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */,
-				BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */,
+				A9A307607E777B7B1E7789C383CDCBF9 /* XCDYouTubeClient.m in Sources */,
+				F3D4F8E7FB8DAF76E5A1BF5AE391F899 /* XCDYouTubeKit-dummy.m in Sources */,
+				3BAE7F089F029DE5609180450C60AB39 /* XCDYouTubeLogger.m in Sources */,
+				EED6710A761333354CB38806048913D9 /* XCDYouTubePlayerScript.m in Sources */,
+				A70709F21724C6007BA93338C4B06579 /* XCDYouTubeVideo.m in Sources */,
+				266B7F98F80D9C3942C59E1B1E93F711 /* XCDYouTubeVideoOperation.m in Sources */,
+				09ED49599DE30DED7F269C181F4695C0 /* XCDYouTubeVideoWebpage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4CCD595EC84E6D4022A9FD1BE76F92BB /* Sources */ = {
+		47AA244DE0C8B2C0F0A585D845356E59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E95229FF62BE7AA87EF619718C98790 /* SwiftyJSON-dummy.m in Sources */,
-				EB903A56160B2301CB9D53386D6C8D4C /* SwiftyJSON.swift in Sources */,
+				AD2C576F50E67B2417C1D17FBF5E32B2 /* AFError.swift in Sources */,
+				6540CC4D369A32F6DE54AFA8D5D6FAF9 /* Alamofire-dummy.m in Sources */,
+				EBA0781A1E2822CF7DFD56ACD394A63E /* Alamofire.swift in Sources */,
+				5E25BCD30BDE2E7A68D1A6FAF7253AD4 /* DispatchQueue+Alamofire.swift in Sources */,
+				58812AABBC0A1E7AE019752424DF31A7 /* MultipartFormData.swift in Sources */,
+				079D990738735591330332B5F2551AE4 /* NetworkReachabilityManager.swift in Sources */,
+				981EFF1371FCE40F1907DA262743B93E /* Notifications.swift in Sources */,
+				78F4229B4A746A38341474FEB9DADB25 /* ParameterEncoding.swift in Sources */,
+				C5FD57751548EFFA6567AFD2EB47CD56 /* Request.swift in Sources */,
+				204944D67267632DD7CD4BEFB60AC389 /* Response.swift in Sources */,
+				8F5C0849D2757FC5A7C81B81BA3813C3 /* ResponseSerialization.swift in Sources */,
+				00E153632A414101E0A66AE23569802B /* Result.swift in Sources */,
+				343B30C989188B77FB1149FED753A63C /* ServerTrustPolicy.swift in Sources */,
+				14CECE238604E1D44104E5BCD14EB2BE /* SessionDelegate.swift in Sources */,
+				2B58B070F9D7324583D01EE906BC918C /* SessionManager.swift in Sources */,
+				D5686072DEC1A0E14F8C100FCC873F73 /* TaskDelegate.swift in Sources */,
+				E198F398404F07805E5189165F3C1E64 /* Timeline.swift in Sources */,
+				164781197625A3149B3BDBCAA2AC8CC3 /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AF0E218B9F646A574F03ED8B5BC0539 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5A9BF8DDA9BF385F528B3B3CF7CDBAA /* AES256CBC.swift in Sources */,
+				533DEA89162BC9EF7A80B63B3EE8CF03 /* BaseDestination.swift in Sources */,
+				BF7896D09B6C0F7CC6A657887BC7AEB1 /* ConsoleDestination.swift in Sources */,
+				3E7910DD8CF0866F2C1CF5082EDCD45B /* FileDestination.swift in Sources */,
+				6B921E9C6F7B977A08E655F8CF0CBF58 /* Filter.swift in Sources */,
+				62114B9327B542DA7256025248775AB0 /* GoogleCloudDestination.swift in Sources */,
+				72DCC5CFF1482CCC23C48B2A65767F61 /* SBPlatformDestination.swift in Sources */,
+				6EEED3564B768C004BEA836293AF7804 /* SwiftyBeaver-dummy.m in Sources */,
+				BFBB3A487B157CF18D0121EC6FD2EA45 /* SwiftyBeaver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89780FCE56CA2BB731B3A99F5FC88440 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF0007F0502C85600F98BC8E62F739D2 /* AFIError.swift in Sources */,
+				18FE70ED14474EE6A49E85DE9C5E4C17 /* AlamofireImage-dummy.m in Sources */,
+				60E47009DC055C6C140154BC96B5C58C /* Image.swift in Sources */,
+				F254CF02931202CD44537EAD61D27BE8 /* ImageCache.swift in Sources */,
+				9D9717AC018F075F378E52B078CDBFB5 /* ImageDownloader.swift in Sources */,
+				9E686D93A33DD9756B0C21B68BD7D758 /* ImageFilter.swift in Sources */,
+				9DBB6831E79F70D2E8C4DFD169E228E2 /* Request+AlamofireImage.swift in Sources */,
+				A133EAE3F50C55B4E1A03A5F9D6B3A4B /* UIButton+AlamofireImage.swift in Sources */,
+				85B4114292AEC3C6DCD2F9500A064F9B /* UIImage+AlamofireImage.swift in Sources */,
+				36840E12F93D5E0D201B1D998B96EEB9 /* UIImageView+AlamofireImage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99DA7C3F1CDFCE31DF8582920DA86F5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1B122FED9AA4B58EC75A363BCFCFF8A /* SwiftyUserDefaults-dummy.m in Sources */,
+				21FCFA4CA8EE4DB83F7CBD99302F347B /* SwiftyUserDefaults.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6B618ABFE213B1DA1D228406E2128F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03A2654BD6FDB674767C220FB617B2C8 /* SwiftyJSON-dummy.m in Sources */,
+				D4518A94BD70C25EED989A5688D9EEA8 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E119CF1B7C8649BD5E626EB187D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D00AB7464A68A77FBDB9A1007E29443C /* UIScrollView+InfiniteScroll.m in Sources */,
+				F7F9303F0C2B16A3096900D41A38AE06 /* UIScrollView-InfiniteScroll-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1521,71 +1593,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A5B15F5BD365B620EA6445F1AC559DE /* CustomDateFormatTransform.swift in Sources */,
-				E7D25B21874A54B0B88053B9B05BA4DB /* DataTransform.swift in Sources */,
-				8B1DCAA3A596869078949E1534E60DB8 /* DateFormatterTransform.swift in Sources */,
-				50497589C9F33A33FFBA4C2D50B335D3 /* DateTransform.swift in Sources */,
-				173E0DDB57B8665C8A31804018C38B22 /* DictionaryTransform.swift in Sources */,
-				79756BB5901F4D9DD010F3C8702AD094 /* EnumOperators.swift in Sources */,
-				659179EFC4D883F90CCFCD9AF4029E72 /* EnumTransform.swift in Sources */,
-				0DF54EF6561E1295B8765B88B6579241 /* FromJSON.swift in Sources */,
-				25A8E544EE7288222A45CDD100453BE7 /* HexColorTransform.swift in Sources */,
-				43335DB8AF71F2E9545B2BA43285E287 /* ImmutableMappable.swift in Sources */,
-				C7486CE7EBA304CDC2159EA5081626D5 /* IntegerOperators.swift in Sources */,
-				4CE57BA9F3209F2E5D730F35361D112D /* ISO8601DateTransform.swift in Sources */,
-				623FA388F76C743809099881B070081D /* Map.swift in Sources */,
-				AAC91DDB15208691DA405505FB7EEF03 /* MapError.swift in Sources */,
-				CB580B7DBF3EFB45311B144E84BC78EE /* Mappable.swift in Sources */,
-				9113FE1274F17B76B03DA0D5B3B335F3 /* Mapper.swift in Sources */,
-				24553927300B10F87D89BA7360BD4D7F /* NSDecimalNumberTransform.swift in Sources */,
+				E68CA36388F2A6742C74051584A3EF26 /* CustomDateFormatTransform.swift in Sources */,
+				E1FE8F23546AF9CAB5AB3B15E0C5C02F /* DataTransform.swift in Sources */,
+				E2FE3061B9536E3B236721411342DFE6 /* DateFormatterTransform.swift in Sources */,
+				0A386904772AE0E8418CC2105018061B /* DateTransform.swift in Sources */,
+				7D2876C80852672B791BBC5D5B70CB32 /* DictionaryTransform.swift in Sources */,
+				7B75A75DBF910CB414A535328C98AB8F /* EnumOperators.swift in Sources */,
+				583F8753D8F4C0AB09D26F5F98739F3D /* EnumTransform.swift in Sources */,
+				1F1457F1DEC2B3D6F88CBD9C1CFB78B1 /* FromJSON.swift in Sources */,
+				52880E5F58B99127EB2AD4895385CE45 /* HexColorTransform.swift in Sources */,
+				0338A3AF1943E63181BCBADFBDCF4E25 /* ImmutableMappable.swift in Sources */,
+				CB1AE668AB8CC3C40C81E9818D2F8990 /* IntegerOperators.swift in Sources */,
+				EE78E4996550BE6D90BC7472B3DB6D66 /* ISO8601DateTransform.swift in Sources */,
+				36DC908DFB46D4EFE1EBBC0456E0C00F /* Map.swift in Sources */,
+				B9C97D7C7C21C0FC9B64C27A8D30B3B4 /* MapError.swift in Sources */,
+				02078AEB199C9C874706C1DCB71B86EB /* Mappable.swift in Sources */,
+				E2773E7D968A1596F1FCC26E6832446E /* Mapper.swift in Sources */,
+				C0DC849317C5B009742F513621724B5E /* NSDecimalNumberTransform.swift in Sources */,
 				A702D1A8C14D264AE7B38E898CE76382 /* ObjectMapper-dummy.m in Sources */,
-				AB0362A9E4FD38119D228C2DA2770F7F /* Operators.swift in Sources */,
-				52E1BABD8927CBAB89E0DFBD65D086A1 /* ToJSON.swift in Sources */,
-				716C8C47D45ED102DB9BC024A44213A2 /* TransformOf.swift in Sources */,
-				6469BCC88D68905136CBB2FC47F590DB /* TransformOperators.swift in Sources */,
-				DB833B8FAD23384516AE3A829D703C55 /* TransformType.swift in Sources */,
-				9EE50A99F3EC271D4315836CBC2C0485 /* URLTransform.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB0BE2FBB4DB070AD3C57C41C562C32B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EA0415A1A8A4FFC7403E201F915F9A4 /* AFIError.swift in Sources */,
-				37F951F2BDB75BD682C2999EB7B51A35 /* AlamofireImage-dummy.m in Sources */,
-				E1FF4985892E23B75A3381EFF830DFD5 /* Image.swift in Sources */,
-				D9E544B8CB42DA8DD44838F83610D8E0 /* ImageCache.swift in Sources */,
-				202822E4668C16D115A8F68F3ADF0E0F /* ImageDownloader.swift in Sources */,
-				27996F52CCABBD6D0874B79D1B913598 /* ImageFilter.swift in Sources */,
-				2BD7CFD41DACC439E8C0A527F1643495 /* Request+AlamofireImage.swift in Sources */,
-				C73BF39A4CCC3E450E102C23027F8FF8 /* UIButton+AlamofireImage.swift in Sources */,
-				05006BDD7301FCF2678618DEDCC69B94 /* UIImage+AlamofireImage.swift in Sources */,
-				304C5736AC5D49B526C709397D0CF048 /* UIImageView+AlamofireImage.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF904A585311DF4FA7584765DE706AA5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A67AB5E35CB7D84259AD287F52E0EA4 /* XCDYouTubeClient.m in Sources */,
-				7C7A9ACFC22141DF0F70CB0FF02266B0 /* XCDYouTubeKit-dummy.m in Sources */,
-				D67592E2B52D494FB2FBD5873D1D13FA /* XCDYouTubeLogger.m in Sources */,
-				3756F1029FA8DD69021B47FAF44B7C89 /* XCDYouTubePlayerScript.m in Sources */,
-				CE58743EFA33CB34605AA46B439426B2 /* XCDYouTubeVideo.m in Sources */,
-				24D8B43FFC94A6DE644A6B4CB353E969 /* XCDYouTubeVideoOperation.m in Sources */,
-				6B39C8852F0BC270E1F12D4F081AAE37 /* XCDYouTubeVideoWebpage.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2AF6BAAC56D65CA4BFD8E1B78103BA3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B374D9B085593C62D174EF2906CB13B7 /* KVObserver.m in Sources */,
-				0FDB1D1ACE02C14D3C1986CB292FCE6B /* KVObserver.swift in Sources */,
-				AA58964945F3B3EC6309D7105A0FE424 /* PMKVObserver-dummy.m in Sources */,
+				A3D25633AC7671D030B622FA918E4806 /* Operators.swift in Sources */,
+				875BB0490ABD213715D30FCCB65D84DC /* ToJSON.swift in Sources */,
+				FC008DBB38D3EA56A7F49ABBBC94AB6C /* TransformOf.swift in Sources */,
+				47A22B775A033B05D8D141AB040645F4 /* TransformOperators.swift in Sources */,
+				E96FE670FD66383878795F5041E929E4 /* TransformType.swift in Sources */,
+				13471963F6095F67AD2190073DBB0537 /* URLTransform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1594,38 +1625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				249BEC20A95460C784F48DF9AC00A302 /* AlamofireObjectMapper-dummy.m in Sources */,
-				ACECE9F41CC1F2423487F78054413525 /* AlamofireObjectMapper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED1C9BD619C31E555ACEECFB30112CBB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				86C743EB1FCA2FF13C50EADCE263091E /* Cosmos-dummy.m in Sources */,
-				45B3F3B07CA700F626B91C54D806CD6A /* CosmosAccessibility.swift in Sources */,
-				43FBBAF51381FD3A43CF5BE8A1D5A987 /* CosmosDefaultSettings.swift in Sources */,
-				8AE54699D0182BAF0D6E51024976477A /* CosmosLayerHelper.swift in Sources */,
-				A2A2359BF0BE96A64570CBC09069C5FF /* CosmosLayers.swift in Sources */,
-				317F10C5DFB10D5A608005FC7933B786 /* CosmosLocalizedRating.swift in Sources */,
-				C2013BDC16253140A597B09EEA80AA9D /* CosmosRating.swift in Sources */,
-				609A2B9C3A862679F4A42F4492B0AE33 /* CosmosSettings.swift in Sources */,
-				5666985B18AAC2D2FCB8457874E6FEC6 /* CosmosSize.swift in Sources */,
-				6D6125745D2472D29B6130DEB874B3BD /* CosmosText.swift in Sources */,
-				B66DB5AA59800D672844FD99CDB081E9 /* CosmosTouch.swift in Sources */,
-				698ACEFFD3C3465780D173B9640168D6 /* CosmosTouchTarget.swift in Sources */,
-				9DA213E20108ED36E90D976BD38FE34F /* CosmosView.swift in Sources */,
-				3A24A356DAF7CA974FDC87C30945D587 /* StarFillMode.swift in Sources */,
-				9D87C63AA789D2902AA8973B4AAC0CB7 /* StarLayer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FBDD098FC8E898A3BA14CD5DD103F1BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				12EE473A1BC5E4FC71CA609B96B42455 /* SwiftyUserDefaults-dummy.m in Sources */,
-				BA0106B08E47B23ACD52BABC58270347 /* SwiftyUserDefaults.swift in Sources */,
+				949004AD4C11BA93B2E5875ED2CE7C80 /* AlamofireObjectMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

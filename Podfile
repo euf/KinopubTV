@@ -2,6 +2,7 @@ platform :tvos, '9.0'
 
 target 'Kinopub TV' do
   use_frameworks!
+  inhibit_all_warnings!
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'Alamofire'
