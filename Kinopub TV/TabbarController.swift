@@ -117,7 +117,7 @@ class TabbarController: PITabBarController, Authorizable, DeviceTokenable {
 		if !Defaults.hasKey(.defaultQuality) {
 			Defaults[.defaultQuality] = Quality.hd.rawValue
 		}
-		log.debug("Current default quality: \(Quality(rawValue: Defaults[.defaultQuality]!))")
+		log.debug("Current default quality: \(String(describing: Quality(rawValue: Defaults[.defaultQuality]!)))")
 	}
 	
 }

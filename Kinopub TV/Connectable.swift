@@ -29,7 +29,7 @@ enum RequestType: String {
 struct Request: Connectable, CustomDebugStringConvertible {
 	
 	var debugDescription: String {
-		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(parameters) \n =========================================="
+		return "\n ========================================== \n Request type: \(type.rawValue) \n Resource URL: \(resourceURL) \n Method: \(method.rawValue) \n Parameters: \(String(describing: parameters)) \n =========================================="
 	}
 	
 	var type: RequestType

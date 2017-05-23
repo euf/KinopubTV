@@ -132,9 +132,9 @@ extension DeviceTokenable {
 	}
 	
 	func saveToken(response: ActivationResponse) {
-		log.debug("New token: \(response.token)")
-		log.debug("New refresh token: \(response.refreshToken)")
-		log.debug("New token expiration: \(response.expiration)")
+		log.debug("New token: \(response.token ?? "")")
+		log.debug("New refresh token: \(response.refreshToken ?? "")")
+		log.debug("New token expiration: \(String(describing: response.expiration))")
 		Defaults[.token] = response.token
 		Defaults[.expiration] = response.expiration as Date?
 		Defaults[.refreshToken] = response.refreshToken

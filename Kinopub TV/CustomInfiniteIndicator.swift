@@ -104,7 +104,7 @@ class CustomInfiniteIndicator: UIView {
     
     private func animation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
-        animation.toValue = NSNumber(value: M_PI * 2)
+        animation.toValue = NSNumber(value: Double.pi * 2)
         animation.duration = 1
         animation.repeatCount = Float.infinity
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
@@ -115,8 +115,8 @@ class CustomInfiniteIndicator: UIView {
     private func setupBezierPaths() {
         let center = CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5)
         let radius = bounds.size.width * 0.5 - thickness
-        let ringPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle: CGFloat(M_PI * 2), clockwise: true)
-        let quarterRingPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(-M_PI_4), endAngle: CGFloat(M_PI_2 - M_PI_4), clockwise: true)
+        let ringPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        let quarterRingPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(-Double.pi / 4), endAngle: CGFloat((Double.pi / 2) - (Double.pi / 4)), clockwise: true)
         
         outerCircle.path = ringPath.cgPath
         innerCircle.path = quarterRingPath.cgPath
